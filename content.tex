@@ -550,37 +550,57 @@ Với khả năng hỗ trợ ngôn ngữ Tiếng Việt, là một công cụ tr
 \startcontents[parts]
 \printcontents[parts]{}{-1}{\setcounter{tocdepth}{1}}
 \chapter{Tổng quan}
-\section{Mô tả kịch bản trò chơi}
-Game \project, như đã nói ở trên, là một game bắn súng góc nhìn thứ nhất (FPS) trên mobile mà trong đó người chơi là một phi hành gia lạc vào một hành tinh khác và bị những quái vật trên hành tinh đó tấn công. Nhiệm vụ của người chơi là tiêu diệt hết những quái vật này và sống sót để qua màn chơi. Những quái vật này được chia làm ba cấp độ:
+\section{Mô hình hệ thống}
+Đồ án đề xuất mô hình hệ thống để giải quyết vấn đề đã được nêu ở phần trên:
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=15cm]{Pics/Chap2/VVC.jpg}
+	\caption{Mô hình hệ thống}
+\end{figure}
+
+\noindent Trong đó có các thành phần chính sau:
+
 \begin{itemize}
-	\item Quái thường - \textit{Basic}: Kích thước nhỏ, thường có tốc độ di chuyển khá nhanh và đi theo nhóm số lượng lớn, được chia làm hai nhóm nhỏ:
-	\begin{itemize}
-		\item Quái tấn công: Chúng sẽ tấn công người chơi với cường độ cao khi chúng đến đủ gần.
-		\item Quái tự sát: Tốc độ di chuyển rất cao, khi đến chỗ người chơi chúng sẽ phát nổ và gây một lượng sát thương tương đối lớn.
-	\end{itemize}
-	\item Quái lớn - \textit{Elite}: Kích thước lớn, tuy di chuyển chậm và có cường độ tấn công thấp nhưng lượng sát thương lớn.
-	\item Trùm - \textit{Boss}: Kích thước rất lớn, có những skills đặc biệt và đa dạng nhằm gây khó dễ cho người chơi khi tiêu diệt chúng.
+	\item \textbf{Ứng dụng chatbot} là ứng dụng được xây dựng trên điện thoại thông minh chạy hệ điều hành Android, là thành phần chính giao tiếp với người dùng
+	\item \textbf{Google Speech Recognition API} là dịch vụ giúp phân tích giọng nói thành dạng văn bản
+	\item \textbf{Wit.ai} framework hỗ trợ huấn luyện khả năng thông minh cho chatbot
+	\item \textbf{Server trung gian} là dịch vụ trung gian xử lý các trường hợp được nhận diện từ phía Wit.ai và trả về các kết quả tương ứng cho ứng dụng
 \end{itemize}
 
-Để hoàn thành màn chơi, người chơi sẽ được cung cấp các loại súng, vốn được thiết kế đa dạng (súng tiểu liên, súng máy, súng phóng tên lửa, súng phóng đạn đuổi, súng phóng lựu\ldots) nhằm phục vụ các phong cách chơi khác nhau. Bên cạnh các loại súng, người chơi có thể mang theo một số vật phẩm hỗ trợ như vật phẩm hồi máu, áo giáp hoặc tăng sát thương cho súng. Hệ thống súng và vật phẩm được gọi là tài sản (inventory). Người chơi hoàn toàn có thể mua thêm, nâng cấp hoặc thay thế các loại tài sản trên.
+\noindent Với mô hình hệ thống đề xuất, có 8 bước chính được thực hiện:
 
-Ngoài các màn chơi chính, người chơi có thể chơi hai chế độ đặc biệt: phó bản (treasure) và vô hạn (endless). Chế độ phó bản cung cấp một số cơ chế đặc biệt như tốc độ nhanh hoặc tính giờ, trong khi đó ở chế độ vô hạn người chơi sẽ phải cố gắng sống sót càng lâu càng tốt trước những đợt quái ra liên tiếp. Hai chế độ đặc biệt này sẽ thêm màu sắc và sự đa dạng cho trò chơi.
+\begin{enumerate}
+	\item Sử dụng thư viện có sẵn được tích hợp trong hệ điều hành Android để gửi luồng (stream) dữ liệu âm thành từ phía lên Google Speech Recognition API xử lý và trả về kết quả
+	\item Nhận kết quả trả về từ phía Google là một tập các câu có cách phát âm tương tự nhau do cách phát âm, âm lượng, ngữ âm của người dùng làm cho Google Speech Recognition API có sự nhập nhằng và không chắc chắn
+	\item Thông thường, kết quả đầu tiên trong tập dữ liệu trả về là kết quả chính xác nhất mà Google phân tích được. Tuy nhiên, do những nguyên nhân về âm thanh, kết quả chính xác nhất có thể không nằm ở kết quả đầu tiên hoặc không có kết quả nào trùng khớp với lời nói của người dùng. Hệ thống đề xuất sử dụng phương pháp \textit{Mô hình ngôn ngữ} để tính xác suất xảy ra của mỗi câu dựa vào một tập dữ liệu học đã được xây dựng từ trước, từ đó chọn ra câu có xác suất xảy ra cao nhất để mang đi phân tích yêu cầu
+	\item Ứng dụng chatbot gửi câu lệnh là kết quả đã được chọn ra ở bước trên lên phía server trung gian
+	\item Server trung gian gửi câu lệnh lên cho Wit.ai
+	\item Wit.ai trả về API chứa những dữ liệu đã được phân tích từ câu lệnh
+	\item Server trung gian chọn lọc ra những thông tin cần thiết từ phía Wit.ai và trả dữ liệu đã chọn lọc về cho ứng dụng
+	\item Với những kết quả đã phân tích, ứng dụng thực hiện hành động phù hợp với yêu cầu từ phía người dùng
+\end{enumerate}
+
 \section{Các yêu cầu về chức năng}
 \begin{itemize}
-	\item Hệ thống quái vật: hành vi của từng con quái, AI.
-	\item Hệ thống sinh quái theo thời gian hoặc theo đợt.
-	\item Hệ thống súng và vật phẩm.
-	\item Dữ liệu về tiến trình chơi của người dùng: các màn đã mở khóa, thông tin về chế độ phó bản và chế độ vô hạn cũng như tài sản hiện tại của người chơi.
+	\item Xây dựng hệ thống thành một thư viện Android, có thể tích hợp vào những ứng dụng điều khiển hệ thống bằng giọng nói Tiếng Việt
+	\item Hỗ trợ điều khiển điện thoại với các tính năng
+	\begin{itemize}
+		\item Mở ứng dụng
+		\item Bật/tắt đèn, bluetooth, mạng ...
+		\item Đặt lịch hẹn, đồng hồ báo thức
+		\item Tìm kiếm thông tin
+	\end{itemize}
+	\item Có khả năng trả lời những câu nói thông thường của người dùng mà không phải là yêu cầu điều khiển
 \end{itemize}
 
 \section{Các yêu cầu phi chức năng}
 \begin{itemize}
-	\item Game chạy trên nền tảng Android ($\geqslant$ 4.0)
-	\item Game chạy ổn định với tối thiểu 30 khung hình trên một giây.
-	\item Phong cách đồ họa low poly, dễ thương.
+	\item Chọn ra câu nói chính xác trong tập dữ liệu trả về từ phía Google Speech Recognition API với độ chính xác là 85\%
+	\item Ứng dụng chạy ổn định, phản hồi người dùng sau tối đa 2 giây
 \end{itemize}
 
-\chapter{Phân tích và thiết kế}
+\chapter{Cơ sở lý thuyết}
 \section{Data-driven design}
 \subsection{Data-driven design là gì?}
 Data-driven design, trong phát triển game, là một tư tưởng nhằm đưa những giá trị hoặc hành vi của các thành phần trong game vào dữ liệu lưu trên đĩa cứng, thay vì được định nghĩa trong mã nguồn. Một ví dụ đơn giản của việc áp dụng data-driven design trong phát triển game đó là file lưu trữ những thiết lập của người chơi (player preferences). Các thông tin như âm lượng, độ phân giải màn hình hay thiết lập phím được lưu vào đây.
