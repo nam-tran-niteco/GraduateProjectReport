@@ -13,6 +13,7 @@
 \usepackage{float}
 \usepackage{array}
 \usepackage{amssymb}
+\usepackage{amsmath}
 \newcolumntype{C}{>{\centering\arraybackslash}m{3cm}}
 
 %source codes
@@ -508,7 +509,7 @@ Ngoài ChattyPeople còn có một vài nền tảng khác như \textit{MEOKAY} 
 
 Còn rất nhiều các nền tảng hỗ trợ trong việc triển khai chatbot trong việc kinh doanh cũng như các dịch vụ doanh nghiệp khác tại thời điểm hiện tại. Tuy nhiên đồ án được triển khai trên ứng dụng của thiết bị điện thoại thông minh nên việc sử dụng một nền tảng là chưa cần thiết. Có một vài nền tảng ngoài hỗ trợ triển khai còn hỗ trợ việc xây dựng trí thông minh cho chatbot như API.AI hay Beep Boop, tuy nhiên ngoài việc mất phí thì việc làm này cũng là chưa cần thiết đối với giải pháp mà đồ án hướng tới. Để phân tích được yêu cầu từ phía người dùng, đồ án đề xuất sử dụng một bot framework để giải quyết vấn đề này.
 
-\subsection{Framework phát triển bot}
+\subsection{Framework phát triển bot} \label{subsec:frameworkchatbot}
 
 Chatbot như đã nêu ở trên là một phần mềm cho phép tạo ra những cuộc hội thoại mà người dùng có cảm giác như đang được nói chuyện với một người thật. Những chatbot đơn giản sử dụng công thức chung là pattern-matching, so sánh những dữ liệu đầu vào với một tập các câu nói có sẵn trong tập dữ liệu học và chọn ra câu trả lời phù hợp nhất. Tuy nhiên với những dịch vụ muốn hiểu rõ hơn yêu cầu từ phía người dùng và đưa ra câu trả lời có nhiều ý nghĩa hơn thì những chatbot như trên chưa thể giải quyết được. Hiện tại đã có rất nhiều những thư viện được xây dựng nhằm hỗ trợ phát triển những chatbot sử dụng xử lý ngôn ngữ tự nhiên. Việc làm này là khó khăn hơn rất nhiều so với những chatbot thông thường do phải phân tách được cấu trúc câu nói người dùng và lấy được những thông tin quan trọng trong câu nói đó. Tiếng Anh thường là ngôn ngữ đầu tiên mà những thư viện này hướng tới, có thể kể đến một vài thư viện nổi tiếng như:
 
@@ -553,7 +554,7 @@ Với khả năng hỗ trợ ngôn ngữ Tiếng Việt, là một công cụ tr
 \section{Mô hình hệ thống}
 Đồ án đề xuất mô hình hệ thống để giải quyết vấn đề đã được nêu ở phần trên:
 
-\begin{figure}[H]
+\begin{figure}[H] \label{fig:VVC}
 	\centering
 		\includegraphics[width=15cm]{Pics/Chap2/VVC.jpg}
 	\caption{Mô hình hệ thống}
@@ -581,7 +582,7 @@ Với khả năng hỗ trợ ngôn ngữ Tiếng Việt, là một công cụ tr
 	\item Với những kết quả đã phân tích, ứng dụng thực hiện hành động phù hợp với yêu cầu từ phía người dùng
 \end{enumerate}
 
-\section{Các yêu cầu về chức năng}
+\section{Các yêu cầu về chức năng} \label{sec:requirement}
 \begin{itemize}
 	\item Xây dựng hệ thống thành một thư viện Android, có thể tích hợp vào những ứng dụng điều khiển hệ thống bằng giọng nói Tiếng Việt
 	\item Hỗ trợ điều khiển điện thoại với các tính năng
@@ -601,399 +602,302 @@ Với khả năng hỗ trợ ngôn ngữ Tiếng Việt, là một công cụ tr
 \end{itemize}
 
 \chapter{Cơ sở lý thuyết}
-\section{Data-driven design}
-\subsection{Data-driven design là gì?}
-Data-driven design, trong phát triển game, là một tư tưởng nhằm đưa những giá trị hoặc hành vi của các thành phần trong game vào dữ liệu lưu trên đĩa cứng, thay vì được định nghĩa trong mã nguồn. Một ví dụ đơn giản của việc áp dụng data-driven design trong phát triển game đó là file lưu trữ những thiết lập của người chơi (player preferences). Các thông tin như âm lượng, độ phân giải màn hình hay thiết lập phím được lưu vào đây.
+\section{Mô hình ngôn ngữ}
+\subsection{Khái niệm}
+Mô hình ngôn ngữ (LM - Language Model) thống kê cho phép ước lượng xác suất của một chuỗi m phần tử $P(w_1 w_2 \ldots w_m)$ (ở đây $w_1$, $w_2$ \ldots  là các từ trong câu cần tính xác suất), tức là khả năng của một chuỗi từ có thể xuất hiện trong một ngôn ngữ. Theo công thức Bayes, ta có:
+\[P(AB)=P(A|B)*P(A)\]
 
-\subsection{Tại sao lại dùng data-driven design?}
-Theo quan điểm của người viết, bất cứ game nào được xuất ra thị trường cũng có mục tiêu lớn nhất là đem lại một cảm xúc nhất định cho người chơi. Cảm xúc đó có thể khác nhau giữa các tựa game: cảm giác kinh hoàng với các tựa game kinh dị như \textit{Outlast}, cuồng nhiệt với \textit{Guitar Hero} hay buồn chán tột độ với \textit{Life Is Strange}. Xác định cảm xúc mà game sẽ truyền tải là yếu tố then chốt để định nghĩa giá trị cốt lõi của game. Tuy vậy, sau khi cảm xúc này được xác định, việc đảm bảo nó là không hề dễ dàng. Không ai có thể định nghĩa hay tiên đoán được cảm xúc mà một tính năng, một hiệu ứng trong game mang lại, cho đến khi thử nó. Do vậy, việc phát triển game yêu cầu thử đi thử lại liên tục, cho đến khi sản phẩm truyền tải được cảm xúc mà nó hướng tới.
+Từ đó ta có được công thức:
+\begin{align*}
+	P(w_1w_2 \ldots w_m) &= P(w_m|w_1w_2 \ldots w_{m-1}) \\
+						&= \ldots \\
+						&= P(w_1)*P(w_2|w_1)* \ldots *P(w_m|w_1w_2 \ldots w_{m-1})
+\end{align*}
 
-Vào những ngày mà ngành công nghiệp phát triển game vẫn còn non trẻ, tất cả mọi thứ đều được lập trình trực tiếp (\textit{hardcoded}). Cái vợt trong trò chơi \textit{Pong} được tạo ra bằng một mảng một chiều chứa tọa độ các điểm làm nên cây vợt, để máy tính có thể biết được nên tô màu trắng nên những phần nào của màn hình. Giả sử khi người ta cần thay đổi độ dài của cái vợt, các bước phải thực hiện sẽ là: 1/ Chỉnh sửa kích thước và giá trị của mảng một chiều chứa tọa độ ở trên, 2/ Biên dịch (compile) lại chương trình và 3/ Chạy thử. Quy trình này được lặp đi lặp lại cho đến khi những người phát triển thấy hài lòng về độ dài của cái vợt. Nếu những thành phần khác cần được tinh chỉnh, quy trình dài dòng và mệt mỏi này lại được lặp lại, dù có thể thứ cần thay đổi chỉ là tăng một số nguyên lên 1 đơn vị.
+Theo công thức Bayes, mô hình ngôn ngữ cần phải có một lượng bộ nhớ vô cùng lớn để có thể lưu hết được xác suất của tất cả các chuỗi độ dài nhỏ hơn m để qua đó có thể thống kê và tính xác suất cho từng thành phần nhỏ, sau đó mới đem nhân lại với nhau để ra được xác suất cuối cùng của cả câu. Trên thực tế, việc làm này là không thể do độ dài của một câu có thể là vô hạn, độ dài của m có thể tiến ra vô cùng. Tuy nhiên giả thuyết Markov giúp giải quyết vấn đề này.
+Để giải quyết vấn đề này, ta có thể sử dụng xấp xỉ Markov bậc n. Ta có:
+\[P(w_m|w_1w_2 \ldots w_{m-1}) \approx P(w_m|w_{m-n}w_{m-n+1} \ldots w_{m-1})\]
 
-Do bản chất yêu cầu việc thử đi thử lại liên tục, việc áp dụng quy trình trên gây ra rất nhiều lãng phí. Do đó các thông tin thay đổi liên tục, ví dụ như thông số của các thành phần trong game, hoặc những thay đổi mà người chơi tạo ra được đưa vào dữ liệu trên đĩa cứng. Việc này đem lại một vài lợi ích rõ ràng:
+Tức là, với xấp xỉ Markov, xác suất xảy ra của một từ $w_m$ trong câu chỉ phụ thuộc vào n từ đứng đằng trước nó, thay vì việc tính $P(w_m|w_1*w_2 \ldots w_{m-1})$, ta chỉ cần tính $P(w_m|w_{m-n} \ldots w_{m-1})$. Áp dụng công thức trên, ta có thể viết lại công thức tính xác suất cho một câu có m từ:
+\begin{equation} \label{eq:markov}
+	\begin{aligned} 
+	P(w_1w_2 \ldots w_m) &= P(w_1)*P(w_2|w_1)* \ldots *P(w_m|w_{m-n}w_{m-n+1} \ldots w_{m-1}) \\
+						&= \prod_{i}{P(w_i|w_{i-n} \ldots w_{i-1})}
+	\end{aligned}
+\end{equation}
+
+Với công thức trên, ta hoàn toàn có thể xây dựng một mô hình ngôn ngữ thống kê toàn bộ những cụm từ có độ dài nhỏ hơn hoặc bằng \textit{n} từ. Một mô hình ngôn ngữ như vậy sẽ được gọi là mô hình \texttt{N-gram} trong đó \textit{N} là độ dài tối đa của một cụm được thống kê trong mô hình ngôn ngữ đó. Ta có một ví dụ như sau:
+
+\begin{formal} 
+Cho một tập các câu nói:
+	\begin{itemize}
+		\item Tôi muốn bật đèn
+		\item Hãy bật đèn lên giúp tôi
+		\item Tôi muốn bật điều hòa
+		\item Giúp tôi mở tivi
+	\end{itemize} 
+Tính xác suất xảy ra của các câu trên theo mô hình ngôn ngữ \texttt{N-gram}
+\label{fm:ex}
+\end{formal}
+
+Giả sử ta đã huấn luyện được một mô hình ngôn ngữ \texttt{N-gram} (việc huấn luyện sẽ được giới thiệu ở phần sau), ta muốn tính xác suất xảy ra của các câu trong ví dụ trên, ta cần dùng đến công thức \ref{eq:markov}. Với câu ``Tôi muốn bật đèn'', ta có thể tính với:
+
 \begin{itemize}
-	\item Game designer có thể thoải mái tinh chỉnh, cân bằng các thông số thay vì phải nhờ đến các lập trình viên, qua đó lập trình viên có thể tập trung vào làm việc với hệ thống hoặc lập trình các tính năng, mà không cần phải bận tâm đến việc tinh chỉnh thông số (thực ra, đó vốn là công việc của các game designer).
-	\item Sau khi các thông số được tinh chỉnh, các game designer có thể thử nghiệm ngay lập tức mà không hề tốn thời gian chờ biên dịch lại, do các thông số này nằm hoàn toàn trên các file dữ liệu. Điều này đồng nghĩa với việc họ có thể tiến tới cảm xúc mà sản phẩm muốn truyền tải nhanh hơn.
+	\item \texttt{N = 1} - Unigram: Tính xác suất của một từ mà không phụ thuộc vào các từ đứng trước
+		\[P(\text{Tôi muốn bật đèn}) = P(\text{Tôi}) * P(\text{muốn}) * P(\text{bật}) * P(\text{đèn})\]
+	\item \texttt{N = 2} - Bigram: Tính xác suất của một từ phụ thuộc vào một từ đứng trước
+		\[P(\text{Tôi muốn bật đèn}) = P(\text{Tôi}) * P(\text{muốn}|\text{Tôi}) * P(\text{bật}|\text{muốn}) * P(\text{đèn}|\text{bật})\]
+	\item \texttt{N = 3} - Trigram: Tính xác suất của một từ phụ thuộc vào hai từ đứng trước
+		\[P(\text{Tôi muốn bật đèn}) = P(\text{Tôi}) * P(\text{muốn}|\text{Tôi}) * P(\text{bật}|\text{Tôi muốn}) * P(\text{đèn}|\text{muốn bật})\]
 \end{itemize}
-\subsection{Áp dụng data-driven design trong \project}
-Unity vốn là một data-driven game engine. Thực tế các đối tượng trong Unity được \textit{serialize}\footnote{Serialization: Quá trình lưu một đối tượng logic vào một định dạng có thể lưu được trên đĩa cứng hoặc truyền tải qua mạng.} vào các file dữ liệu. Cửa sổ Inspector đóng vai trò như một công cụ để xem và chỉnh sửa giá trị của các trường dữ liệu này. Khi viết các C\# script cho các đối tượng trong game, Unity sẽ \textit{serialize} các trường dữ liệu \texttt{public} hoặc có tag \texttt{[SerializeField]}. Như vậy, những yếu tố cần cân chỉnh liên tục như thời gian chạy hiệu ứng hoặc chỉ số của vật phẩm có thể được áp dụng kỹ thuật này, nhằm giảm thời gian phát triển và cho phép thử nghiệm liên tục.
 
-Không chỉ hỗ trợ \textit{serialize} các đối tượng vào định dạng riêng của mình để theo dõi trên Inspector, Unity còn hỗ trợ \textit{serialize} vào các định dạng dữ liệu phổ biến như XML, JSON hoặc CSV. Như vậy, những dữ liệu mang tính hệ thống có thể được \textit{serialize} sang các định dạng phổ biến này, ví dụ như:
+Ta lại có việc tính phép nhân bao giờ cũng mất thời gian hơn việc tính phép cộng, vì vậy để giảm thời gian tính xác suất của mỗi câu, thay vì việc tính phép nhân các xác suất, ta tính tổng logarit cơ số 10 của các xác suất. Ta có:
+
+\[\log(p_1*p_2* \ldots p_m) = \log(p_1) + \log(p_2) + \ldots + \log(p_m)\]
+
+Vậy với ví dụ câu ``Tôi muốn bật đèn'', thay vì việc tính tích xác suất như trên, ta có thể tính logarit của nó. Cụ thể là (ví dụ với N = 1):
+
+\[\log(P(\text{Tôi muốn bật đèn})) = \log(P(\text{Tôi})) + \log(P(\text{muốn})) + \ldots + \log(P(\text{đèn}))\]
+
+Tương tự với các trường hợp N = 2, N = 3, \ldots Ta sử dụng logarit để so sánh giữa các câu. Câu nào có hệ số logarit càng lớn thì câu đó xác suất xảy ra càng lớn. Vậy để tính xác suất từng phần của tích các xác suất, ta có thể làm như thế nào?
+
+Theo lý thuyết \textit{Ước lượng khả năng tối đa} (Maximum Likelihood Estimate - MLE), gọi $C(w_1w_2 \ldots w_m)$  là tần suất xuất hiện của cụm $w_1w_2 \ldots w_m$ trong tập huấn luyện mô hình ngôn ngữ, ta có công thức:
+
+\[P(w_m|w_{m-n}w_{m-n+1} \ldots w_{m-1}) = \frac{C(w_{m-n}w_{m-n+1} \ldots w_m)}{C(w_{m-n}w_{m-n+1} \ldots w_{m-1})}\]
+
+Công thức trên còn gọi là công thức tính xác suất ``thô''. Với công thức trên, khi một câu chứa một cụm từ chưa từng xuất hiện trong tập huấn luyện thì mặc nhiên tần suất xuất hiện của cụm từ đó sẽ bằng 0, từ đó dẫn đến xác suất của toàn bộ cả câu cũng sẽ bằng 0, gây ra sự sai sót. Có thể ví dụ đến trường hợp bigram (N=2), mỗi một bigram được tạo ra từ 2 unigram (N=1) bất kì, vì vậy với một tập học có $m$ cụm unigram riêng biệt thì có thể có đến $m^2$ cụm bigram có thể có. Tuy nhiên trong tập huấn luyện sẽ không thể chứa đủ từng đó cụm bigram, vì vậy khi đưa một câu bất kì vào để tính xác suất sẽ xuất hiện những cụm bigram chưa từng xuất hiện lần nào trong tập huấn luyện mô hình ngôn ngữ. Để tránh tình trạng này, người ta đã đưa ra các phương pháp ``làm mịn''.
+
+Ta cũng cần nói thêm về việc huấn luyện một mô hình ngôn ngữ, tức là từ một tập các câu nói, câu văn chính xác (như ở ví dụ \ref{fm:ex}) về ngữ pháp và cấu trúc câu, ta sẽ tìm cách để ước lượng xác suất xảy ra của một câu văn chưa biết trong tương lai (có thể là một câu trong tập kiểm thử hoặc một câu nói bất kì) xem độ phù hợp của câu văn đó đối với tập huấn luyện là như thế nào. Ta có ví dụ với 2 câu nói như sau:
+
 \begin{itemize}
-	\item Dùng CSV cho thông tin sinh quái trong một màn chơi, vốn được tổ chức dạng bảng và có thể chỉnh sửa dễ dàng và trực quan trên Microsoft Excel
+ 	\item Tôi muốn bật đèn
+ 	\item Tôi giúp ban đêm
+ \end{itemize} 
+
+2 câu nói này hoàn toàn có thể là một ví dụ cho kết quả trả về trong việc nhận diện giọng nói từ phía Google Speech Recognition API trong sự nhập nhằng do âm thanh của người dùng gây ra, vì vậy để lựa chọn được chính xác câu nói phù hợp, ta tính xác suất của 2 câu nói này dựa vào tập huấn luyện theo ví dụ \ref{fm:ex} với N lần lượt là 1, 2, 3. Ta có kết quả sau:
+
 \begin{table}[h]
-	\caption{Ví dụ về thông tin sinh quái trong một màn chơi (giản lược)}
+	\caption{Xác suất của 2 câu nói trong ví dụ}
 	\centering
-	\begin{tabular}{ | c | C | C | C | C | }
+	\begin{tabular}{ | c | C | C | C | }
 	\hline
-	Wave & Spawn Time (s) & Enemy ID & Number & Spawn at gate \\
+	Câu nói & N = 1 & N = 2 & N = 3 \\
 	\hline
-	1 & 1 & 103 & 4 & 0 \\
+	Tôi muốn bật đèn & $0,36.10^{-3}$ & 0.0417 & 0.25  \\
 	\hline
-	1 & 2.5 & 103 & 5 & 2 \\
-	\hline
-	2 & 1 & 201 & 2 & 1 \\
-	\hline
-	3 & 1 & 202 & 1 & 3 \\
+	Tôi giúp ban đêm & 0 & 0 & 0  \\
 	\hline
 	\end{tabular}
-	\label{tab:enemywaves}
 \end{table}
-	\item Dùng JSON cho những thông tin về hệ thống súng, chỉ số của quái vật,\ldots để có thể chỉnh sửa nhanh bằng text editor mà không cần mở Unity editor.
-\end{itemize}
 
-\subsection{Kết luận}
-Data-driven giúp tiết kiệm rất nhiều thời gian phát triển game, đặc biệt là trong giai đoạn tinh chỉnh những chi tiết nhỏ, khi mà những chỉ số như sát thương của quái hay tốc độ ra đạn của súng được chỉnh từng đơn vị nhỏ nhất. Các game designer có thể thử nghiệm ý tưởng của họ ngay lập tức mà không cần qua các bước trung gian như đồng bộ dữ liệu hoặc đợi bản build test, trong khi đó các lập trình viên sẽ không cần phải liên tục mở các file mã nguồn để sửa từng con số và mất thời gian chờ đợi các file này được dịch, thay vào đó họ có thể tập trung vào sửa các lỗi nghiêm trọng hoặc phát triển các tính năng mới.
+Dễ dàng thấy được câu ``Tôi muốn bật đèn'' có xác suất xảy ra cao hơn so với câu ``Tôi giúp ban đêm'', vì vậy ta sẽ lựa chọn câu ``Tôi muốn bật đèn''. Tuy nhiên, tại sao tất cả xác suất của cấu ``Tôi giúp ban đêm'' lại đều bằng 0, đơn giản là do trong câu đó có cụm từ chưa từng xuất hiện trong tập huấn luyện, dẫn đến xác suất của cụm từ đó bằng 0, và khi đem nhân với xác suất của các cụm từ khác dù khác 0 thì vẫn cho ra kết quả tích xác suất cuối cùng là bằng 0. Việc này sẽ gây ảnh hưởng nhiều đến việc chọn lựa do đó hoàn toàn có thể là một câu nói nhận diện chính xác từ giọng nói của người dùng nhưng do có chứa cụm từ không tồn tại trong tập huấn luyện mà xác suất bị bằng 0. Để giải quyết cho vấn đề này, chúng ta sử dụng các phương pháp \textit{``làm mịn''}.
 
-Điểm bất lợi của data-driven đó là công đoạn chuẩn bị lâu hơn so với việc gán thẳng giá trị vào mã nguồn. Lập trình viên sẽ phải suy nghĩ nhiều hơn về hệ thống, thảo luận nhiều hơn với các game designer về các đặc điểm chung giữa các thực thể để thống nhất được những thông số cần cân chỉnh cũng như cách khớp chúng vào hệ thống hiện tại. Điều này không thực sự phù hợp trong giai đoạn thử nghiệm (prototype) hoặc đề xuất tính năng. Ngoài ra, các game designer, đặc biệt là những người không có nền tảng về lập trình, có thể vô tình gây ra lỗi khi thao tác trực tiếp với dữ liệu bằng cách nhập vào các giá trị không phù hợp.
+\subsection{Các phương pháp làm mịn}
 
-\section{Kiến trúc dựa trên thành phần (component based)}
-Trong lập trình hướng đối tượng, kế thừa (inheritance) là một kỹ thuật phổ biến cho việc tái sử dụng mã nguồn. Ý tưởng cơ bản của kế thừa là tổ chức các lớp đối tượng vào một cây (hierarchy), trong đó các lớp con sẽ sử dụng các thuộc tính và hành vi của lớp cha, và định nghĩa các hành vi riêng của chúng. Tuy nhiên, gần đây việc sử dụng quan hệ kế thừa đã thể hiện nhiều khuyết điểm, do đó nó bị thay thế bằng kiến trúc dựa trên thành phần, vốn đề cao việc sử dụng quan hệ kết tập (composition) hơn là kế thừa.
-\subsection{Bất lợi của quan hệ kế thừa}
-Đầu tiên, kế thừa sẽ làm tăng độ phức tạp của mã nguồn, bởi thuộc tính và hành vi của các lớp con phụ thuộc vào lớp cha. Mỗi thay đổi ở lớp cha sẽ ảnh hưởng trực tiếp tới tất cả các lớp con của lớp đó, cũng như các lớp kế thừa từ các lớp con này. Cây kế thừa càng sâu, sự ảnh hưởng này càng lớn và có khả năng gây lỗi cao hơn. Thêm vào đó, mỗi khi thêm một lớp vào cây kế thừa, lập trình viên sẽ phải nắm rõ các hoạt động của tất cả các lớp cơ sở của lớp này.\cite{codecomplete}
+Nguyên lý chung của các phương pháp ``làm mịn'' là:
 
-Như vậy, khi có một lỗi xảy ra, và lỗi nằm ở một lớp cha, lập trình viên sẽ phải tiến hành sửa lỗi trên lớp cha đó, và duyệt qua một lượt các lớp con để đảm bảo rằng sự thay đổi này không làm ảnh hưởng tới hoạt động của chúng. Tuy nhiên trường hợp xảy ra thường xuyên lại là có ảnh hưởng. Khi ấy, rất nhiều công sức phải bỏ ra để sửa các vấn đề này, dẫn tới giảm sút về tốc độ phát triển của toàn bộ dự án.
-
-Ngoài ra, với những hệ thống đơn giản (giả sử hệ thống quái với ba con quái khác nhau), hệ thống dựa trên kế thừa có thể được triển khai mà không mất quá nhiều công thức. Tuy nhiên, khi hệ thống này được mở rộng, cây kế thừa cũ tỏ ra không quá linh hoạt, và một vài ``ngoại lệ'' được thêm vào, kèm theo đó là việc các lớp con ở tầng dưới của cây kế thừa sẽ chứa nhiều thuộc tính và hành vi thừa thãi. Với nhiều sự mở rộng hơn, cuối cùng kết quả thu được sẽ là một cây kế thừa phức tạp, trong khi đó lại hoàn toàn phi lý về mặt logic.
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=10cm]{Pics/Chap4/inheritance.png}
-  \caption{Một ví dụ về cây kế thừa phức tạp\cite{gamecodingcomplete}.} 
-  \label{fig:hierarchy}
-\end{figure}
-
-Hình \ref{fig:hierarchy} mô tả một cây kế thừa phức tạp. Xuất phát từ lớp cơ sở \texttt{Actor}, lớp \texttt{RenderableActor} được tạo để làm lớp cơ sở cho \texttt{PhysicsActor}. Các nhân vật có thể được diễn hoạt (animate), nên lớp \texttt{Character} kế thừa từ \texttt{AnimatingActor}, vốn là một \texttt{PhysicsActor}. Khi nhu cầu cần thêm một đối tượng có thể được diễn hoạt nhưng lại không cần thiết phải chịu sự điều khiển của engine vật lý, ví dụ như một cái cây mang mục đích trang trí, thiết kế này sẽ nảy sinh vấn đề. Cách giải quyết thứ nhất là cho lớp \texttt{DecoratingTree} kế thừa từ \texttt{AnimatingActor}, như vậy lớp đó sẽ chứa những tính năng mà nó hoàn toàn không nên có. 
-
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=7cm]{Pics/Chap4/multipleinheritance.png}
-  \caption{Diamond of death.} 
-  \label{fig:multipleinheritance}
-\end{figure}
-Cách giải quyết thứ hai là viết lại lớp \texttt{AnimatingActor} sao cho nó không còn kế thừa từ \texttt{PhysicsActor nữa}, nhưng như vậy thì \texttt{Character} sẽ phải kế thừa từ hai lớp cha. Đa kế thừa có rất nhiều vấn đề, đặc biệt trong số đó có vấn đề \textit{diamond of death}\footnote{Diamond of death: Hiện tượng một lớp có hai lớp cơ sở, nhưng hai lớp cơ sở này lại cùng kế thừa từ một lớp cơ sở khác. Điều này không chỉ gây ra mập mờ về việc đọc hiểu mã nguồn cho lập trình viên, nó có thể gây ra lỗi ngữ nghĩa liên quan tới những hàm ảo bị trùng lặp của các lớp cơ sở.} như trong hình \ref{fig:multipleinheritance}, và quan trọng nhất là ngôn ngữ C\# mà Unity sử dụng làm scripting language không hỗ trợ đa kế thừa.
-
-Do những bất lợi kể trên, quan hệ kế thừa không phù hợp khi được dùng trong quá trình phát triển game, vốn có rất nhiều sự thay đổi không được báo trước. Những tính năng thừa thãi mà các lớp con phải mang theo cũng là một vấn đề cần giải quyết nhằm đảm bảo tính trong sáng và dễ bảo trì của mã nguồn.
-
-\subsection{Chi tiết về kiến trúc hướng thành phần}
-Kiến trúc hướng thành phần, như đã nói ở trên, sử dụng mối quan hệ kết tập thay vì lạm dụng quan hệ kế thừa. Tư tưởng chung của kiến trúc này là tách biệt các phần chức năng thành các thành phần (component) độc lập với nhau. Các thực thể trong game sẽ bao gồm một số lượng các thành phần này và có thể có bao gồm đoạn code quy định cách hoạt động của thực thể đó.
-\begin{figure}[h]
-  \centering
-    \includegraphics[width=14cm]{Pics/Chap4/components.png}
-  \caption{Kiến trúc hướng thành phần.}
-\end{figure}
-
-\textit{Unreal Engine} sử dụng một hệ thống lai giữa hai kiến trúc kế thừa và thành phần. Tất cả các thực thể trong game sẽ là các \texttt{Actor}. Các \texttt{Actor} có thể được điều khiển bởi người chơi hoặc hệ thống AI được gọi là \texttt{Pawn}. Khi thêm vào các chức năng liên quan đến hành vi di chuyển của nhân vật, thành phần phát hiện va chạm và một mesh có xương (\texttt{SkeletalMeshComponent}) vào lớp \texttt{Pawn}, ta có lớp \texttt{Character}. \textit{Unreal Engine} vốn được phát triển dành cho dòng game FPS, nên các thực thể \texttt{Character} có thể chạy, đi bộ, bay và bơi trong thế giới game. Tất cả các \texttt{Actor} đều có thể được mở rộng tính năng bằng việc viết code trực tiếp kế thừa từ một trong ba lớp cơ sở thích hợp kể trên, hoặc gắn thêm cho nó một \texttt{ActorComponent}.
-
-Trong khi đó, \textit{Unity} sử dụng cách tiếp cận dựa hoàn toàn trên kiến trúc thành phần. Một \texttt{GameObject} (tương tự khái niệm \texttt{Actor} trong \textit{Unreal Engine}, dùng để diễn tả một thực thể được đặt vào trong thế giới game) chỉ đơn thuần là một tập hợp các thành phần. Hành vi của nó hoàn toàn do các thành phần này quyết định. Khi viết một script \texttt{MonoBehavior} điều khiển \texttt{GameObject}, người dùng thực chất đang lập trình các hành vi của một component.
-
-Cách tiếp cận này giúp người dùng có thể thoải mái lắp ghép để tạo nên một thực thể mong muốn. Muốn thực thể đó có thể hiện lên trong thế giới game? Gắn cho nó một \texttt{MeshRenderer}. Muốn nhân vật có thể diễn hoạt được? Gắn cho nó một \texttt{SkeletalMeshRenderer} và một \texttt{Animator}. Muốn thực thể đó chịu tác động của vật lý? Gắn cho nó một \texttt{Rigidbody}. Khi yêu cầu thay đổi và một trong những tính năng kể trên không còn cần thiết nữa? Chỉ cần loại bỏ những thành phần liên quan là xong.
-
-Kiến trúc này đảm bảo sự tách biệt tốt giữa các thành phần với nhau, đồng nghĩa với việc các tính năng có thể phát triển hoặc thay đổi độc lập mà không quá lo lắng với việc gây ảnh hưởng tới những phần còn lại. Ví dụ, thành phần vật lý có thể không cần biết tới sự tồn tại của thành phần hiển thị, hoặc thành phần diễn hoạt không quan tâm tới thành phần tìm đường. Tuy nhiên có những trường hợp không lý tưởng, thành phần này vẫn cần phải biết tới sự tồn tại của thành phần kia, như trường hợp của thành phần diễn hoạt và thành phần hiển thị, hay thành phần tìm đường và vị trí. Trong trường hợp này, việc đảm bảo liên lạc hiệu quả giữa các thành phần với nhau là cần thiết. Có ba phương án có thể cân nhắc tới\cite{gameprogrammingpatterns}:
 \begin{itemize}
-	\item Chỉnh sửa trực tiếp trạng thái của thực thể:
-	\begin{itemize}
-		\item Các thành phần được giữ tách biệt khỏi nhau.
-		\item Thứ tự thực hiện thay đổi tại thực thể là quan trọng.
-	\end{itemize}
-	\item Tham chiếu trực tiếp tới thành phần khác:
-	\begin{itemize}
-		\item Đơn giản.
-		\item Gây ra sự phụ thuộc giữa hai thành phần.
-	\end{itemize}
-	\item Gửi thông điệp hoặc phát sự kiện:
-	\begin{itemize}
-		\item Tương đối phức tạp để thực hiện.
-		\item Đảm bảo tính tách biệt.
-	\end{itemize}
+	\item Gán cho các cụm n-gram có xác suất bằng 0 (chưa từng xuất hiện trong tập huấn luyện) một giá trị khác 0
+	\item Thay đổi lại giá trị xác suất của các cụm n-gram có xác suất khác 0 thành một giá trị phù hợp (tổng xác suất của tất cả các khả năng n-gram khác nhau phải đảm bảo không đổi, bằng 100\%)
 \end{itemize}
 
-Cách đầu tiên, chỉnh sửa trực tiếp trạng thái của thực thể không thể thực hiện được trong \textit{Unity} do đặc thù kỹ thuật của engine. Hai cách còn lại, cách nào cũng có những điểm mạnh và điểm yếu riêng, do đó cả hai đều được sử dụng trong việc áp dụng kiến trúc dựa trên thành phần vào dự án, điều này sẽ được trình bày trong tiểu mục tiếp theo. Cần chú ý rằng, kiến trúc hướng thành phần không hề loại bỏ hoàn toàn quan hệ kế thừa, quan hệ này vẫn được sử dụng trong những trường hợp mà nó phát huy tác dụng như cần thống nhất về kiểu dữ liệu hoặc tận dụng lợi thế của các hảm ảo.
+\noindent Từ đó ta có các loại phương pháp làm mịn như sau:
 
-\subsection{Áp dụng kiến trúc hướng thành phần vào \project}
-Do Unity vốn sử dụng hệ thống dựa trên thành phần, nên những script được thêm vào các thực thể của game đã là những component. Tuy nhiên, có những thành phần đặc biệt được thiết kế để dùng đi dùng lại giữa nhiều thực thể với nhau, hoặc được tổ chức một cách có hệ thống. Tiểu mục này sẽ trình bày những hệ thống component quan trọng, cũng như các chúng giao tiếp với nhau.
-
-\subsubsection{Hệ thống quái}
-Theo thiết kế sơ bộ, các con quái sẽ có những thành phần sau:
 \begin{itemize}
-	\item \texttt{BaseEnemy}: Ngoài việc lưu trữ các thông tin liên quan tới quái (được load từ file config), lớp \texttt{BaseEnemy} lưu giữ một danh sách các \texttt{EnemyController} điều khiển hành vi của quái cũng như cách truy cập tới những \texttt{EnemyController} này.
-	\item \texttt{EnemyController}: Cung cấp các hành vi chung của các thành phần điều khiển enemy, cũng như các hàm khởi tạo giá trị hoặc dọn dẹp dùng trong pattern tối ưu hiệu năng Object Pool (mục \ref{sec:pool}).
-	\item Các thành phần \texttt{EnemyController} liên quan tới các công việc đặc thù như animation, di chuyển, tấn công cũng như hệ thống ra quyết định\footnote{Xem mục \ref{sec:decisiontree}}.
+	\item \textit{Chiết khấu} (Discouting): giảm lượng nhỏ xác suất của các cụm n-gram có xác suất lớn hơn 0 để bù cho các cụm n-gram không xuất hiện trong tập huấn luyện. Điển hình là các phương pháp: Add-one, Witten-Bell và Good-Turing
+	\item \textit{Truy hồi} (Back-off): tính toán xác suất của cụm n-gram không xuất hiện trong tập huấn luyện dựa vào các cụm n-gram thành phần có độ dài ngắn hơn và có xác suất khác 0
+	\item \textit{Nội suy} (Interpolation): tính toán xác suất của tất cả các cụm n-gram dựa vào xác suất của các cụm n-gram ngắn hơn
 \end{itemize}
 
-Ngoài ra, quái vật có thể có những thành phần phụ trợ mà không phải là các \texttt{EnemyController}, do chúng không cần phải được khởi tạo lại giá trị với pattern Object Pooling, ví dụ như:
+Mỗi phương pháp làm mịn đều mang lại những lợi ích khác nhau, tuy nhiên việc đánh giá phương pháp nào phù hợp với hệ thống sẽ được trình bày ở phần Thực nghiệm.
+
+\section{Xử lý ngôn ngữ tự nhiên}
+
+\subsection{Khái niệm}
+
+\textbf{Xử lý ngôn ngữ tự nhiên} là một nhánh của khoa học máy tính, trí tuệ nhân tạo và ngôn ngữ máy tính, quan tâm đến sự tương tác giữa máy tính và ngôn ngữ tự nhiên của con người, hay chi tiết hơn là lập trình máy tính để xử lý hiệu quả nhất một lượng lớn những thể hiện của ngôn ngữ tự nhiên. Những thách thức trong xử lý ngôn ngữ tự nhiên thông thường liên quan đến \textit{hiểu ngôn ngữ tự nhiên} (Natural Language Understanding), \textit{sinh ngôn ngữ tự nhiên} (Natural Language Generation) \ldots
+
+Đối với mỗi ngôn ngữ đều có những đặc thù về cách xử lý riêng, tuy nhiên có một số bước xử lý chung như sau:
+
 \begin{itemize}
-	\item Thành phần điều khiển hiệu ứng quái chìm xuống dưới lòng đất sau khi nó bị giết.
-	\item Thành phần vẽ đường đạn cho các loại quái có súng.
-	\item Thành phần điều khiển những loại hiệu ứng đặc biệt của một vài loại quái (ví dụ quái hệ Elite có hiệu ứng đất bắn lên khi chạy).
+	\item \textit{Phân tích hình thái} - Trong bước này từng từ sẽ được phân tích và các ký tự không phải chữ (như các dấu câu) sẽ được tách ra khỏi các từ. Trong tiếng Anh và nhiều ngôn ngữ khác, các từ được phân tách với nhau bằng dấu cách. Tuy nhiên trong tiếng Việt, dấu cách được dùng để phân tách các tiếng (âm tiết) chứ không phải từ và đây là một công việc không hề đơn giản.
+	\item \textit{Phân tích cú pháp} - Dãy các từ sẽ được biến đổi thành các cấu trúc thể hiện sự liên kết giữa các từ này. Sẽ có những dãy từ bị loại do vi phạm các luật văn phạm.
+	\item \textit{Phân tích ngữ nghĩa} - Thêm ngữ nghĩa vào các cấu trúc được tạo ra bởi bộ phân tích cú pháp.
+	\item \textit{Tích hợp văn bản} - Ngữ nghĩa của một câu riêng biệt có thể phụ thuộc vào những câu đứng trước, đồng thời nó cũng có thể ảnh hưởng đến các câu phía sau.
+	\item \textit{Phân tích thực nghĩa} - Cấu trúc thể hiện điều được phát ngôn sẽ được thông dịch lại để xác định nó thật sự có nghĩa là gì.
 \end{itemize}
 
-Mối quan hệ giữa các thành phần được mô tả trong hình \ref{fig:enemyclasses}.
+Bên cạnh đó là các bài toán và ứng dụng liên quan đến xử lý ngôn ngữ tự nhiên như:
 
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=13cm]{Pics/Chap4/Enemy.png}
-  \caption{Thiết kế lớp sơ bộ cho hệ thống quái.}
-  \label{fig:enemyclasses}
-\end{figure}
-
-Hầu hết các thành phần này sử dụng phương pháp tham chiếu trực tiếp để truy cập tới một thành phần khác bất kỳ, trừ một vài trường hợp đặc thù mà phương pháp phát sự kiện tỏ ra hiệu quả hơn:
 \begin{itemize}
-	\item Sự kiện tấn công: animation tấn công của quái được gọi trực tiếp từ trong mã nguồn, tuy nhiên việc người chơi mất máu trước khi đòn tấn công của quái tiếp cận là bất hợp lý. Sự kiện tấn công sẽ được phát khi animation tấn công này chạy tới một khung hình đặc biệt, khi đó người chơi mới bị mất máu.
-	\item Sự kiện kết thúc animation chết: với những quái vật không thuộc dòng tự sát, sau khi chết nó sẽ chìm xuống dưới đất. Khi ấy, sự kiện kết thúc animation chết của quái sẽ được phát ra.
+	\item \textit{Nhận dạng chữ viết}: Có hai kiểu nhận dạng, thứ nhất là nhận dạng chữ in, ví dụ nhận dạng chữ trên sách giáo khoa rồi chuyển nó thành dạng văn bản điện tử hoặc phức tạp hơn là nhận dạng chữ viết tay, có khó khăn bởi vì chữ viết tay không có khuôn dạng rõ ràng và thay đổi từ người này sang người khác. Với chương trình nhận dạng chữ viết in có thể chuyển hàng ngàn đầu sách trong thư viện thành văn bản điện tử trong thời gian ngắn. Nhận dạng chữ viết của con người có ứng dụng trong khoa học hình sự và bảo mật thông tin (nhận dạng chữ ký điện tử).
+	\item \textit{Nhận dạng tiếng nói}: Nhận dạng tiếng nói rồi chuyển chúng thành văn bản tương ứng. Giúp thao tác của con người trên các thiết bị nhanh hơn và đơn giản hơn, chẳng hạn thay vì gõ một tài liệu nào đó bạn đọc nó lên và trình soạn thảo sẽ tự ghi nó ra. Đây cũng là bước đầu tiên cần phải thực hiện trong ước mơ thực hiện giao tiếp giữa con người với robot. Nhận dạng tiếng nói có khả năng trợ giúp người khiếm thị rất nhiều.
+	\item \textit{Tổng hợp tiếng nói}: Từ một văn bản tự động tổng hợp thành tiếng nói. Thay vì phải tự đọc một cuốn sách hay nội dung một trang web, nó tự động đọc cho chúng ta. Giống như nhận dạng tiếng nói, tổng hợp tiếng nói là sự trợ giúp tốt cho người khiếm thị, nhưng ngược lại nó là bước cuối cùng trong giao tiếp giữa robot với người.
+	\item \textit{Tóm tắt văn bản}: Từ một văn bản dài tóm tắt thành một văn bản ngắn hơn theo mong muốn nhưng vẫn chứa những nội dung thiết yếu nhất. Đây cũng là một ứng dụng cần thiết trong việc nắm bắt nội dung từ câu nói của người dùng.
 \end{itemize}
 
-Unity hỗ trợ thiết lập các hàm callback liên quan đến các sự kiện được phát ra ngay trên cửa sổ Inspector, vì thế việc thiết lập các sự kiện này khá trực quan và đơn giản, cũng như đảm bảo tính dùng lại của các thành phần. Bất lợi duy nhất của nó là khi có lỗi xảy ra, việc truy tìm các lời gọi hàm là tương đối phức tạp vì các lời gọi hàm này được lưu trữ trong các file dữ liệu và được load lên lúc run-time.
+Còn một số bài toán khác trong lĩnh vực xử lý ngôn ngữ tự nhiên. Tuy nhiên trong đề tài này, ta cần quan tâm đến xử lý tự nhiên trong ứng dụng chatbot.
 
-\subsubsection{Hệ thống súng và đạn}
-Tương tự với hệ thống quái, hệ thống súng và đạn cũng được xây dựng trên cơ sở gồm Base và danh sách các Controller, với súng là \texttt{BaseGun} và \texttt{GunController} còn với đạn là \texttt{BaseBullet} và \texttt{BulletController}. Các lớp Base giữ các thông tin cơ bản của đối tượng, trong khi đó các lớp Controller được dùng để thống nhất về kiểu dữ liệu hoặc cung cấp một khung hành vi chung giữa các thực thể khác nhau.
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=10cm]{Pics/Chap4/Gun.png}
-  \caption{Thiết kế lớp sơ bộ cho hệ thống súng và đạn.}
-  \label{fig:gunclasses}
-\end{figure}
+\subsection{Xử lý ngôn ngữ tự nhiên trong chatbot}
 
-Để tránh trùng lặp dữ liệu, thông tin của \texttt{BaseGun} được đọc từ file config lưu trên đĩa cứng theo cách làm tương tự với quái, nhưng thông tin của \texttt{BaseBullet} (mức độ sát thương, thời gian sống...) sẽ được quyết định khi viên đạn được sinh ra dựa vào thông tin của \texttt{BaseGun} cung cấp. Như vậy, khi cần thay đổi sát thương của một khẩu súng, các game designer không cần phải chỉnh sửa cùng một thông tin ở hai chỗ, ngoài ra việc thay đổi trực tiếp tại thông tin của súng giúp họ có thể tính toán cân bằng các thông số tốt hơn.
+Chìa khóa cho một chatbot có thể hiểu được con người là khả năng hiểu được mong muốn, dự định - \textbf{intent} của con người và trích xuất ra được những thông tin liên quan với dự định đó, cùng với những hành động xử lý liên quan.
 
-\subsubsection{Các thành phần hỗ trợ khác}
-Bên cạnh các thành phần đặc thù như trên, một vài thành phần hỗ trợ cũng được thêm vào nhằm phục vụ nhiều mục đích. Những thành phần hỗ trợ quan trọng bao gồm:
+Vì vậy, trong lĩnh vực xây dựng chatbot sử dụng xử lý ngôn ngữ tự nhiên, chúng ta sẽ quan tâm đến khía cạnh làm sao để một chatbot có thể nắm bắt được ý định, mong muốn của người dùng qua một câu nói và trích xuất ra được những thông tin liên quan, quan trọng nằm trong câu nói đó của người dùng.
+
+\noindent \textbf{Vậy làm thế nào để dự đoán và trích xuất thông tin}
+
+Một hệ thống xử lý ngôn ngữ tự nhiên được sử dụng trong chatbot sẽ không tìm kiếm những từ khóa nằm trong câu nói, văn bản như một bộ máy tìm kiếm mà thay vào đó là việc sử dụng những kiến thức mà hệ thống đã được học thông qua các cấu trúc câu, thuật ngữ và khả năng nhận diện những mẫu đã được học để cố gắng tính toán và ghép câu nói của người dùng vào một tình huống intent đã được xây dựng từ trước. Có nghĩa là, chatbot sẽ được lập trình để nhận diện những thứ chắc chắn mà mọi người muốn và phản hồi lại. Có 4 lĩnh vực con cần nhắc tới trong xử lý ngôn ngữ tự nhiên áp dụng cho chatbot:
+
 \begin{itemize}
-	\item \texttt{CameraFacingBillboard}: Đảm bảo các đối tượng được gắn thành phần này luôn nhìn về hướng của camera. Thanh máu của quái, hiệu ứng critical shoot\footnote{Hiệu ứng dùng sát thương lớn đột ngột so với sát thương thông thường. Trong \project, hiệu ứng này để tạo cảm giác mạnh mẽ cho người chơi.} hoặc các cây giả 3D được gắn thành phần này.
-	\item \texttt{AutoRecycle}: Với các đối tượng có thời gian sống hữu hạn, việc gắn thành phần này vào sẽ đảm bảo các đối tượng này chỉ hoạt động trong thời gian sống của nó. Hết thời gian sống, nó sẽ được ``cất'' vào một chỗ để dùng lại trong tương lai (sẽ được trình bày chi tiết hơn trong mục \ref{sec:pool}. Object Pooling)
-	\item \texttt{GravitySimulator}: Có những đối tượng mà việc nó rơi xuống nhanh hơn tác động của trọng lực sẽ tạo cảm giác tốt hơn, ví dụ như viên đạn của súng phóng lựu hoặc quả bom mà một loại quái Elite ném vào người chơi. Thành phần này đơn giản là nhân tác động của trọng lực lên đối tượng với một hệ số để tạo hiệu ứng đối tượng rơi nhanh hay chậm.
-	\item \texttt{AudioClipsList}: Unity có sẵn thành phần \texttt{AudioSource} phục vụ việc chơi âm thanh (cả nhạc nền và hiệu ứng). Tuy nhiên có những đối tượng cần nhiều hơn một hiệu ứng âm thanh như súng (âm thanh đổi súng, âm thanh bắn\ldots) hay quái (âm thanh tấn công, âm thanh bị mất máu, âm thanh bị giết,\ldots). Thành phần này lưu một dãy các cặp <tên hiệu ứng> - <file âm thanh> để tiện cho việc chơi các hiệu ứng khi cần.
+	\item \textbf{Những hệ thống hội thoại}
+	Một chatbot cần có một giao diện với người dùng. Trong thực tế, khi con người giao tiếp với nhau, chúng ta sử dụng rất nhiều các giác quan để cảm nhận như tai để nghe, mắt để thấy, hay sử dụng xúc giác để cảm nhận. Vì vậy một cuộc đối thoại sẽ được cảm nhận đầy đủ và rõ nét nhất. Tuy nhiên, khi người nói chuyện với người còn nhiều khi có những sự hiểu nhầm, chứ không nói đến việc chatbot chỉ tương tác trực tiếp với người dùng thông qua văn bản. Việc đó không khác nào sự tương tác giữa người với người thông qua các ô chatbox của các trang mạng xã hội. Để biểu đạt được cảm xúc của mình, người ta sẽ cần dùng tới những avatar là những biểu tượng thay thế cho khuôn mặt, thể hiện cảm xúc hiện tại của bản thân mình cho người khác biết. Và khi đó, với một chatbot, chúng ta hoàn toàn có thể xây dựng để chatbot thông minh hơn và hiểu cảm xúc của người dùng hơn thông qua các avatar cảm xúc
+	\item \textbf{Hiểu ngôn ngữ tự nhiên}
+	Một việc rất khó khăn trong xử lý ngôn ngữ tự nhiên là phân loại hình thái của từ trong câu. Ví dụ như từ ``bay'' trong tiếng Việt hoàn toàn có thể là một động từ chỉ một hành động của loài chim, nhưng cũng hoàn toàn có thể là một danh từ chỉ một vật dụng trong xây dựng là ``cái bay''. Vì vậy một chatbot thực sự thông minh cần giải quyết được vấn đề này, bên cạnh đó còn rất nhiều vấn đề khác nữa như thành ngữ, tục ngữ, hay sự nói bóng gió, các phép nói ẩn du. Đó hoàn toàn là những việc rất khó khăn, ngay cả con người vẫn còn nhầm lẫn
+	\item \textbf{Nền tảng ngôn ngữ}
+	Hiểu được ngôn ngữ của người dùng chỉ là một phần nhỏ mà một chatbot cần. Một chatbot còn cần một nền tảng ngôn ngữ để nó có thể thực sự ``suy nghĩ'' về những gì sẽ định nói và chọn cách nói, câu nói phù hợp nhất. Đó chính là vấn đề về nền tảng ngôn ngữ (Symbol Grounding). Để nắm được nghĩa của các từ sẽ nói ra, chatbot cần một từ điển định nghĩa tất cả các từ có thể, tuy nhiên để hiểu được từ điển đó thì chatbot lại cần hiểu được ngôn ngữ tự nhiên, nắm được cách dùng của mỗi từ để lựa chọn và cho vào câu trả lời phù hợp. Đó dường như là một vòng lặp vô tận và không thể tìm được hướng giải quyết.
+	\item \textbf{Tự sinh ngôn ngữ tự nhiên}
+	Khi chatbot đã có cho mình một nền tảng ngôn ngữ, dựa vào khả năng hiểu ngôn ngữ tự nhiên, chatbot sẽ tổng hợp và đưa ra câu trả lời phù hợp nhất được kết hợp từ nền tảng ngôn ngữ của nó.
 \end{itemize}
 
-\section{Thiết kế giao diện và luồng hoạt động của game}
-\subsection{Luồng hoạt động của game}
-\subsection{Thiết kế giao diện}
+Để có thể xây dựng một chatbot sử dụng xử lý ngôn ngữ tự nhiên, chúng ta hoàn toàn có thể tự định nghĩa những cụm từ người dùng sẽ nói vào, dự đoán ý muốn của người dùng từ những cụm từ đó và để cho chatbot học. Tuy nhiên chúng ta sẽ rất khó khăn trong việc xây dựng dữ liệu lẫn việc xử lý, chính vì thế mà những chatbot framework đã được xây dựng và phát triển để giải quyết những khó khăn đó. Như đã nêu trong phần \ref{subsec:frameworkchatbot}, trong đề tài này đề xuất sử dụng Wit.ai để tạo ra trí thông minh cho chatbot
 
-\chapter{Các vấn đề kỹ thuật}
-\section{Các cơ chế đáng chú ý trong game}
+\chapter{Các nghiên cứu liên quan}
 
-\subsection{Cơ chế bắn súng}
-Quá trình bắn súng được chia làm hai công đoạn chính. Công đoạn thứ nhất liên quan tới việc tạo ra viên đạn, thiết lập hướng bay cùng vận tốc ban đầu cho nó. Sau đó, viên đạn sẽ được khởi tạo các thông số logic như sát thương, tầm sát thương hoặc thời gian sống. Công đoạn thứ hai chỉ thuần túy là gán các giá trị đọc được từ dữ liệu của khẩu súng, vì vậy mục này sẽ tập trung giải thích cách tính toán đường bay của viên đạn.
+\section{Xử lý giọng nói}
 
-Đầu tiên, để có được hướng bay của viên đạn, hai điểm biểu thị điểm xuất phát và điểm đích của nó phải được xác định. Với điểm xuất phát, bản thân dữ liệu về khung xương của model của khẩu súng đã có một xương (joint) biểu diễn đầu súng, tọa độ hiện tại của xương này trong hệ tọa độ chung (world space) sẽ là điểm xuất phát của viên đạn.
+\subsection{Xử lý của Google}
 
-Với điểm đích, cần tìm được vị trí người chơi đang ngắm đến trong hệ tọa độ chung. Dựa vào vị trí hiện tại và hướng nhìn của người chơi, ta tạo một tia\footnote{Tia (\textit{Ray}): là một đường thẳng có điểm xuất phát và hướng trong một hệ tọa độ bất kỳ. Độ dài của tia là hữu hạn trong hệ tọa độ đó.} có độ dài bằng khoảng bắn xa nhất của người chơi. Tuy nhiên, không phải lúc nào người chơi cũng có chủ đích ngắm bắn tại điểm xa nhất có thể. Với trường hợp có đối tượng cần bắn đứng gần, cơ chế kể trên có thể bị sai lệch (xem hình \ref{fig:shootingwrong}).
+Hiện nay, Google đã áp dụng các thuật toán về mô hình ngôn ngữ và mạng nơ-ron sâu hay học sâu (deep neural network - deep learning) trong việc nhận diện giọng nói [1, 2]. Việc xử lý tiếng ồn, những tạp âm cũng đã được chú trọng, đảm bảo kết quả nhận diện đúng nhất những gì người dùng nhập vào bằng giọng nói [1]. Tuy nhiên, kết quả trả về vẫn chưa phải chính xác hoàn toàn, vẫn còn những nhầm lần do còn phụ thuộc nhiều vào giọng nói và ngữ điệu của người dùng. Cùng một câu nói, nhưng người nói là nam hay nữ, già hay trẻ cũng có những giọng điệu khác nhau, mà khi đó trong thuật toán nhận diện giọng nói của Google sử dụng việc so sánh mẫu các đoạn phát âm những từ đơn lẻ để đánh giá và gán nhãn từ cho những đoạn phát âm đó. Chính vì vậy, kết quả trả về từ phía Google khi nào cũng có từ 5 đến 10 câu có cách phát âm tương tự nhau do Google có sự nhập nhằng trong việc nhận diện. Hệ thống chúng tôi đề xuất sẽ giải quyết vấn đề này để chọn ra câu có kết quả hợp lí nhất và đem đi phân tích để hiểu được yêu cầu từ phía người dùng.
 
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=10cm]{Pics/Chap5/shootingwrong.png}
-  \caption{Trường hợp gây sai lệch cảm giác bắn.}
-  \label{fig:shootingwrong}
-\end{figure}
+\subsection{Các phương pháp chọn kết quả}
 
-Như vậy, nếu tia ở trên có chiếu qua một vật có thể bắn được (địa hình, cây cối, đá hoặc quái\ldots) thì điểm đích sẽ là vị trí va chạm gần nhất của tia với vật đó. Unity cung cấp cơ chế tính điểm này bằng khái niệm \textit{Raycast}.
+\section{Những framework xây dựng chatbot}
 
-Cơ chế này hoạt động tốt với các loại súng phóng lựu hoặc súng phóng tên lửa, bởi chúng có tốc độ ra đạn thấp. Với các loại súng máy, do tốc độ ra đạn nhanh, cần phải giảm xác suất trúng đích xuống dưới 100\% bằng độ giật của súng. Để đạt được điều này, thay vì bắn vào vị trí ngắm được xác định, đích đến $T$ của viên đạn sẽ được làm nhiễu theo công thức:
-\[
-T = t + n
-\]
-với $t$ là đích ngắm, $n$ là độ nhiễu, là một vector 3 chiều với các trường $x$, $y$, $z$ được lấy ngẫu nhiên trong khoảng $(-noise, noise)$. Độ giật $noise$ sẽ tăng dần đến cực đại khi người chơi giữ nút bắn, và giảm dần khi người chơi nhả nút bắn ra.
+\section{Những ứng dụng điều khiển giọng nói Tiếng Việt}
 
-\begin{figure}[h]
-  \centering
-    \includegraphics[width=10cm]{Pics/Chap5/shootingmechanic.png}
-  \caption{Minh họa cơ chế bắn súng có độ nhiễu.}
-\end{figure}
 
-\subsection{Cảnh báo quái đang đến bằng mũi tên}
-Vì trò chơi mang tính casual nhẹ nhàng, việc cần phải quay liên tục để xem xung quanh mình có gì sẽ khiến người chơi cảm thấy khó khăn và mệt mỏi. Thêm vào đó, do đặc thù của dòng game FPS trên mobile, việc quay liên tục mang lại trải nghiệm khó khăn hơn so với việc dùng chuột trên PC. Vì vậy, những mũi tên cảnh báo sẽ trở nên có ích.
-
-Mũi tên cảnh báo sẽ chỉ cho người chơi thấy có quái vật đang tiến đến mà người chơi không nhìn thấy, còn với những quái vật mà người chơi đang quan sát thì việc có mũi tên chỉ hướng không những không giúp ích gì mà còn có thể gây phân tâm.
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=9cm]{Pics/Chap5/indicator.png}
-  \caption{Minh họa cách tính toán hướng của mũi tên cảnh báo (nhìn theo mặt phẳng $xz$ và $xy$ trong hệ tọa độ cục bộ của người chơi).}
-\end{figure}
-
-Góc quay của mũi tên cảnh báo sẽ được tính theo công thức:
-\[ \alpha = \arccos (projection.y) \]
-với $projection$ là kết quả phép chiếu vector hướng từ người chơi đến quái vật lên mặt phẳng $xy$ trong hệ tọa độ cục bộ của người chơi. Kết quả thu được như sau:
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=14cm]{Pics/Chap5/indicatordemo.png}
-  \caption{Mũi tên chỉ hướng sau khi được đưa vào game.}
-\end{figure}
-
-Việc kiểm tra quái vật có nằm trong vùng nhìn thấy của người chơi hay không được thực hiện nhờ vào vùng quan sát của camera\footnote{Camera view frustum: Là vùng mà một camera có thể quan sát được, có hình dạng là hình chóp tứ giác cụt.}. Các \textit{Mesh} của quái vật, nếu thỏa mãn điều kiện AABB\footnote{Axially Aligned Bounding Box: hình hộp bao quanh model 3D, được xác định bởi hai điểm góc $p_{min} = [x_{min}, y_{min}, z_{min}]$ và $p_{max} = [x_{max}, y_{max}, z_{max}]$} của chúng nằm một phần trong hình chóp cụt quan sát của camera, sẽ được tính là nhìn thấy. Ngược lại, quái vật này sẽ nằm ngoài vùng nhìn, và nó sẽ phải được đưa vào danh sách cảnh báo bằng mũi tên.
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=8cm]{Pics/Chap5/camerafrustum.png}
-  \caption{Vùng quan sát của camera.}
-\end{figure}
-
-\section{Cây quyết định}
-\label{sec:decisiontree}
-Cây quyết định (\textit{decision tree}) là một kỹ thuật rất phổ biến trong phát triển các thành phần AI, không chỉ trong game mà còn trong các hệ thống thương mai. Điểm mạnh của cây quyết định là nhanh, dễ cài đặt và dễ hiểu\cite{aiforgames}. Mục này sẽ trình bày sơ qua về các nguyên tắc chung của cây quyết định và cách nó được áp dụng vào \project.
-
-\subsection{Sơ bộ về cây quyết định}
-Một cây quyết định được tạo thành bởi nhiều nút, mỗi nút tương ứng với một điểm quyết định. Khi ra quyết định, tác tử sẽ bắt đầu cân nhắc các khả năng từ nút gốc của cây quyết định cho tới khi nó tới được một nút lá, tương ứng với một hành động.
-
-\begin{figure}[h]
-  \centering
-    \includegraphics[width=10cm]{Pics/Chap5/dectree.png}
-  \caption{Ví dụ một cây quyết định\cite{aiforgames}.}
-  \label{fig:dectreeexample}
-\end{figure}
-
-Hình \ref{fig:dectreeexample} cho thấy ví dụ về một cây quyết định đơn giản. Các nút hình thoi được gọi là nút quyết định (decision node). Điều kiện gắn với nút quyết định sẽ trả về kết quả đúng hoặc sai, nhờ vậy mà tác tử có thể xác định được đường đi trên cây quyết định. Các nút hành động (action node) được biểu diễn bằng các hình chữ nhật. Khi quá trình ra quyết định của tác tử chạm tới một nút lá, hành động gắn với nó sẽ được thực hiện ngay lập tức. Cần chú ý là các nút con của nút quyết định không cần thiết phải là một nút hành động, vì rõ ràng có những trường hợp chúng ta có nhiều điều kiện cần cân nhắc.
-
-\begin{figure}[h]
-  \centering
-    \includegraphics[width=10cm]{Pics/Chap5/dectreetravelled.png}
-  \caption{Ví dụ quá trình ra quyết định.}
-  \label{fig:dectree2example}
-\end{figure}
-
-Hình \ref{fig:dectree2example} cho thấy quá trình một tác tử ra quyết định bằng đường màu đậm, dựa trên những gì nó quan sát được.
-
-Thuật toán cây quyết định có độ phức tạp là $O(n \log _2 n)$, với $n$ là số nút quyết định trên cây cùng giả định thời gian thực hiện các nút quyết định hoặc hành động là $O(1)$. Tuy nhiên thực tế thì có khá nhiều điều kiện hoặc hành động tốn nhiều thời gian hơn $O(1)$, ví dụ như để kiểm tra xem có kẻ địch ở gần mình hay không, tác tử phải duyệt qua danh sách kẻ địch và tính khoảng cách từ bản thân tới chúng. Hành động này sẽ có độ phức tạp là $O(n_{enemy})$.
-
-\subsection{Thực hiện}
-Với các cấu trúc dữ liệu đệ quy\footnote{Một cấu trúc dữ liệu A được gọi là \textit{đệ quy} khi nó chứa giá trị cũng có kiểu dữ liệu A trong định nghĩa của nó. Các cấu trúc dữ liệu thông dụng có thể được cài đặt một cách đệ quy là danh sách liên kết hoặc cây.}, giải thuật đệ quy là giải pháp phù hợp bởi tính dễ hiểu, dễ cài đặt của nó. Bộ nhớ cho các lời gọi hàm đệ quy được cấp phát trong bộ nhớ \textit{stack}, do đó tốc độ cấp phát là rất nhanh do cơ chế LIFO (last in first out), tuy nhiên bộ nhớ này có thể bị đầy nhanh chóng\footnote{Gây ra hiện tượng \textit{stack overflow}}.
-
-\begin{lstlisting}[frame=lines, basicstyle=\footnotesize\ttfamily, numbers=left, numberstyle=\tiny\color{black},caption= {Interface \texttt{IDecisionTreeNode}}, backgroundcolor=\color{background}]
-public interface IDecisionTreeNode
-{
-	float MakeDecision();
-}
-\end{lstlisting}
-
-Các cấu trúc dữ liệu biểu diễn các nút trên cây kế thừa từ interface \texttt{IDecisionTreeNode}. Interface này cung cấp hàm \texttt{MakeDecision} để thực hiện việc ra quyết định. Đầu tiên là lớp \texttt{DecisionNode}. Lớp này chứa tham chiếu đến hai nút tiếp theo, tương ứng với giá trị trả về của điều kiện \texttt{condition()} là đúng hay sai.
-
-\begin{lstlisting}[frame=lines, basicstyle=\footnotesize\ttfamily, numbers=left, numberstyle=\tiny\color{black},caption= {Lớp \texttt{DecisionNode}}, backgroundcolor=\color{background}]
-public delegate bool DecisionFunction();
-
-public class DecisionNode : IDecisionTreeNode
-{
-	private IDecisionTreeNode trueNode;
-	private IDecisionTreeNode falseNode;
-	DecisionFunction condition;
-
-	public float MakeDecision()
-	{
-		if (condition())
-		{
-			return trueNode.MakeDecision();
-		}
-		else
-		{
-			return falseNode.MakeDecision();
-		}
-	}
-}
-\end{lstlisting}
-
-Lớp \texttt{ActionNode} chứa một hàm \texttt{action} tượng trưng cho hành động đi kèm với nút. Cần chú ý rằng, giá trị trả về của hàm \texttt{MakeDecision} là một số thực. Giá trị này biểu diễn \textit{thời gian cần thiết} để thực hiện hành động.
-
-Tác tử sẽ nghĩ \textit{sau khi} hành động gần nhất được thực hiện. Điều này đảm bảo tính linh hoạt cho cây quyết định, ví dụ như tác tử có thể di chuyển và dừng lại ngay lập tức để tấn công, hoặc khi nó đang tấn công thì nó sẽ không ``nghĩ'' cho đến khi nó thực hiện xong đợt tấn công đó.
-
-\begin{lstlisting}[frame=lines, basicstyle=\footnotesize\ttfamily, numbers=left, numberstyle=\tiny\color{black},caption= {Lớp \texttt{ActionNode}}, backgroundcolor=\color{background}]
-public delegate void ActionFunction();
-
-public class ActionNode : IDecisionTreeNode
-{
-	ActionFunction action;
-	float actionDuration;
-
-	public float MakeDecision()
-	{
-		if (action != null)
-		{
-			action();
-
-			return actionDuration;
-		}
-
-		return 0;
-	}
-}
-\end{lstlisting}
-
-Bên cạnh hai loại nút trên, thực tế chỉ ra cho thấy có những trường hợp tác tử cần thực hiện một \textit{chuỗi hành động liên tiếp}. Ví dụ, khi đến gần vị trí của người chơi, kẻ địch sẽ phải dừng lại và quan sát xem có được đánh không (giả sử, nó vừa tấn công người chơi và phải chờ đến hết lượt nghỉ mới được đánh tiếp). Do vậy lớp \texttt{SequenceNode} được tạo ra nhằm phục vụ mục đích đó. Mỗi nút tuần tự chứa một danh sách các nút cần phải thực hiện tiếp theo. Các nút này có thể là nút quyết định, nút hành động hoặc nút tuần tự.
-
-\begin{lstlisting}[frame=lines, basicstyle=\footnotesize\ttfamily, numbers=left, numberstyle=\tiny\color{black},caption= {Lớp \texttt{SequenceNode}}, backgroundcolor=\color{background}]
-public class SequenceNode : IDecisionTreeNode
-{
-	private IDecisionTreeNode[] nodesToPerform;
-
-	public float MakeDecision()
-	{
-		float actionDuration = 0;
-		for (int i = 0; i < nodesToPerform.Length; i++)
-		{
-			actionDuration += nodesToPerform[i].MakeDecision();
-		}
-
-		return actionDuration;
-	}
-}
-\end{lstlisting}
-
-Với sự xuất hiện của nút tuần tự, cây quyết định có thể được viết với sự linh hoạt lớn hơn. Hình \ref{fig:dectreereal} minh hoạ một cây quyết định với nút tuần tự (nút hình tam giác). Thực tế, đây chính là một trong những cây quyết định được sử dụng trong dự án \project.
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=13cm]{Pics/Chap5/realdectree.png}
-  \caption{Ví dụ cây quyết định với nút tuần tự.}
-  \label{fig:dectreereal}
-\end{figure}
-
-Để tái sử dụng mã nguồn, mỗi NPC\footnote{Non playable character: các nhân vật do máy điều khiển.} sẽ được trang bị một \textit{component} phục vụ việc ra quyết định. Luồng hoạt động của component này như sau:
-\begin{enumerate}
-	\item Đọc dữ liệu về cây quyết định được sử dụng của NPC.
-	\item Xây dựng cây dữ liệu và trả về một nút gốc \texttt{IDecisionTreeNode}.
-	\item Mỗi lần nghĩ sẽ duyệt cây quyết định một lần để đưa ra quyết định phù hợp.
-\end{enumerate}
-
-Để biểu diễn dữ liệu của cây quyết định, JSON là một lựa chọn phù hợp vì nó đơn giản, dễ đọc hiểu với những người không phải lập trình viên, và phổ biến. Ngoài ra, JSON có thể được hình ảnh hoá thành một biểu đồ dạng cây, giúp cho các game designer có thể hình dung ra luồng hoạt động của NPC trong thực tế. 
-\begin{lstlisting}[frame=lines, language=json, basicstyle=\footnotesize\ttfamily, numbers=left, numberstyle=\tiny\color{black},caption= {Một file JSON mô tả cây quyết định}]
-{
-  "type": "decision",
-  "condition": "isTargetInRange",
-  "trueNode": {
-    "type": "sequence",
-    "nodesToPerform": [
-      {
-        "type": "action",
-        "action": "stop"
-      },
-      {
-        "type": "decision",
-        "condition": "canAttack",
-        "trueNode": {
-          "type": "action",
-          "action": "attackTarget"
-        },
-        "falseNode": {
-          "type": "action",
-          "action": "doNothing"
-        }
-      }
-    ]
-  },
-  "falseNode": {
-    "type": "action",
-    "action": "moveToTarget"
-  }
-}
-\end{lstlisting}
-
-\section{Tối ưu}
-Khác với các sản phẩm khác, bất chấp việc phần cứng ngày càng nhanh và mạnh mẽ, game vẫn yêu cầu phải vắt kiệt từng vòng lặp của CPU hay tận dụng từng byte bộ nhớ. 
-
-\subsection{Object Pooling}
-\label{sec:pool}
-Kỹ thuật tối ưu đầu tiên là Object Pooling. 
-
-\subsection{AutomaticLOD}
-\label{sec:autolod}
-\subsection{Custom shader: Unlit}
+% \begin{lstlisting}[frame=lines, basicstyle=\footnotesize\ttfamily, numbers=left, numberstyle=\tiny\color{black},caption= {Interface \texttt{IDecisionTreeNode}}, backgroundcolor=\color{background}]
+% public interface IDecisionTreeNode
+% {
+% 	float MakeDecision();
+% }
+% \end{lstlisting}
 
 \chapter{Kết quả đạt được}
+
+\section{Xây dựng ứng dụng}
+
+Trong phần này, tôi sẽ nói rõ hơn về cấu trúc hệ thống mà đề tài xây dựng để áp dụng những định hướng giải pháp đã nêu ở phần trên. Như mô hình hệ thống đã chỉ ra ở hình \ref{fig:VVC}, hệ thống cần xây dựng một Server trung gian để xử lý các trường hợp nhận diện được từ phía Wit.ai, bên cạnh đó là một ứng dụng Android để thực hiện việc điều khiển tương ứng với các yêu cầu của người dùng. Tuy nhiên, như đã nêu trong \ref{sec:requirement}, để có thể tái sử dụng việc nhận diện yêu cầu bằng giọng nói từ phía người dùng, hệ thống cần tách riêng thành một \texttt{thư viện} (library) Android chuyên để tạo ra dịch vụ nhận diện và phân tích yêu cầu bằng giọng nói, từ đó các ứng dụng như điều khiển điện thoại hay điều khiển nhà thông minh có thể tích hợp một cách dễ dàng.
+
+\subsection{Server trung gian}
+
+Server trung gian được xây dựng bằng ngôn ngữ Javascript với nền tảng \textit{NodeJS} để tạo ra kết nối đến server của Wit.ai, từ đó gửi đi những câu lệnh cần phân tích và nhận lại những dữ liệu đã được Wit.ai phân tích để xử lý, trả lại kết quả cho ứng dụng Android.
+
+\subsubsection{Vài nét về NodeJS}
+
+\textbf{NodeJS} là một nền tảng phía Server được xây dựng dựa trên Javascript Engine (V8 Engine) được phát triển bởi Ryan Dahl năm 2009. Định nghĩa NodeJS bởi tài liệu chính thức như sau:
+
+\begin{formal}
+Node.js là một nền tảng dựa vào Chrome Javascript runtime để xây dựng các ứng dụng nhanh, có độ lớn. Node.js sử dụng các phần phát sinh các sự kiện (event-driven), mô hình non-blocking I/O để tạo ra các ứng dụng nhẹ và hiệu quả cho các ứng dụng về dữ liệu thời gian thực chạy trên các thiết bị phân tán.
+\end{formal}
+
+Một vài đặc điểm nổi bật của NodeJS:
+
+\begin{itemize}
+	\item \textbf{Không đồng bộ và phát sinh sự kiện}: mọi chức năng, hàm trong NodeJS đều không đồng bộ, mọi thứ được chạy liên tiếp nhau trong một luồng duy nhất. 
+\end{itemize}
+
+\subsubsection{Cấu trúc server trung gian}
+
+Server trung gian được xây dựng theo mô hình MVC cơ bản bao gồm một ChatController để xử lý tương tác với Wit.ai, một UserModel để lưu lại những câu nói của người dùng và một ChatView sử dụng cho việc hiển thị giao diện web của ứng dụng test API trên browser. Bên cạnh đó là một ChatRoute nhằm thực hiện nhiệm vụ điều hướng những request URL được gửi đến bằng phương thức \textit{POST}. Sở dĩ hệ thống sử dụng phương thức này là do chỉ có một loại yêu cầu từ phía người dùng có thể gửi đến nên không cần có sự phân biệt bằng các tham số đầu vào (parameters) được đính kém trên URL, hơn nữa, mọi thông tin trong hệ thống là bảo mật nên không thể sử dụng phương thức GET.
+
+\begin{figure}[H]
+	\centering
+    \includegraphics[width=10cm]{Pics/Chap1/alice.jpg}
+  	\caption{Giao diện của ứng dụng kiểm thử API}
+\end{figure}
+
+Cụ thể mô hình của hệ thống Server trung gian:
+
+\begin{figure}[H]
+	\centering
+    \includegraphics[width=10cm]{Pics/Chap1/alice.jpg}
+  	\caption{Giao diện của ứng dụng kiểm thử API}
+\end{figure}
+
+Server trung gian sử dụng 2 node-module chính hỗ trợ việc xây dựng là \textit{Express} và \textit{Node-Wit}, trong đó:
+
+\begin{itemize}
+	\item \textbf{Express} hỗ trợ việc tạo ra một server có khả năng nhận yêu cầu từ người dùng, được tạo ra với mô hình MVC cơ bản (đây là việc mà NodeJS không hề hỗ trợ), cung cấp khả năng cài đặt routing (điều hướng) yêu cầu từ người dùng
+	\item \textbf{Node-Wit} là một module cung cấp bởi Wit.ai, tạo ra một class Wit chứa các phương thức giao tiếp với Wit.ai server, để có thể gửi và nhận những kết quả phân tích từ Wit.ai
+\end{itemize}
+
+\subsubsection{Cấu trúc dữ liệu}
+
+\begin{lstlisting}[frame=lines, basicstyle=\footnotesize\ttfamily, numbers=left, numberstyle=\tiny\color{black},caption= {Cấu trúc một API trả về}, backgroundcolor=\color{background}]
+
+\end{lstlisting}
+
+\subsection{Xây dựng thư viện}
+
+\subsection{Tích hợp thư viện}
+
+\section{Cài đặt thuật toán chọn lọc kết quả}
+
+\subsection{Công cụ SRILM}
+SRILM là bộ công cụ để xây dựng và áp dụng các mô hình ngôn ngữ thống kê. Bộ công cụ này được phát triển bởi “Phòng thí nghiệm và nghiên cứu công nghệ giọng nói SRI” từ năm 1995, có thể cài đặt và chạy trên nền tảng Linux cũng như Windows.
+Hệ thống sẽ sử dụng SRILM làm công cụ huấn luyện mô hình ngôn ngữ dựa trên tập dữ liệu đã được nạp cho chatbot trên Wit.ai (nền tảng phân tích yêu cầu từ phía người dùng - sẽ được nêu rõ trong phần sau). SRILM bao gồm các thành phần:
+
+\begin{itemize}
+	\item Một tập hợp các thư viện C++ giúp cài đặt mô hình ngôn ngữ, hỗ trợ cấu trúc dữ liệu và các tiện ích nhỏ
+	\item Một tập hợp các chương trình thực hiện nhiệm vụ xây dựng mô hình ngôn ngữ, huấn luyện và thử nghiệm mô hình ngôn ngữ trên dữ liệu …
+\end{itemize}
+
+Ở đây, chúng tôi sử dụng duy nhất một chức năng của SRILM là huấn luyện và xây dựng một mô hình ngôn ngữ (sẽ lưu lại dưới dạng tệp .lm) để phục vụ cho việc tính xác suất về sau. Đó là chức năng “ngram-count”. “ngram-count” nhận thông tin đầu vào là một file dạng text chứa các câu muốn huấn luyện và thống kê tần số xuất hiện của các cụm N-gram. Kết quả của việc thống kê được ghi lại vào tệp .count hoặc được sử dụng với các lựa chọn về phương pháp “làm mịn” để xây dựng nên một mô hình ngôn ngữ được ghi lại vào tệp .lm. Mô hình ngôn ngữ này sau đó sẽ được sử dụng để tính xác suất cho các câu trong tập kiểm thử và chọn lựa ra câu có xác suất lớn nhất.
+
+Tệp mô hình ngôn ngữ đã được huấn luyện có dạng như sau:
+
+\begin{lstlisting}[frame=lines, basicstyle=\footnotesize\ttfamily, numbers=left, numberstyle=\tiny\color{black},caption= {Cấu trúc một API trả về}, backgroundcolor=\color{background}]
+	
+\end{lstlisting}
+		
+Trong đó, phần data chính là số lượng các cụm n-gram đã thống kê được, tiếp theo là chi tiết từng cụm n-gram có độ dài từ 1 đến n. Mỗi dòng trong chi tiết từng cụm n-grams bắt đầu bằng một số logarit cơ số 10 xác suất của cụm N-grams, tiếp theo là n từ w1 đến wn của cụm N-grams đó, và cuối cùng là trọng số truy hồi của cụm N-grams (có thể có).
+
+Hệ thống sử dụng SRILM để huấn luyện và xây dựng mô hình ngôn ngữ và đưa mô hình ngôn ngữ đó vào trong ứng dụng trên điện thoại thông minh Android. Với mỗi tập kết quả trả về từ phía Google, ta tính logarit cơ số 10 xác suất của các câu trong tập kết quả bằng công thức (2) và lựa chọn câu có logarit lớn nhất. Câu được lựa chọn ra sẽ được dùng để mang đi phân tích yêu cầu từ phía người dùng.
+
+\subsection{Tính xác suất}
+
+
+
+\section{Xây dựng kiến thức cho chatbot}
+
+Đối tượng chính của Wit.ai là các entity. Entity là đơn vị khi Wit.ai phân tích một câu trong tập dữ liệu huấn luyện. Có 3 kiểu entity:
+
+\begin{itemize}
+	\item trait: là các entity dự đoán và phân loại các câu có tính chất và trường hợp tương tự nhau, tuy cách diễn đạt khác nhau nhưng đều được nhận ra là cùng một ý nghĩa
+	\item free-text: là entity để trích ra một xâu kí tự con (substring) trong cả câu, và xâu con này chưa từng được định nghĩa trước trong một danh sách nào cả
+	\item keywords: khi giá trị của entity đã được định nghĩa trong một danh sách có trước và chúng ta chỉ cần tìm một xâu con trùng khớp với entity này trong câu
+\end{itemize}
+
+% \begin{figure}[H] \label{fig:entity}
+% 	\centering
+% 	\includegraphics[width=15cm]
+% 	\caption{Các Entity khi phân tích một câu trong Wit.ai}
+
+% \end{figure}
+
+% \ref{fig:entity} là một ví dụ trong việc phân tích một câu yêu cầu trong Wit.ai. Ta thấy intent và increase_column là 2 entity thuộc kiểu trait, với các câu tương tự như “hãy tăng âm lượng” hoặc “cho âm thanh lớn lên 20\%” thì Wit.ai đều phân loại các câu đó vào 2 kiểu entity này: đây là một yêu cầu và yêu cầu đó là muốn tăng âm lượng. Entity amount thuộc kiểu free-text kết hợp với keyword để nhận diện được từ ngữ làm đầu vào cho các hành động khi thực hiện yêu cầu, như ví dụ là tăng âm lượng lên 10\%. Thông qua việc phân tích này, yêu cầu từ phía người dùng sẽ được nhận dạng mặc dù người dùng có những cách diễn đạt khác nhau, từ đó hệ thống điều khiển có thể tùy vào những trường hợp được nhận dạng sẽ đưa ra các hành động tương ứng và phù hợp.
+% 	Một đặc điểm nổi bật của AIML chính là việc chọn ra câu trả lời phù hợp với câu nói của người dùng. Việc này được Wit.ai chuyển thành các Story, nơi mà quy định cách trả lời của bot trong các trường hợp cụ thể. 
+ 
+% Hình 4. Cài đặt story trong Wit.ai
+% 	Với các story, chatbot sẽ biết được nên trả lời như thế nào trong từng trường hợp cụ thể.
+
+
 \chapter{Cài đặt và đánh giá}
+
+\subsection{Đánh giá độ chính xác}
+
+\subsection{Đánh giá thời gian}
 
 \stopcontents[parts]
 
