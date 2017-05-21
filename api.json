@@ -1,0 +1,25 @@
+{
+  "context": {
+    <intent_context>
+  },
+  "response": {
+    "text": <content>
+  },
+  "status": <status_number>,
+  "entities": {
+    <entity_1>: [
+      {
+        "confidence": 0.9941168619530284,
+        "type": "value",
+        "value": <entity_1_value>,
+        "suggested": true
+      }
+    ],
+    <entity_2>: [
+      {
+        "confidence": 0.9973928924388795,
+        "value": <entity_2_value>
+      }
+    ]
+  }
+}

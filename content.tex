@@ -21,7 +21,7 @@
 \definecolor{greencomments}{rgb}{0,0.5,0}
 \definecolor{redstrings}{rgb}{0.9,0,0}
 
-\usepackage{listings}
+\usepackage{listingsutf8}
 \lstset{language=[Sharp]C,
 showspaces=false,
 showtabs=false,
@@ -146,7 +146,7 @@ basicstyle=\ttfamily
 }
 
 %Replaceable project name
-\newcommand{\project}{VVC }
+\newcommand{\project}{VVC}
 
 \begin{document}
 
@@ -265,7 +265,7 @@ Cuối cùng, tôi xin gửi lời cảm ơn tới gia đình của tôi, và nh
 \noindent Họ và tên sinh viên: Trần Hoài Nam \\
 Lớp: CNTT-TT2 04 K57\\
 Tên đề tài: \\
-Giáo viên hướng dẫn: ThS. Trịnh Thành Trung.\\
+Giáo viên hướng dẫn: ThS. Trịnh Thành Trung.
 \begin{itemize}
 	\item Yêu cầu đồ án:
 		\begin{itemize}
@@ -300,7 +300,7 @@ Giáo viên hướng dẫn: ThS. Trịnh Thành Trung.\\
 \noindent Full name: Trần Hoài Nam \\
 Class: CNTT-TT2 04 K57\\
 Title of Thesis: \\
-Supervisor: ThS. Trịnh Thành Trung.\\
+Supervisor: ThS. Trịnh Thành Trung.
 \begin{itemize}
 	\item Requirements:
 	\item Achievements:
@@ -310,14 +310,13 @@ Supervisor: ThS. Trịnh Thành Trung.\\
 \end{itemize}
 
 \newpage
-
 \tableofcontents
-\newpage
 
+\newpage
 \listoffigures
 \addcontentsline{toc}{chapter}{Danh sách hình vẽ}
-\newpage
 
+\newpage
 \listoftables
 \addcontentsline{toc}{chapter}{Danh sách bảng}
 
@@ -341,13 +340,14 @@ Trên thế giới hiện nay, những ông lớn như Google hay Apple đã cho
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
-\newcommand{\alice}{A.L.I.C.E }
+\newcommand{\alice}{A.L.I.C.E}
 
 \part{Đặt vấn đề và định hướng giải pháp}
 
 \startcontents[parts]
 \printcontents[parts]{}{-1}{\setcounter{tocdepth}{1}}
 
+% Chapter 1
 \chapter{Đặt vấn đề}
 \section{Tổng quan về chatbot và các hệ thống trợ lí ảo}
 \subsection{Chatbot}
@@ -357,15 +357,15 @@ Từ những năm 50 của thế kỉ trước, chatbot đã được nhen nhóm
 
 Phương pháp chính trong việc thực hiện của ELIZA là nhận diện câu hoặc một phần của câu nói từ phía đầu vào và đầu ra là một câu trả lời được chọn tương ứng với đầu vào từ một tập dữ liệu đã chuẩn bị trước trong hệ thống. Tập dữ liệu này được chuẩn bị bởi chính con người thật nên các cặp \textit{Câu hỏi - Câu trả lời} đều khá phù hợp và tạo ra một cuộc hội thoại có ý nghĩa, khiến người dùng thật sự bất ngờ về khả năng có thể hiểu câu hỏi và đưa ra câu trả lời phù hợp của chatbot.
 
-Trong quá trình phát triển, ngoài ELIZA còn có rất nhiều những chatbot khác được hình thành, có thể kể đến như PARRY (1972), \alice (1995) hay Jabberwacky (1997) ... Những chatbot này đều có chung một cách vận hành chính là \textit{pattern matching} (phù hợp mẫu), tức là chọn ra những câu trả lời phù hợp từ tập những mẫu câu đã có sẵn trong hệ thống được xây dựng bởi chính người thật. Chatbot \alice sử dụng \textit{AIML} (Artificial Intelligence Markup Language - Ngôn ngữ trí tuệ nhân tạo đánh dấu) là một ngôn ngữ có dạng XML, sử dụng các thẻ để quy định các cặp câu hỏi - câu trả lời, kèm theo một số điều kiện hay các lựa chọn khác, để hệ thống dựa vào đó và đưa ra các câu trả lời phù hợp trong cuộc hội thoại.
+Trong quá trình phát triển, ngoài ELIZA còn có rất nhiều những chatbot khác được hình thành, có thể kể đến như PARRY (1972), \alice{} (1995) hay Jabberwacky (1997) ... Những chatbot này đều có chung một cách vận hành chính là \textit{pattern matching} (phù hợp mẫu), tức là chọn ra những câu trả lời phù hợp từ tập những mẫu câu đã có sẵn trong hệ thống được xây dựng bởi chính người thật. Chatbot \alice{} sử dụng \textit{AIML} (Artificial Intelligence Markup Language - Ngôn ngữ trí tuệ nhân tạo đánh dấu) là một ngôn ngữ có dạng XML, sử dụng các thẻ để quy định các cặp câu hỏi - câu trả lời, kèm theo một số điều kiện hay các lựa chọn khác, để hệ thống dựa vào đó và đưa ra các câu trả lời phù hợp trong cuộc hội thoại.
 
 \begin{figure}[H]
   \centering
     \includegraphics[width=10cm]{Pics/Chap1/alice.jpg}
-  \caption{Một cuộc hội thoại giữa người thật và \alice}
+  \caption{Một cuộc hội thoại giữa người thật và \alice{}.}
 \end{figure}
 
-Ta có thể thấy những câu trả lời của \alice tương đối phù hợp trong ngữ cảnh của cuộc hội thoại, không khác nhiều so với cách trả lời của người thật, tạo cảm giác như chatbot có thể hiểu được câu hỏi và trả lời một cách phù hợp. Tuy nhiên trong nhiều lĩnh vực ngày nay, chatbot không chỉ cần trong việc hỗ trợ tìm kiếm hay cung cấp thông tin cho người dùng, mà còn cần dùng cho những việc hoàn toàn tự động và có thể hiểu câu hỏi từ phía người dùng như đặt chỗ chuyến bay, đồ ăn ... hay điều khiển các thiết bị. Điều này dẫn đến một phương pháp khác trong việc xây dựng chatbot thực sự có trí thông minh, trí tuệ nhân tạo, đó là sử dụng \textit{Xử lý ngôn ngữ tự nhiên} (NLP - natural language processing) nhằm phân tích được cú pháp, ý nghĩa câu nói của người dùng đang hướng tới, hiểu rõ yêu cầu từ phía người dùng, để từ đó có thể đáp ứng những yêu cầu đó.
+Ta có thể thấy những câu trả lời của \alice{} tương đối phù hợp trong ngữ cảnh của cuộc hội thoại, không khác nhiều so với cách trả lời của người thật, tạo cảm giác như chatbot có thể hiểu được câu hỏi và trả lời một cách phù hợp. Tuy nhiên trong nhiều lĩnh vực ngày nay, chatbot không chỉ cần trong việc hỗ trợ tìm kiếm hay cung cấp thông tin cho người dùng, mà còn cần dùng cho những việc hoàn toàn tự động và có thể hiểu câu hỏi từ phía người dùng như đặt chỗ chuyến bay, đồ ăn ... hay điều khiển các thiết bị. Điều này dẫn đến một phương pháp khác trong việc xây dựng chatbot thực sự có trí thông minh, trí tuệ nhân tạo, đó là sử dụng \textit{Xử lý ngôn ngữ tự nhiên} (NLP - natural language processing) nhằm phân tích được cú pháp, ý nghĩa câu nói của người dùng đang hướng tới, hiểu rõ yêu cầu từ phía người dùng, để từ đó có thể đáp ứng những yêu cầu đó.
 
 \subsection{Hệ thống trợ lý ảo}
 Một \textit{trợ lý ảo} là một hệ thống phần mềm giúp thực hiện các nhiệm vụ hay các dịch vụ cho mỗi một cá nhân. Mỗi trợ lý ảo sẽ giúp cho người sử dụng thực hiện một nhiệm vụ trên một môi trường cụ thể như máy tính hay thiết bị điện thoại thông minh, hoặc trong chính căn nhà của mình để điều khiển các thiết bị nội thất trong ngôi nhà. Có nhiều phương thức để một trợ lý ảo có thể tương tác với người dùng như:
@@ -381,7 +381,7 @@ Chatbot chính là một trợ lý ảo sử dụng văn bản hoặc giọng n�
 \begin{figure}[H]
   \centering
     \includegraphics[width=10cm]{Pics/Chap1/virtual-assistants.png}
-  \caption{Hình ảnh nền tảng của những trợ lý ảo nổi tiếng}
+  \caption{Hình ảnh nền tảng của những trợ lý ảo nổi tiếng.}
 \end{figure}
 
 Những trợ lý ảo đang ngày càng phát triển cả về trí thông minh lẫn những lĩnh vực hiện hữu trong cuộc sống. Tuy nhiên những trợ lý ảo này mới chỉ phát triển trên ngôn ngữ là Tiếng Anh và hoàn toàn không có khả năng hiểu Tiếng Việt, gây ra cản trở trong mong muốn được tiếp cận những công nghệ tiên tiến trên thế giới của người Việt. Những trợ lý ảo đó có thể hiểu và phân tích được yêu cầu của người dùng bằng Tiếng Việt đã là một khó khăn, và sẽ khó khăn hơn nếu như người dùng sử dụng giọng nói để đưa yêu cầu vào hệ thống. Nhưng với sự hỗ trợ của những công ty lớn như Google trong việc nhận diện giọng nói Tiếng Việt và các nền tảng xây dựng chatbot sử dụng NLP, vấn đề này sẽ không còn bất khả thi nữa. Trong đề tài nghiên cứu này sẽ nêu rõ giải pháp để giải quyết vấn đề xây dựng chatbot để điều khiển điện thoại bằng giọng nói Tiếng Việt, và xa hơn nữa sẽ hỗ trợ để điều khiển các thiết bị trong ngôi nhà thông minh - Smart Home.
@@ -395,12 +395,12 @@ Số lượng người sử dụng điện thoại thông minh ở Việt Nam c�
 \begin{figure}[H]
   \centering
     \includegraphics[width=15cm]{Pics/Chap1/mobile-vietnam.jpg}
-  \caption{Tổng kết số lượng người sử dụng smart phone ở Việt Nam cuối năm 2016}
+  \caption{Tổng kết số lượng người sử dụng smart phone ở Việt Nam cuối năm 2016.}
 \end{figure}
 
 Với những người đang điều khiển các phương tiện giao thông như xe hơi thì việc sử dụng điện thoại thông minh và phải nhìn vào màn hình là một việc nguy hiểm, gây cản trở trong quá trình điều khiển xe, có thể gây ra tai nạn, hay khi sử dụng điện thoại mà người dùng phải thực hiện thao tác tay quá nhiều mới có thể hoàn thành được một nhiệm vụ hay yêu cầu sẽ gây ra cảm giác khó chịu, đặc biệt là việc nhập văn bản bằng tay trên các thiết bị di động thông minh rất khó khăn do bàn phím trên các thiết bị nhỏ, dễ gây nhầm lẫn khi nhập đoạn dài. Vì vậy trong đồ án nghiên cứu này sẽ đề xuất giải pháp để giải quyết cho vấn đề ``\textbf{Xây dựng chatbot điều khiển điện thoại bằng giọng nói Tiếng Việt}''. Đồ án sẽ tập trung vào việc xử lý giọng nói từ phía người dùng và chuyển thành dạng văn bản để có thể phân tích yêu cầu, từ đó xây dựng những tính năng giúp người dùng có thể điều khiển được chiếc điện thoại thông minh bằng chính giọng nói của mình với ngôn ngữ Tiếng Việt.
 
-
+% Chapter 2
 \chapter{Định hướng giải pháp}
 
 Với vấn đề đã được đặt ra ở phần trên, đồ án đề xuất giải pháp với 2 mục tiêu chính là nhận diện giọng nói Tiếng Việt từ phía người dùng và xây dựng chatbot để phân tích yêu cầu từ phía người dùng (sử dụng \textit{Xử lý ngôn ngữ tự nhiên}).
@@ -435,9 +435,7 @@ Trên thế giới tại thời điểm hiện tại đã có một số những
 	\item Microsoft Speech Recognition SDK \footnote{Software development kit - Bộ công cụ phát triển phần mềm là một từ dùng để chỉ một tập những công cụ phát triển phần mềm mà cho phép việc tạo ra những ứng dụng bằng những gói phần mềm, nền tảng phần mềm, nền tảng phần cứng, hệ thống máy tính, hệ điều hành hay những nền tảng phát triển tương tự}
 	\item Google Speech Recognition API
 \end{itemize}
-
-\noindent \textbf{Tại sao lại chọn Google Speech Recognition API?}
-
+\noindent \textbf{Tại sao lại chọn Google Speech Recognition API?}\\[0.3cm]
 \noindent Vào tháng 7/2013, Google đã công bố bộ ba công cụ tìm kiếm mới dành cho ngôn ngữ Tiếng Việt là Knowledge Graph (Sơ đồ Tri thức), Voice Search (Tìm kiếm bằng giọng nói) và Google Handwrite (Tìm kiếm bằng chữ viết tay). Theo bà Tamar Yehoshua, Giám đốc sản phẩm thuộc bộ phận Google Search, cho hay việc ``đào tạo'' công cụ tìm kiếm hiểu tiếng Việt là quá trình khó khăn: ``Chúng tôi cần hiểu cả người dùng lẫn nền văn hóa của Việt Nam. Chúng tôi có một đội ngũ chuyên về vấn đề này. Họ làm việc trực tiếp với người bản ngữ để thu thập các cách nói, cách phát âm... trong các điều kiện khác nhau như nhà hàng, trên phố đông hay bên trong xe hơi... Từ đó, họ xây dựng nhiều mẫu câu lệnh của những ngôn ngữ khác nhau để giúp hệ thống "học" cách nhận diện và hiểu ngôn ngữ''{\footnote{http://sohoa.vnexpress.net/tin-tuc/doi-song-so/google-ho-tro-tim-kiem-bang-giong-noi-tieng-viet-2842679.html}}. Và ngay sau đó, Google cũng đã cung cấp một bộ API{\footnote{API - Application program interface (giao diện chương trình ứng dụng là một tập các thủ tục, giao thức và công cụ cho việc xây dựng ứng dụng phần mềm}} hỗ trợ cho những lập trình viên mong muốn tích hợp nhận dạng giọng nói vào trong ứng dụng của mình có thể sử dụng hoàn toàn miễn phí.
 
 Google là một công ty lớn với lượng người dùng truy cập hàng ngày từ khắp nơi trên thế giới là rất lớn, nên lượng dữ liệu từ tất cả các phương thức như văn bản hay giọng nói, chữ viết tay đều rất đa dạng và phong phú, chính vì vậy có đủ khả năng để tạo ra dữ liệu mẫu cho việc nhận dạng giọng nói. Không những thế, Google Speech Recognition cũng đã được tích hợp trên các thiết bị điện thoại thông minh chạy hệ điều hành Android từ 2.3 trở lên, rất thuận tiện cho những lập trình viên muốn phát triển ứng dụng trên nền tảng này.
@@ -467,7 +465,7 @@ Hiện tại, Google Voice Action đã lấy tên là Google Voice Search hay Se
 \begin{figure}[H]
   \centering
     \includegraphics[width=10cm]{Pics/Chap2/google-voice.png}
-  \caption{Giao diện chung của Google Voice Search}
+  \caption{Giao diện chung của Google Voice Search.}
 \end{figure}
 
 Một đặc điểm quan trọng cần kể đến của Google Speech Recognition API chính là khả năng trả về kết quả thời gian thực, tức là kết quả được trả về với từng từ mà người dùng vừa nhập vào và chưa kết thúc câu nói của mình. Tính năng này giúp cho việc phát triển các ứng dụng trở nên dễ dàng và linh hoạt hơn, không cần đợi đến khi người dùng kết thúc nói mới trả về kết quả. Tính năng này cũng chính là một phần quan trọng giúp cho đồ án định hướng được những giải pháp hữu ích cho vấn đề cần giải quyết.
@@ -497,7 +495,7 @@ Có rất nhiều những nền tảng hỗ trợ cho việc này, trên nhiều
 	\begin{figure}[H]
 	  \centering
 	    \includegraphics[width=7cm]{Pics/Chap2/chatty-prople.jpg}
-	  \caption{Một ví dụ trong gợi ý sản phẩm của ChattyPeople bot}
+	  \caption{Một ví dụ trong gợi ý sản phẩm của ChattyPeople bot.}
 	\end{figure}
 
 Ngoài ChattyPeople còn có một vài nền tảng khác như \textit{MEOKAY} hay \textit{Botsify}, \textit{Chatfuel} cũng hỗ trợ xây dựng và triển khai các chatbot trên Facebook Messenger.
@@ -519,24 +517,6 @@ Chatbot như đã nêu ở trên là một phần mềm cho phép tạo ra nhữ
 \end{itemize}
 
 Với khả năng hỗ trợ ngôn ngữ Tiếng Việt, là một công cụ trong việc phân tích câu nói sử dụng xử lý ngôn ngữ tự nhiên được Facebook Messenger Framework lấy làm tiêu chuẩn, \textbf{Wit.ai} là một lựa chọn phù hợp với mục đích và hướng giải quyết vấn đề của đề tài. Cũng tương tự LUIS, Wit.ai cũng xây dựng bộ dữ liệu học dựa trên phân tách câu nói từ phía người dùng thành các entity, bao gồm built-in entity là những entity đã được xây dựng sẵn và những user entity là những entity do người dùng tự định nghĩa ra. Tuy với Tiếng Việt, những built-in entity chưa có nhiều loại như đối với Tiếng Anh nhưng việc nhận dạng với những câu mới và có ý diễn đạt tương tự câu đã huấn luyện là rất chính xác. Framework này sẽ được nói rõ hơn ở những phần sau của báo cáo.
-% \begin{table}[h]
-% 	\caption{So sánh các phiên bản của Unity, theo trang chủ \textit{unity.com}}
-% 	\centering
-% 	\begin{tabular}{ | c | C | C | C | C | }
-% 	\hline
-% 	License & Cloud Build & Report hiệu năng & Loại bỏ Splash Screen & Quyền truy cập mã nguồn của Unity \\
-% 	\hline
-% 	Personal & Standard & Không & Không & Không \\
-% 	\hline
-% 	Plus & Priority & Có & Có & Không \\
-% 	\hline
-% 	Pro & Concurrent Builds & Có & Có & Không \\
-% 	\hline
-% 	Enterprise & Dedicated Build Agents & Có & Có & Có \\
-% 	\hline
-% 	\end{tabular}
-% \end{table}
-
 
 \section{Công cụ hỗ trợ quá trình phát triển}
 Để xây dựng hệ thống cho đề tài nghiên cứu, em đã sử dụng một số công cụ nhằm hỗ trợ việc quản lý mã nguồn, phiên bản và tiến độ của dự án như:
@@ -550,6 +530,8 @@ Với khả năng hỗ trợ ngôn ngữ Tiếng Việt, là một công cụ tr
 \part{Các kết quả đạt được}
 \startcontents[parts]
 \printcontents[parts]{}{-1}{\setcounter{tocdepth}{1}}
+
+% Chapter 3
 \chapter{Tổng quan}
 \section{Mô hình hệ thống}
 Đồ án đề xuất mô hình hệ thống để giải quyết vấn đề đã được nêu ở phần trên:
@@ -557,7 +539,7 @@ Với khả năng hỗ trợ ngôn ngữ Tiếng Việt, là một công cụ tr
 \begin{figure}[H] \label{fig:VVC}
 	\centering
 		\includegraphics[width=15cm]{Pics/Chap2/VVC.jpg}
-	\caption{Mô hình hệ thống}
+	\caption{Mô hình hệ thống.}
 \end{figure}
 
 \noindent Trong đó có các thành phần chính sau:
@@ -601,6 +583,7 @@ Với khả năng hỗ trợ ngôn ngữ Tiếng Việt, là một công cụ tr
 	\item Ứng dụng chạy ổn định, phản hồi người dùng sau tối đa 2 giây
 \end{itemize}
 
+% Chapter 4
 \chapter{Cơ sở lý thuyết}
 \section{Mô hình ngôn ngữ}
 \subsection{Khái niệm}
@@ -631,33 +614,31 @@ Với công thức trên, ta hoàn toàn có thể xây dựng một mô hình n
 \begin{formal} 
 Cho một tập các câu nói:
 	\begin{itemize}
-		\item Tôi muốn bật đèn
-		\item Hãy bật đèn lên giúp tôi
-		\item Tôi muốn bật điều hòa
-		\item Giúp tôi mở tivi
+		\item <s> tôi muốn bật đèn </s>
+		\item <s> hãy bật đèn lên giúp tôi </s>
+		\item <s> tôi muốn bật điều hòa </s>
+		\item <s> giúp tôi mở tivi </s>
 	\end{itemize} 
 Tính xác suất xảy ra của các câu trên theo mô hình ngôn ngữ \texttt{N-gram}
 \label{fm:ex}
 \end{formal}
 
-Giả sử ta đã huấn luyện được một mô hình ngôn ngữ \texttt{N-gram} (việc huấn luyện sẽ được giới thiệu ở phần sau), ta muốn tính xác suất xảy ra của các câu trong ví dụ trên, ta cần dùng đến công thức \ref{eq:markov}. Với câu ``Tôi muốn bật đèn'', ta có thể tính với:
+Trong các ví dụ trên có sử dụng ``<s>'' và ``</s>'' là kí tự đánh dấu bắt đầu và kết thúc câu. Giả sử ta đã huấn luyện được một mô hình ngôn ngữ \texttt{N-gram} (việc huấn luyện sẽ được giới thiệu ở phần sau), ta muốn tính xác suất xảy ra của các câu trong ví dụ trên, ta cần dùng đến công thức \ref{eq:markov}. Với câu ``tôi muốn bật đèn'', ta có thể tính với:
 
 \begin{itemize}
 	\item \texttt{N = 1} - Unigram: Tính xác suất của một từ mà không phụ thuộc vào các từ đứng trước
-		\[P(\text{Tôi muốn bật đèn}) = P(\text{Tôi}) * P(\text{muốn}) * P(\text{bật}) * P(\text{đèn})\]
+		\[P(\text{Tôi muốn bật đèn}) = P(\text{tôi}) * P(\text{muốn}) * P(\text{bật}) * P(\text{đèn})\]
 	\item \texttt{N = 2} - Bigram: Tính xác suất của một từ phụ thuộc vào một từ đứng trước
-		\[P(\text{Tôi muốn bật đèn}) = P(\text{Tôi}) * P(\text{muốn}|\text{Tôi}) * P(\text{bật}|\text{muốn}) * P(\text{đèn}|\text{bật})\]
+		\[P(\text{tôi muốn bật đèn}) = P(\text{tôi}) * P(\text{muốn}|\text{tôi}) * P(\text{bật}|\text{muốn}) * P(\text{đèn}|\text{bật})\]
 	\item \texttt{N = 3} - Trigram: Tính xác suất của một từ phụ thuộc vào hai từ đứng trước
-		\[P(\text{Tôi muốn bật đèn}) = P(\text{Tôi}) * P(\text{muốn}|\text{Tôi}) * P(\text{bật}|\text{Tôi muốn}) * P(\text{đèn}|\text{muốn bật})\]
+		\[P(\text{tôi muốn bật đèn}) = P(\text{tôi}) * P(\text{muốn}|\text{tôi}) * P(\text{bật}|\text{tôi muốn}) * P(\text{đèn}|\text{muốn bật})\]
 \end{itemize}
 
 Ta lại có việc tính phép nhân bao giờ cũng mất thời gian hơn việc tính phép cộng, vì vậy để giảm thời gian tính xác suất của mỗi câu, thay vì việc tính phép nhân các xác suất, ta tính tổng logarit cơ số 10 của các xác suất. Ta có:
-
 \[\log(p_1*p_2* \ldots p_m) = \log(p_1) + \log(p_2) + \ldots + \log(p_m)\]
 
-Vậy với ví dụ câu ``Tôi muốn bật đèn'', thay vì việc tính tích xác suất như trên, ta có thể tính logarit của nó. Cụ thể là (ví dụ với N = 1):
-
-\[\log(P(\text{Tôi muốn bật đèn})) = \log(P(\text{Tôi})) + \log(P(\text{muốn})) + \ldots + \log(P(\text{đèn}))\]
+Vậy với ví dụ câu ``tôi muốn bật đèn'', thay vì việc tính tích xác suất như trên, ta có thể tính logarit của nó. Cụ thể là (ví dụ với N = 1):
+\[\log(P(\text{tôi muốn bật đèn})) = \log(P(\text{tôi})) + \log(P(\text{muốn})) + \ldots + \log(P(\text{đèn}))\]
 
 Tương tự với các trường hợp N = 2, N = 3, \ldots Ta sử dụng logarit để so sánh giữa các câu. Câu nào có hệ số logarit càng lớn thì câu đó xác suất xảy ra càng lớn. Vậy để tính xác suất từng phần của tích các xác suất, ta có thể làm như thế nào?
 
@@ -670,8 +651,8 @@ Công thức trên còn gọi là công thức tính xác suất ``thô''. Với
 Ta cũng cần nói thêm về việc huấn luyện một mô hình ngôn ngữ, tức là từ một tập các câu nói, câu văn chính xác (như ở ví dụ \ref{fm:ex}) về ngữ pháp và cấu trúc câu, ta sẽ tìm cách để ước lượng xác suất xảy ra của một câu văn chưa biết trong tương lai (có thể là một câu trong tập kiểm thử hoặc một câu nói bất kì) xem độ phù hợp của câu văn đó đối với tập huấn luyện là như thế nào. Ta có ví dụ với 2 câu nói như sau:
 
 \begin{itemize}
- 	\item Tôi muốn bật đèn
- 	\item Tôi giúp ban đêm
+ 	\item tôi muốn bật đèn
+ 	\item tôi giúp ban đêm
  \end{itemize} 
 
 2 câu nói này hoàn toàn có thể là một ví dụ cho kết quả trả về trong việc nhận diện giọng nói từ phía Google Speech Recognition API trong sự nhập nhằng do âm thanh của người dùng gây ra, vì vậy để lựa chọn được chính xác câu nói phù hợp, ta tính xác suất của 2 câu nói này dựa vào tập huấn luyện theo ví dụ \ref{fm:ex} với N lần lượt là 1, 2, 3. Ta có kết quả sau:
@@ -683,14 +664,14 @@ Ta cũng cần nói thêm về việc huấn luyện một mô hình ngôn ngữ
 	\hline
 	Câu nói & N = 1 & N = 2 & N = 3 \\
 	\hline
-	Tôi muốn bật đèn & $0,36.10^{-3}$ & 0.0417 & 0.25  \\
+	tôi muốn bật đèn & $0,36.10^{-3}$ & 0.0417 & 0.25  \\
 	\hline
-	Tôi giúp ban đêm & 0 & 0 & 0  \\
+	tôi giúp ban đêm & 0 & 0 & 0  \\
 	\hline
 	\end{tabular}
 \end{table}
 
-Dễ dàng thấy được câu ``Tôi muốn bật đèn'' có xác suất xảy ra cao hơn so với câu ``Tôi giúp ban đêm'', vì vậy ta sẽ lựa chọn câu ``Tôi muốn bật đèn''. Tuy nhiên, tại sao tất cả xác suất của cấu ``Tôi giúp ban đêm'' lại đều bằng 0, đơn giản là do trong câu đó có cụm từ chưa từng xuất hiện trong tập huấn luyện, dẫn đến xác suất của cụm từ đó bằng 0, và khi đem nhân với xác suất của các cụm từ khác dù khác 0 thì vẫn cho ra kết quả tích xác suất cuối cùng là bằng 0. Việc này sẽ gây ảnh hưởng nhiều đến việc chọn lựa do đó hoàn toàn có thể là một câu nói nhận diện chính xác từ giọng nói của người dùng nhưng do có chứa cụm từ không tồn tại trong tập huấn luyện mà xác suất bị bằng 0. Để giải quyết cho vấn đề này, chúng ta sử dụng các phương pháp \textit{``làm mịn''}.
+Dễ dàng thấy được câu ``tôi muốn bật đèn'' có xác suất xảy ra cao hơn so với câu ``tôi giúp ban đêm'', vì vậy ta sẽ lựa chọn câu ``tôi muốn bật đèn''. Tuy nhiên, tại sao tất cả xác suất của cấu ``tôi giúp ban đêm'' lại đều bằng 0, đơn giản là do trong câu đó có cụm từ chưa từng xuất hiện trong tập huấn luyện, dẫn đến xác suất của cụm từ đó bằng 0, và khi đem nhân với xác suất của các cụm từ khác dù khác 0 thì vẫn cho ra kết quả tích xác suất cuối cùng là bằng 0. Việc này sẽ gây ảnh hưởng nhiều đến việc chọn lựa do đó hoàn toàn có thể là một câu nói nhận diện chính xác từ giọng nói của người dùng nhưng do có chứa cụm từ không tồn tại trong tập huấn luyện mà xác suất bị bằng 0. Để giải quyết cho vấn đề này, chúng ta sử dụng các phương pháp \textit{``làm mịn''}.
 
 \subsection{Các phương pháp làm mịn}
 
@@ -742,10 +723,8 @@ Còn một số bài toán khác trong lĩnh vực xử lý ngôn ngữ tự nhi
 
 Chìa khóa cho một chatbot có thể hiểu được con người là khả năng hiểu được mong muốn, dự định - \textbf{intent} của con người và trích xuất ra được những thông tin liên quan với dự định đó, cùng với những hành động xử lý liên quan.
 
-Vì vậy, trong lĩnh vực xây dựng chatbot sử dụng xử lý ngôn ngữ tự nhiên, chúng ta sẽ quan tâm đến khía cạnh làm sao để một chatbot có thể nắm bắt được ý định, mong muốn của người dùng qua một câu nói và trích xuất ra được những thông tin liên quan, quan trọng nằm trong câu nói đó của người dùng.
-
-\noindent \textbf{Vậy làm thế nào để dự đoán và trích xuất thông tin}
-
+Vì vậy, trong lĩnh vực xây dựng chatbot sử dụng xử lý ngôn ngữ tự nhiên, chúng ta sẽ quan tâm đến khía cạnh làm sao để một chatbot có thể nắm bắt được ý định, mong muốn của người dùng qua một câu nói và trích xuất ra được những thông tin liên quan, quan trọng nằm trong câu nói đó của người dùng. \\[0.3cm]
+\noindent \textbf{Vậy làm thế nào để dự đoán và trích xuất thông tin?\\[0.3cm]}
 Một hệ thống xử lý ngôn ngữ tự nhiên được sử dụng trong chatbot sẽ không tìm kiếm những từ khóa nằm trong câu nói, văn bản như một bộ máy tìm kiếm mà thay vào đó là việc sử dụng những kiến thức mà hệ thống đã được học thông qua các cấu trúc câu, thuật ngữ và khả năng nhận diện những mẫu đã được học để cố gắng tính toán và ghép câu nói của người dùng vào một tình huống intent đã được xây dựng từ trước. Có nghĩa là, chatbot sẽ được lập trình để nhận diện những thứ chắc chắn mà mọi người muốn và phản hồi lại. Có 4 lĩnh vực con cần nhắc tới trong xử lý ngôn ngữ tự nhiên áp dụng cho chatbot:
 
 \begin{itemize}
@@ -761,28 +740,88 @@ Một hệ thống xử lý ngôn ngữ tự nhiên được sử dụng trong c
 
 Để có thể xây dựng một chatbot sử dụng xử lý ngôn ngữ tự nhiên, chúng ta hoàn toàn có thể tự định nghĩa những cụm từ người dùng sẽ nói vào, dự đoán ý muốn của người dùng từ những cụm từ đó và để cho chatbot học. Tuy nhiên chúng ta sẽ rất khó khăn trong việc xây dựng dữ liệu lẫn việc xử lý, chính vì thế mà những chatbot framework đã được xây dựng và phát triển để giải quyết những khó khăn đó. Như đã nêu trong phần \ref{subsec:frameworkchatbot}, trong đề tài này đề xuất sử dụng Wit.ai để tạo ra trí thông minh cho chatbot
 
+% Chapter 5
 \chapter{Các nghiên cứu liên quan}
 
 \section{Xử lý giọng nói}
 
-\subsection{Xử lý của Google}
+\subsection{Xử lý giọng nói của Google}
 
-Hiện nay, Google đã áp dụng các thuật toán về mô hình ngôn ngữ và mạng nơ-ron sâu hay học sâu (deep neural network - deep learning) trong việc nhận diện giọng nói [1, 2]. Việc xử lý tiếng ồn, những tạp âm cũng đã được chú trọng, đảm bảo kết quả nhận diện đúng nhất những gì người dùng nhập vào bằng giọng nói [1]. Tuy nhiên, kết quả trả về vẫn chưa phải chính xác hoàn toàn, vẫn còn những nhầm lần do còn phụ thuộc nhiều vào giọng nói và ngữ điệu của người dùng. Cùng một câu nói, nhưng người nói là nam hay nữ, già hay trẻ cũng có những giọng điệu khác nhau, mà khi đó trong thuật toán nhận diện giọng nói của Google sử dụng việc so sánh mẫu các đoạn phát âm những từ đơn lẻ để đánh giá và gán nhãn từ cho những đoạn phát âm đó. Chính vì vậy, kết quả trả về từ phía Google khi nào cũng có từ 5 đến 10 câu có cách phát âm tương tự nhau do Google có sự nhập nhằng trong việc nhận diện. Hệ thống chúng tôi đề xuất sẽ giải quyết vấn đề này để chọn ra câu có kết quả hợp lí nhất và đem đi phân tích để hiểu được yêu cầu từ phía người dùng.
+Hiện nay, Google đã áp dụng các thuật toán về mô hình ngôn ngữ và mạng nơ-ron sâu hay học sâu (deep neural network - deep learning) trong việc nhận diện giọng nói \cite{robustasr}, \cite{bayesLMformobile}. Việc xử lý tiếng ồn, những tạp âm cũng đã được chú trọng, đảm bảo kết quả nhận diện đúng nhất những gì người dùng nhập vào bằng giọng nói \cite{robustasr}. Tuy nhiên, kết quả trả về vẫn chưa phải chính xác hoàn toàn, vẫn còn những nhầm lần do còn phụ thuộc nhiều vào giọng nói và ngữ điệu của người dùng. Cùng một câu nói, nhưng người nói là nam hay nữ, già hay trẻ cũng có những giọng điệu khác nhau, mà khi đó trong thuật toán nhận diện giọng nói của Google sử dụng việc so sánh mẫu các đoạn phát âm những từ đơn lẻ để đánh giá và gán nhãn từ cho những đoạn phát âm đó. Chính vì vậy, kết quả trả về từ phía Google khi nào cũng có từ 5 đến 10 câu có cách phát âm tương tự nhau do Google có sự nhập nhằng trong việc nhận diện. Hệ thống chúng tôi đề xuất sẽ giải quyết vấn đề này để chọn ra câu có kết quả hợp lí nhất và đem đi phân tích để hiểu được yêu cầu từ phía người dùng.
 
 \subsection{Các phương pháp chọn kết quả}
 
-\section{Những framework xây dựng chatbot}
+\subsubsection{TF-IDF}
 
-\section{Những ứng dụng điều khiển giọng nói Tiếng Việt}
+\textbf{TF-IDF} là viết tắt của \textit{term frequency–inverse document frequency}, là một thống kê phản ánh mức độ quan trọng của một từ đối với một văn bản trong một tập hợp hay corpus. Nó thường được sử dụng như một trọng số trong việc thu thập thông tin, khai phá văn bản, và mô hình người dùng. Giá trị TF-IDF thể hiện mức độ quan trọng của một từ đối với một văn bản thông qua số lần xuất hiện của từ đó trong văn bản, tuy nhiên mức độ đó cũng được điều chỉnh nếu từ đó cũng xuất hiện nhiều trong tập huấn luyện.
 
+Như tên gọi của thuật toán, có 2 thông số chính cần quan tâm là:
 
-% \begin{lstlisting}[frame=lines, basicstyle=\footnotesize\ttfamily, numbers=left, numberstyle=\tiny\color{black},caption= {Interface \texttt{IDecisionTreeNode}}, backgroundcolor=\color{background}]
-% public interface IDecisionTreeNode
-% {
-% 	float MakeDecision();
-% }
-% \end{lstlisting}
+\textbf{TF} là số lần xuất hiện của một từ trong văn bản. Giả sử chúng ta có một tập các văn bản Tiếng Việt và chúng ta muốn xác định văn bản nào có liên quan đến cụm từ ``cái đèn bàn''. Cách đơn giản là loại bỏ những văn bản không chứa cụm từ ``cái đèn bàn'' hoặc ``cái'', ``đèn'', ``bàn'', tuy nhiên vẫn sẽ để lại khá nhiều kết quả. Để tìm kiếm một cách tốt hơn nữa, chúng ta có thể đếm số lần xuất hiện của những từ đó trong các văn bản. Có thể tính TF của một từ trong văn bản d (kí hiệu là $tf(t, d)$) bằng nhiều cách, cách đơn giản nhất là giá trị nhị phân 0 hoặc 1 với việc từ đó có xuất hiện trong văn bản hay không. Hoặc có thể sử dụng các cách tính sau: (trong đó ta có $f_{t, d}$ là số lần xuất hiện của từ t trong văn bản d)
 
+\begin{itemize}
+	\item Theo độ dài của văn bản:
+	\[tf(t, d) = \frac{f_{t, d}}{\text{số từ trong văn bản d}}\]
+	\item Tính theo hàm logarit:
+	\[tf(t, d) = 
+		\begin{cases}
+		    1 + \log(f_{t, d})       & \quad \text{nếu } f_{t, d} \neq 0 \\
+		    0  & \quad \text{nếu } f_{t, d} = 0\\
+	  	\end{cases}
+	\]
+	\item Tính theo số lần xuất hiện lớn nhất của một từ trong văn bản D
+	\[tf(t, d) = 0.5 + 0.5*\frac{f_{t, d}}{max\{f_{t', d}:t'\in d\}}\]
+	trong đó $max\{f_{t', d}:t'\in d\}$ là số lần xuất hiện nhiều nhất của một từ trong d
+\end{itemize}
+
+\textbf{IDF} là thước đo cho việc đánh giá khả năng cung cấp thông tin của một từ trong văn bản, tức là từ đấy xuất hiện thường xuyên hay hiếm khi xuất hiện trong tất cả các văn bản. Như trong ví dụ ``cái đèn bàn'', từ ``cái'' có thể xuất hiện nhiều trong các văn bản và không mang nhiều thông tin, vì vậy thông qua IDF, ta có thể khẳng định từ ``cái'' không quan trọng trong cụm từ này. IDF được tính bằng công thức:
+
+\[idf(t, D) = \log\frac{N}{|\{d \in D: t \in d\}|}\]
+trong đó:
+\begin{itemize}
+	\item N: tổng số văn bản trong tập văn bản D
+	\item $|\{d \in D: t \in d\}|$: số văn bản d mà từ t có xuất hiện
+\end{itemize}
+
+Cuối cùng, từ 2 công thức trên, ta có thể tính được tfidf của một từ t trong văn bản d với tập văn D là:
+
+\[tfidf(t, d, D) = tf(t, d) * idf(t, D)\]
+
+Phương pháp này hoàn toàn có thể ứng dụng trong bài toán chọn kết quả trả về từ Google Speech Recognition API bằng cách đánh giá mức độ phù hợp của một câu trong tập kết quả (chính là một văn bản d) so với tập dữ liệu huấn luyện chatbot (chính là tập văn bản D). Ưu điểm của phương pháp này là dễ dàng cài đặt, tốc độ xử lý cho mỗi văn bản rất nhanh. Tuy nhiên, với những từ chưa từng xuất hiện trong tập văn bản sẽ có tần xuất bằng 0, gây ra việc chọn lọc kết quả không chính xác.
+
+\subsubsection{Mạng nơ-ron nhân tạo}
+
+\section{Những ứng dụng điều khiển bằng giọng nói Tiếng Việt đã có}
+
+\subsection{Ứng dụng VAV}
+
+\textbf{VAV} - Virtual Assistant for Vietnamese là một ứng dụng được phát triển bởi MDN-Team của Phòng thí nghiệm Khoa học Dữ liệu và Công nghệ Tri thức, Khoa Công nghệ thông tin, Trường Đại học Công nghệ, Đại học Quốc gia Hà Nội. Ứng dụng có khả năng điều khiển và thực hiện các yêu cầu của người dùng bằng giọng nói Tiếng Việt đối với smartphone hệ điều hành Android. VAV sử dụng Google Speech Recognition API trong việc nhận dạng giọng nói Tiếng Việt. Một số tính năng nổi bật của VAV:
+
+\begin{itemize}
+	\item Lắng nghe các câu lệnh bằng giọng nói Tiếng Việt với kết quả nhận diện tương đối chính xác (vẫn mắc phải những vấn đề thuần túy của Google Speech Recognition API)
+	\item Số lượng tính năng điều khiển điện thoại lớn, đa dạng như:
+	\begin{itemize}
+		\item Tính toán phép tính
+		\item Đặt lịch hẹn, báo thức
+		\item Tìm kiếm thông tin như thời tiết ở các vùng, các nhà hàng ở gần
+		\item Các chức năng liên quan đến gọi điện, gửi tin nhắn
+	\end{itemize}
+	\item Khả năng trả lời và nhận diện yêu cầu rộng, không gò bó trong một khuôn mẫu
+\end{itemize}
+
+Tuy nhiên nhược điểm của VAV là không thể nói liên tục mà phải ấn nút để nói, điều này gây ra hạn chế vì dù sao người dùng vẫn phải sử dụng tay của mình để sử dụng tính năng của ứng dụng.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=6cm]{Pics/Chap5/vav.png}
+	\caption{Màn hình chính của VAV.}
+\end{figure}
+
+\subsection{Ứng dụng VietCommand}
+
+VietCommand 
+
+% Chapter 6
 \chapter{Kết quả đạt được}
 
 \section{Xây dựng ứng dụng}
@@ -804,7 +843,7 @@ Node.js là một nền tảng dựa vào Chrome Javascript runtime để xây d
 Một vài đặc điểm nổi bật của NodeJS:
 
 \begin{itemize}
-	\item \textbf{Không đồng bộ và phát sinh sự kiện}: mọi chức năng, hàm trong NodeJS đều không đồng bộ, mọi thứ được chạy liên tiếp nhau trong một luồng duy nhất. 
+	\item \textbf{Không đồng bộ và phát sinh sự kiện}: mọi chức năng, hàm trong NodeJS đều không đồng bộ, mọi thứ được chạy liên tiếp nhau trong một luồng duy nhất.
 \end{itemize}
 
 \subsubsection{Cấu trúc server trung gian}
@@ -814,7 +853,7 @@ Server trung gian được xây dựng theo mô hình MVC cơ bản bao gồm m�
 \begin{figure}[H]
 	\centering
     \includegraphics[width=10cm]{Pics/Chap1/alice.jpg}
-  	\caption{Giao diện của ứng dụng kiểm thử API}
+  	\caption{Giao diện của ứng dụng kiểm thử API.}
 \end{figure}
 
 Cụ thể mô hình của hệ thống Server trung gian:
@@ -822,7 +861,7 @@ Cụ thể mô hình của hệ thống Server trung gian:
 \begin{figure}[H]
 	\centering
     \includegraphics[width=10cm]{Pics/Chap1/alice.jpg}
-  	\caption{Giao diện của ứng dụng kiểm thử API}
+  	\caption{Giao diện của ứng dụng kiểm thử API.}
 \end{figure}
 
 Server trung gian sử dụng 2 node-module chính hỗ trợ việc xây dựng là \textit{Express} và \textit{Node-Wit}, trong đó:
@@ -835,7 +874,31 @@ Server trung gian sử dụng 2 node-module chính hỗ trợ việc xây dựng
 \subsubsection{Cấu trúc dữ liệu}
 
 \begin{lstlisting}[frame=lines, basicstyle=\footnotesize\ttfamily, numbers=left, numberstyle=\tiny\color{black},caption= {Cấu trúc một API trả về}, backgroundcolor=\color{background}]
-
+{
+  "context": {
+    <intent_context>
+  },
+  "response": {
+    "text": <content>
+  },
+  "status": <status_number>,
+  "entities": {
+    <entity_1>: [
+      {
+        "confidence": 0.9941168619530284,
+        "type": "value",
+        "value": <entity_1_value>,
+        "suggested": true
+      }
+    ],
+    <entity_2>: [
+      {
+        "confidence": 0.9973928924388795,
+        "value": <entity_2_value>
+      }
+    ]
+  }
+}
 \end{lstlisting}
 
 \subsection{Xây dựng thư viện}
@@ -856,9 +919,26 @@ Hệ thống sẽ sử dụng SRILM làm công cụ huấn luyện mô hình ng�
 Ở đây, chúng tôi sử dụng duy nhất một chức năng của SRILM là huấn luyện và xây dựng một mô hình ngôn ngữ (sẽ lưu lại dưới dạng tệp .lm) để phục vụ cho việc tính xác suất về sau. Đó là chức năng “ngram-count”. “ngram-count” nhận thông tin đầu vào là một file dạng text chứa các câu muốn huấn luyện và thống kê tần số xuất hiện của các cụm N-gram. Kết quả của việc thống kê được ghi lại vào tệp .count hoặc được sử dụng với các lựa chọn về phương pháp “làm mịn” để xây dựng nên một mô hình ngôn ngữ được ghi lại vào tệp .lm. Mô hình ngôn ngữ này sau đó sẽ được sử dụng để tính xác suất cho các câu trong tập kiểm thử và chọn lựa ra câu có xác suất lớn nhất.
 
 Tệp mô hình ngôn ngữ đã được huấn luyện có dạng như sau:
+\begin{lstlisting}[frame=lines, basicstyle=\footnotesize\ttfamily, numbers=left, numberstyle=\tiny\color{black},caption= {Cấu trúc một mô hình ngôn ngữ}, backgroundcolor=\color{background}]
+	\data\
+	ngram 1 = n1
+	ngram 2 = n2
+	...
+	ngram n = nN
 
-\begin{lstlisting}[frame=lines, basicstyle=\footnotesize\ttfamily, numbers=left, numberstyle=\tiny\color{black},caption= {Cấu trúc một API trả về}, backgroundcolor=\color{background}]
-	
+	\1-grams:
+	logp w  [bow]
+	...
+
+	\2-grams:
+	logp w1w2 [bow]
+	...
+
+	\N-grams:
+	logp w1w2 ... wN [bow]
+	...
+
+	\end
 \end{lstlisting}
 		
 Trong đó, phần data chính là số lượng các cụm n-gram đã thống kê được, tiếp theo là chi tiết từng cụm n-gram có độ dài từ 1 đến n. Mỗi dòng trong chi tiết từng cụm n-grams bắt đầu bằng một số logarit cơ số 10 xác suất của cụm N-grams, tiếp theo là n từ w1 đến wn của cụm N-grams đó, và cuối cùng là trọng số truy hồi của cụm N-grams (có thể có).
@@ -871,28 +951,54 @@ Hệ thống sử dụng SRILM để huấn luyện và xây dựng mô hình ng
 
 \section{Xây dựng kiến thức cho chatbot}
 
+\subsection{Vài nét về Wit.ai}
+
+\begin{figure}[H] \label{fig:mainboard-wit}
+	\centering
+	\includegraphics[width=10cm]{Pics/Chap6/wit-mainboard.JPG}
+	\caption{Màn hình chính của Wit.ai.}
+\end{figure}
+
+\subsection{Sử dụng Wit.ai}
+
 Đối tượng chính của Wit.ai là các entity. Entity là đơn vị khi Wit.ai phân tích một câu trong tập dữ liệu huấn luyện. Có 3 kiểu entity:
 
 \begin{itemize}
-	\item trait: là các entity dự đoán và phân loại các câu có tính chất và trường hợp tương tự nhau, tuy cách diễn đạt khác nhau nhưng đều được nhận ra là cùng một ý nghĩa
-	\item free-text: là entity để trích ra một xâu kí tự con (substring) trong cả câu, và xâu con này chưa từng được định nghĩa trước trong một danh sách nào cả
-	\item keywords: khi giá trị của entity đã được định nghĩa trong một danh sách có trước và chúng ta chỉ cần tìm một xâu con trùng khớp với entity này trong câu
+	\item \textbf{trait}: là các entity dự đoán và phân loại các câu có tính chất và trường hợp tương tự nhau, tuy cách diễn đạt khác nhau nhưng đều được nhận ra là cùng một ý nghĩa
+	\item \textbf{free-text}: là entity để trích ra một xâu kí tự con (substring) trong cả câu, và xâu con này chưa từng được định nghĩa trước trong một danh sách nào cả
+	\item \textbf{keywords}: khi giá trị của entity đã được định nghĩa trong một danh sách có trước và chúng ta chỉ cần tìm một xâu con trùng khớp với entity này trong câu
 \end{itemize}
 
-% \begin{figure}[H] \label{fig:entity}
-% 	\centering
-% 	\includegraphics[width=15cm]
-% 	\caption{Các Entity khi phân tích một câu trong Wit.ai}
+\begin{figure}[H] 
+	\centering
+	\includegraphics[width=10cm]{Pics/Chap6/wit.JPG}
+	\caption{Các Entity khi phân tích một câu trong Wit.ai.}
+	\label{fig:entity}
+\end{figure}
 
-% \end{figure}
+Hình \ref{fig:entity} là một ví dụ trong việc phân tích một câu yêu cầu trong Wit.ai. Ta thấy \textit{intent} và \textit{increase\_volumn} là 2 entity thuộc kiểu trait, với các câu tương tự như ``hãy tăng âm lượng'' hoặc ``cho âm thanh lớn lên 20\%'' thì Wit.ai đều phân loại các câu đó vào 2 kiểu entity này: đây là một yêu cầu và yêu cầu đó là muốn tăng âm lượng. Entity \textit{amount} thuộc kiểu free-text kết hợp với keyword để nhận diện được từ ngữ làm đầu vào cho các hành động khi thực hiện yêu cầu, như ví dụ là tăng âm lượng lên 10\%. Thông qua việc phân tích này, yêu cầu từ phía người dùng sẽ được nhận dạng mặc dù người dùng có những cách diễn đạt khác nhau, từ đó hệ thống điều khiển có thể tùy vào những trường hợp được nhận dạng sẽ đưa ra các hành động tương ứng và phù hợp.
 
-% \ref{fig:entity} là một ví dụ trong việc phân tích một câu yêu cầu trong Wit.ai. Ta thấy intent và increase_column là 2 entity thuộc kiểu trait, với các câu tương tự như “hãy tăng âm lượng” hoặc “cho âm thanh lớn lên 20\%” thì Wit.ai đều phân loại các câu đó vào 2 kiểu entity này: đây là một yêu cầu và yêu cầu đó là muốn tăng âm lượng. Entity amount thuộc kiểu free-text kết hợp với keyword để nhận diện được từ ngữ làm đầu vào cho các hành động khi thực hiện yêu cầu, như ví dụ là tăng âm lượng lên 10\%. Thông qua việc phân tích này, yêu cầu từ phía người dùng sẽ được nhận dạng mặc dù người dùng có những cách diễn đạt khác nhau, từ đó hệ thống điều khiển có thể tùy vào những trường hợp được nhận dạng sẽ đưa ra các hành động tương ứng và phù hợp.
-% 	Một đặc điểm nổi bật của AIML chính là việc chọn ra câu trả lời phù hợp với câu nói của người dùng. Việc này được Wit.ai chuyển thành các Story, nơi mà quy định cách trả lời của bot trong các trường hợp cụ thể. 
+Một đặc điểm nổi bật của AIML chính là việc chọn ra câu trả lời phù hợp với câu nói của người dùng. Việc này được Wit.ai chuyển thành các Story, nơi mà quy định cách trả lời của bot trong các trường hợp cụ thể. 
  
-% Hình 4. Cài đặt story trong Wit.ai
-% 	Với các story, chatbot sẽ biết được nên trả lời như thế nào trong từng trường hợp cụ thể.
+\begin{figure}[H] \label{fig:story-wit}
+	\centering
+	\includegraphics[width=10cm]{Pics/Chap6/story.JPG}
+	\caption{Cài đặt story trong Wit.ai.}
+\end{figure}
 
+Với các story, chatbot sẽ biết được nên trả lời như thế nào trong từng trường hợp cụ thể. Chúng ta có thể tạo ra nhiều story để quy định cách trả lời của chatbot, ví dụ như story \textit{Greeting} sẽ tập trung xử lý các câu liên quan đến chào hỏi như ``Xin chào'' hay ``Tên bạn là gì?'' \ldots, trong khi đó story \textit{RequestHandle} sẽ quy định cách trả lời của chatbot trong những trường hợp người dùng đưa ra yêu cầu. Mọi kiến thức của chatbot đều được cập nhật thông qua giao diện chính của Wit.ai. \\[0.3mm]
 
+\noindent \textbf{Vậy làm thế nào để cập nhật những câu nói mà hệ thống chưa phân tích được?\\[0.3cm]}
+
+Với những câu chưa từng xuất hiện hoặc còn nhập nhằng trong việc phân tích, Wit.ai sẽ đẩy về phần Inbox, và tại đây chúng ta sẽ thực hiện phân tích và phân loại những câu này để Wit.ai tiếp tục học và phát triển.
+
+\begin{figure}[H] \label{fig:inbox-wit}
+	\centering
+	\includegraphics[width=10cm]{Pics/Chap6/story.JPG}
+	\caption{Cập nhật kiến thức cho chatbot trong Inbox.}
+\end{figure}
+
+% Chapter 7
 \chapter{Cài đặt và đánh giá}
 
 \subsection{Đánh giá độ chính xác}
@@ -906,49 +1012,40 @@ Hệ thống sử dụng SRILM để huấn luyện và xây dựng mô hình ng
 \addcontentsline{toc}{chapter}{Kết luận}
 
 \begin{thebibliography}{9}
-\bibitem{aiforgames} 
-Ian Millington and John Funge. 
-\textit{Artificial Intelligence for Games}. 
-Morgan Kaufmann Publishers, 2006.
+\bibitem{robustasr} 
+Andrew L. Maas , Quoc V. Le, Tyler M. O’Neil , Oriol Vinyals, Patrick Nguyen and Andrew Y. Ng. 
+\textit{Recurrent Neural Networks for Noise Reduction in Robust ASR}. 
+Google Research, 2012.
 
-\bibitem{codecomplete} 
-Steve McConnell. 
-\textit{Code Complete: A Practical Handbook of Software Construction, Second Edition}. 
-Microsoft Press, 2004.
+\bibitem{bayesLMformobile} 
+Cyril Allauzen and Michael Riley. 
+\textit{Bayesian Language Model Interpolation for Mobile Speech Input}. 
+Google Research, 2011.
 
-\bibitem{gameprogrammingpatterns} 
-Robert Nystrom. 
-\textit{Game Programming Patterns}. 
-Genever Bennin, 2014.
+\bibitem{justspeak} 
+Yu Zhong, T.V. Raman, Casey Burkhardt, Fadi Biadsy and Jeffrey P. Bigham. 
+\textit{JustSpeak: Enabling Universal Voice Control on Android}. 
+Google Research, 2014.
 
-\bibitem{gamecodingcomplete} 
-Mike McShaffry and David "Rez" Graham. 
-\textit{Game Coding Complete, Fourth Edition}. 
-Cengage Learning, 2012.
+\bibitem{neuralLM} 
+Yoshua Bengio, Réjean Ducharme, Pascal Vincent and Christian Jauvin. 
+\textit{A Neural Probabilistic Language Model}. 
+Journal of Machine Learning Research, 2003.
 
-\bibitem{3dmath} 
-Fletcher Dunn., Ian Parberry
-\textit{3D math primer for graphics and game development}. 
-CRC Press, 2011.
+\bibitem{vietnameseLM} 
+Cao Van Viet, Do Ngoc Quynh and Le Anh Cuong. 
+\textit{Building and Evaluating Vietnamese Language Models}. 
+VNU Journal of Science: Mathematics - Physics, [S.l.], ISSN 2588-1124, 2011.
 
-\bibitem{unityorunrealformobile}
-Sebastian Weber.
-\textit{Unreal vs. Unity - Which engine is better for mobile games?}.
-http://www.makinggames.biz/feature/unreal-vs-unity-which-engine-is-better-for-mobile-games,8472.html,
-last visited March 2017.
+\bibitem{chappie} 
+Bibek Behera. 
+\textit{Chappie - A Semi-automatic Intelligent Chatbot}. 
+2016.
 
-\bibitem{datadriven}
-Kyle Wilson.
-\textit{Data-Driven Design}.
-http://gamearchitect.net/Articles/DataDrivenDesign.html,
-last visited March 2017.
-
-\bibitem{componentbased}
-Ray Wenderlich.
-\textit{Introduction to Component Based Architecture in Games}.
-https://www.raywenderlich.com/24878/introduction-to-component-based-architecture-in-games,
-last visited November 2016.
-
+\bibitem{charliechatbot} 
+Fernando A. Mikic, Juan C. Burguillo, Martín Llamas, Daniel A. Rodríguez and Eduardo Rodríguez. 
+\textit{CHARLIE: An AIML-based Chatterbot which works as an Interface among INES and Humans}. 
+EAEEIE Annual Conference, 2009.
 
 \end{thebibliography}
 
