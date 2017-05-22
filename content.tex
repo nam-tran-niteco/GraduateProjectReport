@@ -1001,9 +1001,57 @@ Với những câu chưa từng xuất hiện hoặc còn nhập nhằng trong v
 % Chapter 7
 \chapter{Cài đặt và đánh giá}
 
-\subsection{Đánh giá độ chính xác}
+\section{Đánh giá độ chính xác của mô hình ngôn ngữ}
 
-\subsection{Đánh giá thời gian}
+Trong phần thực nghiệm, chúng tôi lấy mẫu từ hơn 1000 câu bao gồm các trường hợp đã huấn luyện cho chatbot để làm đầu vào cho việc huấn luyện mô hình ngôn ngữ. Cụ thể số lượng các cụm n-gram như sau:
+\begin{table}[h]
+	\caption{Số lượng các cụm n-gram trong tập huấn luyện}
+	\centering
+	\begin{tabular}{ | C | C | }
+	\hline
+	N & Số lượng \\
+	\hline
+	1 & 573 \\
+	\hline
+	2 & 1272 \\
+	\hline
+	3 & 492 \\
+	\hline
+	\end{tabular}
+\end{table}
+
+Sử dụng mẫu này để huấn luyện các mô hình ngôn ngữ theo các phương pháp ``làm mịn'' khác nhau. Sau đó, một tập văn bản kiểm thử được đưa vào bao gồm 200 tập câu khác nhau, mỗi tập câu là một tập kết quả từ phía Google Speech Recognition trả về để tính xác suất dựa trên các mô hình ngôn ngữ đã huấn luyện và chọn ra các câu hợp lí nhất dựa vào hàm tính Perplexity:
+\begin{align*}
+PP(W) &= P(w_1w_2 \ldots w_N)^{\frac{-1}{N}} \\
+	&= \sqrt[N]{\frac{1}{P(w_1w_2 \ldots w_N)}}
+\end{align*}
+
+Perplexity là nghịch đảo của xác suất của tập văn bản kiểm thử, và được chuẩn hóa bằng số lượng các từ có trong văn bản.
+==> Perplexity càng nhỏ thì xác suất xảy ra càng lớn. Như đã nêu ở trên, thay việc nhân các xác suất bằng việc cộng các logarit cơ số 10 của xác suất giúp cho việc tính toán nhanh hơn. Vì vậy công thức tính perplexity chuyển thành:
+\[PP(W) = 10^{(\frac{-\log\textit{prob}}{\textit{words} - \textit{OOVs}})}\]
+
+Trong đó \textit{words} là số các từ trong câu, \textit{OOVs} là số các từ chưa từng xuất hiện trong tập học. Những từ này gây ra xác suất bằng 0, vì vậy logarit cơ số 10 sẽ là âm vô cùng, nên khi tính toán sẽ bỏ qua. Từ đó ta có bảng thống kê kết quả nhận biết của các phương pháp với 200 bộ dữ liệu kiểm thử:
+\begin{table}[h]
+	\caption{Kết quả đánh giá tập kiểm thử của các phương pháp làm mịn}
+	\centering
+	\begin{tabular}{ | C | C | }
+	\hline
+	Phương pháp làm mịn & Độ chính xác \\
+	\hline
+	Good-Turing Discount & 74\% \\
+	\hline
+	Witten-Bell & 80\% \\
+	\hline
+	Kneser-Ney & 70\% \\
+	\hline
+	\end{tabular}
+\end{table}
+
+Qua đó ta thấy được việc ưu tiên và chuyển xác suất quá nhiều cho các cụm N-gram chưa từng xuất hiện làm giảm khả năng loại bỏ đi những cụm từ không cần thiết và không xuất hiện trong tập huấn luyện. Tuy nhiên việc áp dụng mô hình ngôn ngữ cũng đã đánh giá được phần nào những câu nói phù hợp trong tập dữ liệu trả về nhưng lại không được đánh giá cao do có sự nhập nhằng trong ngữ điệu và âm lượng của người dùng. 
+
+\section{Đánh giá hệ thống}
+
+Hệ thống được chạy trên thiết bị Android 6.0 với tốc độ trả lời yêu cầu người dùng trung bình là 1268ms, là tốc độ có thể chấp nhận được với một hệ thống điều khiển bằng giọng nói.
 
 \stopcontents[parts]
 
