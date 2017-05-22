@@ -147,6 +147,7 @@ basicstyle=\ttfamily
 
 %Replaceable project name
 \newcommand{\project}{VVC}
+\newcommand{\thesistitle}{Xây dựng chatbot điều khiển điện thoại bằng Tiếng Việt}
 
 \begin{document}
 
@@ -169,12 +170,12 @@ basicstyle=\ttfamily
 		{\Large NGÀNH CÔNG NGHỆ THÔNG TIN}  \\[4cm]
 	
 		{\Large \textbf{ĐỀ TÀI}}\\[0.3cm]		
-		{\large XÂY DỰNG CHATBOT ĐIỀU KHIỂN ĐIỆN THOẠI BẰNG TIẾNG VIỆT} \\[2.5cm]
+		{\large XÂY DỰNG CHATBOT ĐIỀU KHIỂN ĐIỆN THOẠI\\[0.1cm]BẰNG TIẾNG VIỆT} \\[2.5cm]
 	\end{center}
 	
 	\begin{justify}
 
-		\hspace{6cm} Sinh viên thực hiện \hspace{0.2cm}: \textbf{Trần Hoài Nam} \hspace{0.3cm}
+		\hspace{6cm} Sinh viên thực hiện \hspace{0.15cm}: \textbf{Trần Hoài Nam} \hspace{0.3cm}
 
 		\noindent \hspace{6cm} Lớp \hspace{3.0cm}: CNTT-TT2 04, K57 \hspace{0.3cm}
 
@@ -196,24 +197,26 @@ basicstyle=\ttfamily
 {\large \textbf{PHIẾU GIAO NHIỆM VỤ ĐỒ ÁN TỐT NGHIỆP}}
 \end{center}
 
-\noindent 1. Thông tin về sinh viên
-\begin{itemize}
-	\item Họ và tên: Trần Hoài Nam.
-	\item MSSV: 20122123.
-	\item Lớp: CNTT-TT2 04 K57.
-\end{itemize}
+\noindent 1. Thông tin về sinh viên\\[0.2cm]
+\noindent \begin{tabular}{p{0.5\textwidth} p{0.5\textwidth}}
+Họ và tên sinh viên: Trần Hoài Nam &   \\ 
+Điện thoại liên lạc: 0918218111 & Email: \url{namth27494@gmail.com} \\ 
+Lớp: CNTT-TT2 04 K57 & Hệ đào tạo: Đại học \\ 
+\end{tabular}\\[0.3cm]
+\noindent Đồ án tốt nghiệp được thực hiện tại: Viện công nghệ thông tin \& truyền thông - Trường Đại học Bách Khoa Hà Nội.
 
+\noindent Thời gian làm ĐATN: Từ 01/2017 đến 05/2017.\\[0.4cm]
 \noindent 2. Mục đích nội dung của ĐATN\\
-\noindent Đề xuất ứng dụng chatbot bằng giọng nói Tiếng Việt trong điều khiển nhà thông minh.\\[0.4cm]
+\noindent \thesistitle{}.\\[0.4cm]
 \noindent 3. Các nhiệm vụ cụ thể của ĐATN
 \begin{itemize}
-	\item Xây dựng chatbot hiểu được yêu cầu từ người dùng bằng Tiếng Việt
-	\item Hỗ trợ giao tiếp bằng giọng nói
-	\item Cải thiện khả năng phân tích giọng nói thành văn bản
+	\item Xây dựng chatbot hiểu được yêu cầu từ người dùng bằng Tiếng Việt.
+	\item Hỗ trợ giao tiếp bằng giọng nói.
+	\item Cải thiện khả năng phân tích giọng nói thành văn bản.
 \end{itemize}
 
 \noindent 4. Lời cam đoan của sinh viên:\\
-Tôi - \textit{Trần Hoài Nam} - cam kết ĐATN là công trình nghiên cứu của bản thân tôi dưới sự hướng dẫn của \textit{ThS. Trịnh Thành Trung}.
+Tôi - \textit{Trần Hoài Nam} - cam kết ĐATN là công trình nghiên cứu của bản thân tôi dươi sự hướng dẫn của \textit{ThS. Trịnh Thành Trung}.
 
 \noindent Các kết quả nêu trong ĐATN là trung thực, không phải là sao chép hoàn văn của bất kỳ công trình nào khác.\\[0.5cm]
   
@@ -264,29 +267,50 @@ Cuối cùng, tôi xin gửi lời cảm ơn tới gia đình của tôi, và nh
 
 \noindent Họ và tên sinh viên: Trần Hoài Nam \\
 Lớp: CNTT-TT2 04 K57\\
-Tên đề tài: \\
+Tên đề tài: ``\thesistitle{}''.\\
 Giáo viên hướng dẫn: ThS. Trịnh Thành Trung.
 \begin{itemize}
 	\item Yêu cầu đồ án:
 		\begin{itemize}
-			\item Nghiên cứu xây dựng ứng dụng chatbot hỗ trợ điều khiển nhà thông minh bằng giọng nói Tiếng Việt
-			\item Cải thiện kết quả phân tích giọng nói thành văn bản
-			\item Xây dựng chatbot có thể phân tích yêu cầu từ phía người dùng
+			\item Cơ sở lý thuyết:
+			\begin{itemize}
+				\item Mô hình ngôn ngữ.
+				\item Xử lý ngôn ngữ tự nhiên.
+			\end{itemize}
+			\item Xây dựng ứng dụng:
+			\begin{itemize}
+				\item Nhận diện giọng nói bằng Google Speech Recognition API.
+				\item Cài đặt mô hình ngôn ngữ.
+				\item Xây dựng chatbot.
+			\end{itemize}
 		\end{itemize}
 	\item Kết quả đạt được:
 		\begin{itemize}
-			\item Xây dựng thành công thư viện chatbot phân tích yêu cầu từ phía người dùng và trả lời
-			\item Tích hợp thư viện chatbot vào ứng dụng điều khiển điện thoại bằng giọng nói
-			\item Cải thiện độ chính xác của nhận diện giọng nói sử dụng mô hình ngôn ngữ
+			\item Xây dựng và tích hợp thành công thư viện chatbot phân tích yêu cầu bằng giọng nói Tiếng Việt.
+			\item Cải thiện độ chính xác của nhận diện giọng nói sử dụng mô hình ngôn ngữ.
+			\item Báo cáo đồ án.
 		\end{itemize}
 	\item Công cụ sử dụng:
 		\begin{itemize}
-			
-			\item SRILM - công cụ hỗ trợ tính toán mô hình ngôn ngữ
-			\item Wit.ai - công cụ 
+			\item SRILM - công cụ hỗ trợ tính toán mô hình ngôn ngữ.
+			\item Visual Studio Code.
+			\item Android Studio.
+			\item Android SDK.
 		\end{itemize}
 	\item Đánh giá:
-	\item Ý nghĩa đồ án:
+	\begin{itemize}
+		\item Ưu điểm:
+		\begin{itemize}
+			\item Nhận diện yêu cầu bằng giọng nói Tiếng Việt với độ chính xác cao.
+			\item Thời gian phản hồi yêu cầu nhanh.
+		\end{itemize}
+		\item Nhược điểm:
+		\begin{itemize}
+			\item Mô hình hệ thống chưa thực sự tối ưu.
+			\item Tập dữ liệu học của chatbot còn hạn chế.
+		\end{itemize}
+	\end{itemize}
+	\item Ý nghĩa đồ án: Nắm bắt được các kĩ thuật xử lý ngôn ngữ tự nhiên trong quá trình nhận diện giọng nói và xây dựng chatbot, tạo ra một ứng dụng có ý nghĩa thực tiễn cao.
 \end{itemize}
 
 \newpage
@@ -299,14 +323,50 @@ Giáo viên hướng dẫn: ThS. Trịnh Thành Trung.
 
 \noindent Full name: Trần Hoài Nam \\
 Class: CNTT-TT2 04 K57\\
-Title of Thesis: \\
-Supervisor: ThS. Trịnh Thành Trung.
+Title of Thesis: ``Develop chatbot application controlling smartphone using Vietnamese''.\\
+Supervisor: Trịnh Thành Trung, MSc.
 \begin{itemize}
 	\item Requirements:
+	\begin{itemize}
+		\item Theoretical basis:		
+		\begin{itemize}
+			\item Language Model.
+			\item Natural Language Processing.
+		\end{itemize}
+		\item Implementation:		
+		\begin{itemize}
+			\item Vietnamese speech recognition using Google API
+			\item Implement language model.
+			\item Build chatbot application.
+		\end{itemize}
+	\end{itemize}
 	\item Achievements:
+	\begin{itemize}
+		\item Build and integrate chatbot library for analyzing Vietnamese voice request.
+		\item Improve speech recognition accuracy using language model.
+		\item Thesis report.
+	\end{itemize}
 	\item Tools:
+	\begin{itemize}
+		\item SRILM - language model tool.
+		\item Visual Studio Code.
+		\item Android Studio.
+		\item Android SDK.
+	\end{itemize}
 	\item Evaluations:
-	\item Meaning of Thesis:
+	\begin{itemize}
+		\item Pros:		
+		\begin{itemize}
+			\item Vietnamese speech recognition with high accuracy.
+			\item Response request in small amount of time.
+		\end{itemize}
+		\item Cons:
+		\begin{itemize}
+			\item The system model is not optimal enough.
+			\item Chatbot training data is not big and general enough.
+		\end{itemize}
+	\end{itemize}
+	\item Meaning of Thesis: Gained knowledge in using natural language processing technical during speech recognition and building chatbot application process, created an application with high practical significance.
 \end{itemize}
 
 \newpage
@@ -671,7 +731,7 @@ Ta cũng cần nói thêm về việc huấn luyện một mô hình ngôn ngữ
 	\end{tabular}
 \end{table}
 
-Dễ dàng thấy được câu ``tôi muốn bật đèn'' có xác suất xảy ra cao hơn so với câu ``tôi giúp ban đêm'', vì vậy ta sẽ lựa chọn câu ``tôi muốn bật đèn''. Tuy nhiên, tại sao tất cả xác suất của cấu ``tôi giúp ban đêm'' lại đều bằng 0, đơn giản là do trong câu đó có cụm từ chưa từng xuất hiện trong tập huấn luyện, dẫn đến xác suất của cụm từ đó bằng 0, và khi đem nhân với xác suất của các cụm từ khác dù khác 0 thì vẫn cho ra kết quả tích xác suất cuối cùng là bằng 0. Việc này sẽ gây ảnh hưởng nhiều đến việc chọn lựa do đó hoàn toàn có thể là một câu nói nhận diện chính xác từ giọng nói của người dùng nhưng do có chứa cụm từ không tồn tại trong tập huấn luyện mà xác suất bị bằng 0. Để giải quyết cho vấn đề này, chúng ta sử dụng các phương pháp \textit{``làm mịn''}.
+Dễ dàng thấy được câu ``tôi muốn bật đèn'' có xác suất xảy ra cao hơn so với câu ``tôi giúp ban đêm'', vì vậy ta sẽ lựa chọn câu ``tôi muốn bật đèn''. Tuy nhiên, tại sao tất cả xác suất của câu ``tôi giúp ban đêm'' lại đều bằng 0, đơn giản là do trong câu đó có cụm từ chưa từng xuất hiện trong tập huấn luyện, dẫn đến xác suất của cụm từ đó bằng 0, và khi đem nhân với xác suất của các cụm từ khác dù khác 0 thì vẫn cho ra kết quả tích xác suất cuối cùng là bằng 0. Việc này sẽ gây ảnh hưởng nhiều đến việc chọn lựa do đó hoàn toàn có thể là một câu nói nhận diện chính xác từ giọng nói của người dùng nhưng do có chứa cụm từ không tồn tại trong tập huấn luyện mà xác suất bị bằng 0. Để giải quyết cho vấn đề này, chúng ta sử dụng các phương pháp \textit{``làm mịn''}.
 
 \subsection{Các phương pháp làm mịn}
 
@@ -690,7 +750,7 @@ Nguyên lý chung của các phương pháp ``làm mịn'' là:
 	\item \textit{Nội suy} (Interpolation): tính toán xác suất của tất cả các cụm n-gram dựa vào xác suất của các cụm n-gram ngắn hơn
 \end{itemize}
 
-Mỗi phương pháp làm mịn đều mang lại những lợi ích khác nhau, tuy nhiên việc đánh giá phương pháp nào phù hợp với hệ thống sẽ được trình bày ở phần Thực nghiệm.
+Mỗi phương pháp làm mịn đều mang lại những lợi ích khác nhau, tuy nhiên việc đánh giá phương pháp nào phù hợp với hệ thống sẽ được trình bày ở phần \ref{chap:setup}.
 
 \section{Xử lý ngôn ngữ tự nhiên}
 
@@ -916,7 +976,7 @@ Hệ thống sẽ sử dụng SRILM làm công cụ huấn luyện mô hình ng�
 	\item Một tập hợp các chương trình thực hiện nhiệm vụ xây dựng mô hình ngôn ngữ, huấn luyện và thử nghiệm mô hình ngôn ngữ trên dữ liệu …
 \end{itemize}
 
-Ở đây, chúng tôi sử dụng duy nhất một chức năng của SRILM là huấn luyện và xây dựng một mô hình ngôn ngữ (sẽ lưu lại dưới dạng tệp .lm) để phục vụ cho việc tính xác suất về sau. Đó là chức năng “ngram-count”. “ngram-count” nhận thông tin đầu vào là một file dạng text chứa các câu muốn huấn luyện và thống kê tần số xuất hiện của các cụm N-gram. Kết quả của việc thống kê được ghi lại vào tệp .count hoặc được sử dụng với các lựa chọn về phương pháp “làm mịn” để xây dựng nên một mô hình ngôn ngữ được ghi lại vào tệp .lm. Mô hình ngôn ngữ này sau đó sẽ được sử dụng để tính xác suất cho các câu trong tập kiểm thử và chọn lựa ra câu có xác suất lớn nhất.
+Ở đây, chúng tôi sử dụng duy nhất một chức năng của SRILM là huấn luyện và xây dựng một mô hình ngôn ngữ (sẽ lưu lại dưới dạng tệp .lm) để phục vụ cho việc tính xác suất về sau. Đó là chức năng \texttt{ngram-count}. Câu lệnh \texttt{ngram-count} nhận thông tin đầu vào là một file dạng text chứa các câu muốn huấn luyện và thống kê tần số xuất hiện của các cụm N-gram. Kết quả của việc thống kê được ghi lại vào tệp .count hoặc được sử dụng với các lựa chọn về phương pháp “làm mịn” để xây dựng nên một mô hình ngôn ngữ được ghi lại vào tệp .lm. Mô hình ngôn ngữ này sau đó sẽ được sử dụng để tính xác suất cho các câu trong tập kiểm thử và chọn lựa ra câu có xác suất lớn nhất.
 
 Tệp mô hình ngôn ngữ đã được huấn luyện có dạng như sau:
 \begin{lstlisting}[frame=lines, basicstyle=\footnotesize\ttfamily, numbers=left, numberstyle=\tiny\color{black},caption= {Cấu trúc một mô hình ngôn ngữ}, backgroundcolor=\color{background}]
@@ -999,7 +1059,7 @@ Với những câu chưa từng xuất hiện hoặc còn nhập nhằng trong v
 \end{figure}
 
 % Chapter 7
-\chapter{Cài đặt và đánh giá}
+\chapter{Cài đặt và đánh giá} \label{chap:setup}
 
 \section{Đánh giá độ chính xác của mô hình ngôn ngữ}
 
@@ -1034,7 +1094,7 @@ Trong đó \textit{words} là số các từ trong câu, \textit{OOVs} là số 
 \begin{table}[h]
 	\caption{Kết quả đánh giá tập kiểm thử của các phương pháp làm mịn}
 	\centering
-	\begin{tabular}{ | C | C | }
+	\begin{tabular}{ | c | c | }
 	\hline
 	Phương pháp làm mịn & Độ chính xác \\
 	\hline
