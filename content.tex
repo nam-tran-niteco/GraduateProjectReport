@@ -554,7 +554,7 @@ Có rất nhiều những nền tảng hỗ trợ cho việc này, trên nhiều
 
 	\begin{figure}[H]
 	  \centering
-	    \includegraphics[width=7cm]{Pics/Chap2/chatty-prople.jpg}
+	    \includegraphics[width=5cm]{Pics/Chap2/chatty-prople.jpg}
 	  \caption{Một ví dụ trong gợi ý sản phẩm của ChattyPeople bot.}
 	\end{figure}
 
@@ -851,6 +851,52 @@ Phương pháp này hoàn toàn có thể ứng dụng trong bài toán chọn k
 
 \subsubsection{Mạng nơ-ron nhân tạo}
 
+\textbf{Mạng nơ-ron nhân tạo} hay thường gọi ngắn gọn là mạng nơ-ron là một mô hình toán học hay mô hình tính toán được xây dựng dựa trên các mạng nơ-ron sinh học. Nó gồm có một nhóm các nơ-ron nhân tạo (nút) nối với nhau, và xử lý thông tin bằng cách truyền theo các kết nối và tính giá trị mới tại các nút (cách tiếp cận connectionism đối với tính toán). Trong nhiều trường hợp, mạng nơ-ron nhân tạo là một hệ thống thích ứng (adaptive system) tự thay đổi cấu trúc của mình dựa trên các thông tin bên ngoài hay bên trong chảy qua mạng trong quá trình học. Hình \ref{fig:ann-model} thể hiện kiến trúc tổng quát của một mạng nơ-ron nhân tạo:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=6cm]{Pics/Chap5/ann1.png}
+	\caption{Kiến trúc tổng quát của một mạng nơ-ron nhân tạo.}
+	\label{fig:ann-model}
+\end{figure}
+
+Trong đó, \textbf{Processing Elements} (PE) hay còn gọi là Neuron là các điểm đảm nhân nhiệm vụ nhận các dữ liệu vào (inputs) xử lý chúng và cho ra một kết quả (output) duy nhất. Kết quả xử lý của một Neuron có thể làm Input cho các Neuron khác. Một mạng nơ-ron nhân tạo ba thành phần chính:
+
+\begin{itemize}
+	\item Tầng đầu vào (input layer): một mạng nơ-ron sẽ chỉ có một tầng đầu vào. Dữ liệu cung cấp cho tầng đầu phản ánh tính chất của dữ liệu đầu vào mà chúng ta muốn phân loại hay tính toán, ví dụ như khi áp dụng mạng nơ-ron trong nhận diện câu nói hợp lí trong tập kết quả trả về từ phía Google API, dữ liệu đầu vào sẽ là một tập các nơ-ron, với giá trị mỗi nơ-ron là giá trị TF-IDF của các từ xuất hiện trong mỗi câu nói.
+	\item Tầng ẩn (hidden layer): một mạng nơ-ron nhân tạo có thể có một hoặc nhiều, thậm chí là không có tầng ẩn. Số lượng nơ-ron của các tầng ẩn cũng không cố định, tùy vào bài toán và cách chọn của mỗi người.
+	\item Tầng đầu ra (output layer): là tầng trả về kết quả tính toán sau khi đã duyệt qua toàn bộ mạng nơ-ron. Giá trị tại tầng đầu ra sẽ được dùng để phân tích và chọn ra kết quả hợp lý với nhu cầu của bài toán đặt ra.
+\end{itemize}
+
+Như hình \ref{fig:ann-model} ta thấy giữa có sự liên kết giữa các nơ-ron của các tầng với nhau, mỗi một liên kết sẽ có một \textbf{Trọng số liên kết} (kí hiệu là $w$) đặc trưng, đây chính là thành phần cần điều chỉnh trong quá trình học để tạo ra một mạng nơ-ron mạnh, thể hiện được mức độ quan trọng của đầu vào (input) đối với quá trình xử lý thông tin (quá trình chuyển đổi dữ liệu từ tầng này sang tầng khác). Ta có quá trình xử lý thông tin của một mạng nơ-ron nhân tạo:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=6cm]{Pics/Chap5/ann-infoprocess.png}
+	\caption{Quá trình xử lý thông tin của một mạng nơ-ron.}
+	\label{fig:ann-infoprocess}
+\end{figure}
+
+Như hình \ref{fig:ann-infoprocess} đã thể hiện, tại mỗi một nơ-ron trong mạng sẽ có một đầu vào và một đầu ra duy nhất. Để tính toán đầu vào cho một nơ-ron cần dùng một hàm tổng, và để tính toán đầu ra, ta sẽ sử dụng một hàm chuyển đổi. Cụ thể như sau:
+
+\begin{itemize}
+	\item Hàm tổng sẽ tính tổng tất cả các input được đưa vào mỗi nơ-ron theo trọng số liên kết. Hàm tổng (Y) của một nơ-ron đối với n input được tính bằng công thức:
+	\[Y = \sum_{\substack{i=1}}^{\substack{n}}{X_iW_i}\]
+	Kết quả đầu ra của hàm tổng tại một nơ-ron có thể được sử dụng làm đầu vào cho các nơ-ron tiếp theo. Tuy nhiên kết quả đầu ra đó có thể rất lớn, vì vậy cần một hàm chuẩn hóa kết quả đó.
+	\item Hàm chuẩn hóa có thể đơn giản là một ngưỡng (threshold value) được đặt ra để giới hạn kết quả của hàm tổng hoặc một hàm như hàm Sigmoid (kết quả của hàm này nằm trong khoảng [0, 1]). Công thức của hàm Sigmoid như sau:
+	\[Y_T = \frac{1}{1 + e^{-Y}}\]
+\end{itemize}
+
+Quá trình học của một mạng nơ-ron nhân tạo được học theo 2 kỹ thuật cơ bản là học có giám sát và học không giám sát. Trong đó:
+
+\begin{itemize}
+	\item \textit{Học giám sát}: Quá trình học được lặp lại cho đến kết quả (output) của mạng nơ-ron đạt được giá trị mong muốn đã biết. Điển hình cho kỹ thuật này là mạng nơ-ron lan truyền ngược (Backpropagation).
+ 	\item \textit{Học không giám sát}: Không sử dụng tri thức bên ngoài trong quá trình học (Learning), nên còn gọi là tự tổ chức (Self – Organizing).
+\end{itemize}
+\textbf{Áp dụng mạng nơ-ron trong bài toán chọn lọc\\[0.3cm]}
+Sử dụng tập dữ liệu huấn luyện cho chatbot và những kết quả phân tích bằng Google Speech Recognition API làm dữ liệu học cho mạng nơ-ron nhân tạo, trong đó kết quả đầu ra là xác định dữ liệu đầu vào có phải là một câu nói hợp lệ hay không. Tính TF-IDF cho toàn bộ các từ trong các câu trong tập học và sử dụng chúng là đầu vào cho mạng nơ-ron nhân tạo. Huấn luyện và sử dụng mạng nơ-ron đó làm mô hình đánh giá các câu nói trong tương lai và chọn ra câu nói hợp lý.
+
+Tuy nhiên, phương pháp này có sự khó khăn trong việc xây dựng mô hình mạng cũng như cần một lượng xử lý cao, vì vậy khó áp dụng trong đề tài nghiên cứu này.
 \section{Những ứng dụng điều khiển bằng giọng nói Tiếng Việt đã có}
 
 \subsection{Ứng dụng VAV}
@@ -861,7 +907,6 @@ Phương pháp này hoàn toàn có thể ứng dụng trong bài toán chọn k
 	\item Lắng nghe các câu lệnh bằng giọng nói Tiếng Việt với kết quả nhận diện tương đối chính xác (vẫn mắc phải những vấn đề thuần túy của Google Speech Recognition API)
 	\item Số lượng tính năng điều khiển điện thoại lớn, đa dạng như:
 	\begin{itemize}
-		\item Tính toán phép tính
 		\item Đặt lịch hẹn, báo thức
 		\item Tìm kiếm thông tin như thời tiết ở các vùng, các nhà hàng ở gần
 		\item Các chức năng liên quan đến gọi điện, gửi tin nhắn
@@ -873,14 +918,27 @@ Tuy nhiên nhược điểm của VAV là không thể nói liên tục mà ph�
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=6cm]{Pics/Chap5/vav.png}
+	\includegraphics[width=4cm, height=6cm]{Pics/Chap5/vav.png}
 	\caption{Màn hình chính của VAV.}
 \end{figure}
 
 \subsection{Ứng dụng VietCommand}
 
-VietCommand 
+VietCommand đã được ra mắt vào tháng 8/2014 tại hội thảo về ứng dụng cho di động do Viettel tổ chức. VietCommand là sản phẩm do Ngô Thiều Quang - sinh viên tốt nghiệp Đại học Bách Khoa Hà Nội. VietCommand được ra đời dựa trên những thành tựu do Google Now, Siri và Cortana đã đạt được trong việc điều khiển các thiết bị di động, tuy nhiên lại chưa hỗ trợ tốt cho Tiếng Việt. VietCommand tập trung đến những tính năng mà người dùng hay muốn thực hiện nhất trên thiết bị di động của mình như đặt báo thức, tra bản đồ hay mở trình duyệt \ldots Một số tính năng nổi bật của VietCommand có thể kể đến như:
 
+\begin{itemize}
+	\item Mở ứng dụng
+	\item Tìm kiếm thông tin, tìm đường
+	\item Đặt báo thức
+\end{itemize}
+
+Tuy nhiên, một nhược điểm mà VietCommand gặp phải là người dùng phải nói đúng theo một khuôn mẫu nhất định, và độ chính xác của nhận diện giọng nói phụ thuộc hoàn toàn vào Google API, hoàn toàn không có khả năng xử lý các tình huống lỗi phát sinh.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4cm]{Pics/Chap5/vietcommand.jpg}
+	\caption{Màn hình chính của VietCommand.}
+\end{figure}
 % Chapter 6
 \chapter{Kết quả đạt được}
 
