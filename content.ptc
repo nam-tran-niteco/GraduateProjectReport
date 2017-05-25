@@ -44,24 +44,24 @@
 \contentsline {section}{\numberline {5.2}Nh\IeC {\~\uhorn }ng \IeC {\'\uhorn }ng d\IeC {\d u}ng \IeC {\dj }i\IeC {\`\ecircumflex }u khi\IeC {\h \ecircumflex }n b\IeC {\`\abreve }ng gi\IeC {\d o}ng n\IeC {\'o}i Ti\IeC {\'\ecircumflex }ng Vi\IeC {\d \ecircumflex }t \IeC {\dj }\IeC {\~a} c\IeC {\'o}}{31}{section.5.2}
 \contentsline {subsection}{\numberline {5.2.1}\IeC {\'\UHORN }ng d\IeC {\d u}ng VAV}{31}{subsection.5.2.1}
 \contentsline {subsection}{\numberline {5.2.2}\IeC {\'\UHORN }ng d\IeC {\d u}ng VietCommand}{32}{subsection.5.2.2}
-\contentsline {chapter}{\numberline {6}K\IeC {\'\ecircumflex }t qu\IeC {\h a} \IeC {\dj }\IeC {\d a}t \IeC {\dj }\IeC {\uhorn }\IeC {\d \ohorn }c}{33}{chapter.6}
-\contentsline {section}{\numberline {6.1}X\IeC {\^a}y d\IeC {\d \uhorn }ng \IeC {\'\uhorn }ng d\IeC {\d u}ng}{33}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Server trung gian}{33}{subsection.6.1.1}
-\contentsline {subsubsection}{\numberline {6.1.1.1}V\IeC {\`a}i n\IeC {\'e}t v\IeC {\`\ecircumflex } NodeJS}{33}{subsubsection.6.1.1.1}
-\contentsline {subsubsection}{\numberline {6.1.1.2}C\IeC {\'\acircumflex }u tr\IeC {\'u}c server trung gian}{34}{subsubsection.6.1.1.2}
-\contentsline {subsection}{\numberline {6.1.2}X\IeC {\^a}y d\IeC {\d \uhorn }ng th\IeC {\uhorn } vi\IeC {\d \ecircumflex }n}{36}{subsection.6.1.2}
-\contentsline {subsection}{\numberline {6.1.3}T\IeC {\'\i }ch h\IeC {\d \ohorn }p th\IeC {\uhorn } vi\IeC {\d \ecircumflex }n}{38}{subsection.6.1.3}
-\contentsline {section}{\numberline {6.2}C\IeC {\`a}i \IeC {\dj }\IeC {\d \abreve }t thu\IeC {\d \acircumflex }t to\IeC {\'a}n ch\IeC {\d o}n l\IeC {\d o}c k\IeC {\'\ecircumflex }t qu\IeC {\h a}}{39}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}C\IeC {\^o}ng c\IeC {\d u} SRILM}{39}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}T\IeC {\'\i }nh x\IeC {\'a}c su\IeC {\'\acircumflex }t}{40}{subsection.6.2.2}
+\contentsline {chapter}{\numberline {6}K\IeC {\'\ecircumflex }t qu\IeC {\h a} \IeC {\dj }\IeC {\d a}t \IeC {\dj }\IeC {\uhorn }\IeC {\d \ohorn }c}{34}{chapter.6}
+\contentsline {section}{\numberline {6.1}X\IeC {\^a}y d\IeC {\d \uhorn }ng \IeC {\'\uhorn }ng d\IeC {\d u}ng}{34}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Server trung gian}{34}{subsection.6.1.1}
+\contentsline {subsubsection}{\numberline {6.1.1.1}V\IeC {\`a}i n\IeC {\'e}t v\IeC {\`\ecircumflex } NodeJS}{34}{subsubsection.6.1.1.1}
+\contentsline {subsubsection}{\numberline {6.1.1.2}C\IeC {\'\acircumflex }u tr\IeC {\'u}c server trung gian}{35}{subsubsection.6.1.1.2}
+\contentsline {subsection}{\numberline {6.1.2}X\IeC {\^a}y d\IeC {\d \uhorn }ng th\IeC {\uhorn } vi\IeC {\d \ecircumflex }n}{37}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}T\IeC {\'\i }ch h\IeC {\d \ohorn }p th\IeC {\uhorn } vi\IeC {\d \ecircumflex }n}{39}{subsection.6.1.3}
+\contentsline {section}{\numberline {6.2}C\IeC {\`a}i \IeC {\dj }\IeC {\d \abreve }t thu\IeC {\d \acircumflex }t to\IeC {\'a}n ch\IeC {\d o}n l\IeC {\d o}c k\IeC {\'\ecircumflex }t qu\IeC {\h a}}{40}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}C\IeC {\^o}ng c\IeC {\d u} SRILM}{40}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}T\IeC {\'\i }nh x\IeC {\'a}c su\IeC {\'\acircumflex }t}{41}{subsection.6.2.2}
 \contentsline {section}{\numberline {6.3}X\IeC {\^a}y d\IeC {\d \uhorn }ng ki\IeC {\'\ecircumflex }n th\IeC {\'\uhorn }c cho chatbot}{42}{section.6.3}
 \contentsline {subsection}{\numberline {6.3.1}V\IeC {\`a}i n\IeC {\'e}t v\IeC {\`\ecircumflex } Wit.ai}{42}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}S\IeC {\h \uhorn } d\IeC {\d u}ng Wit.ai}{42}{subsection.6.3.2}
-\contentsline {chapter}{\numberline {7}C\IeC {\`a}i \IeC {\dj }\IeC {\d \abreve }t v\IeC {\`a} \IeC {\dj }\IeC {\'a}nh gi\IeC {\'a}}{45}{chapter.7}
-\contentsline {section}{\numberline {7.1}\IeC {\DJ }\IeC {\'a}nh gi\IeC {\'a} \IeC {\dj }\IeC {\d \ocircumflex } ch\IeC {\'\i }nh x\IeC {\'a}c c\IeC {\h u}a m\IeC {\^o} h\IeC {\`\i }nh ng\IeC {\^o}n ng\IeC {\~\uhorn }}{45}{section.7.1}
-\contentsline {section}{\numberline {7.2}\IeC {\DJ }\IeC {\'a}nh gi\IeC {\'a} h\IeC {\d \ecircumflex } th\IeC {\'\ocircumflex }ng}{46}{section.7.2}
+\contentsline {subsection}{\numberline {6.3.2}S\IeC {\h \uhorn } d\IeC {\d u}ng Wit.ai}{44}{subsection.6.3.2}
+\contentsline {chapter}{\numberline {7}C\IeC {\`a}i \IeC {\dj }\IeC {\d \abreve }t v\IeC {\`a} \IeC {\dj }\IeC {\'a}nh gi\IeC {\'a}}{46}{chapter.7}
+\contentsline {section}{\numberline {7.1}\IeC {\DJ }\IeC {\'a}nh gi\IeC {\'a} \IeC {\dj }\IeC {\d \ocircumflex } ch\IeC {\'\i }nh x\IeC {\'a}c c\IeC {\h u}a m\IeC {\^o} h\IeC {\`\i }nh ng\IeC {\^o}n ng\IeC {\~\uhorn }}{46}{section.7.1}
+\contentsline {section}{\numberline {7.2}\IeC {\DJ }\IeC {\'a}nh gi\IeC {\'a} h\IeC {\d \ecircumflex } th\IeC {\'\ocircumflex }ng}{47}{section.7.2}
 \ttl@stoptoc {parts@2}
 \vspace \bigskipamount 
-\contentsline {chapter}{K\IeC {\'\ecircumflex }t lu\IeC {\d \acircumflex }n}{47}{chapter*.23}
-\contentsline {chapter}{T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{49}{chapter*.24}
+\contentsline {chapter}{K\IeC {\'\ecircumflex }t lu\IeC {\d \acircumflex }n}{48}{chapter*.23}
+\contentsline {chapter}{T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{50}{chapter*.24}
 \contentsfinish 

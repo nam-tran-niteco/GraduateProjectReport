@@ -23,7 +23,7 @@
 \definecolor{greencomments}{rgb}{0,0.5,0}
 \definecolor{redstrings}{rgb}{0.9,0,0}
 
-\usepackage{listingsutf8}
+\usepackage{listings}
 \lstset{language=[Sharp]C,
 showspaces=false,
 showtabs=false,
@@ -150,6 +150,7 @@ basicstyle=\ttfamily
 %Replaceable project name
 \newcommand{\project}{VVC}
 \newcommand{\thesistitle}{Phát triển ứng dụng chatbot với mục tiêu nhận và xử lý lệnh}
+\newcommand{\app}{Chatbot với mục tiêu nhận và xử lý yêu cầu}
 
 % Glossaries
 % \usepackage[toc]{glossaries}
@@ -412,7 +413,7 @@ Supervisor: Trịnh Thành Trung, MSc.
 \addcontentsline{toc}{chapter}{Lời nói đầu}
 Tại thời điểm hiện tại, công nghệ thông tin đang phát triển và hiện hữu trong đời sống của mỗi người, cùng với đó là sự tiến bộ vượt bậc trong lĩnh vực trí tuệ nhân tạo, giúp tạo ra những sản phẩm công nghệ có khả năng xử lý gần như con người tại một khía cạnh cụ thể, để thay thế và giải quyết một phần nhu cầu từ phía người sử dụng. Điện thoại thông minh (smart phone) ra đời đã và đang là sản phẩm công nghệ không thể thiếu với mỗi người trong cuộc sống hiện đại. Tuy nhiên một điểm bất lợi cố hữu của điện thoại thông minh là việc nhập nội dung bằng tay chậm do bàn phím ảo nhỏ, cũng như muốn thực hiện các chức năng cần thao tác nhiều, tập trung vào màn hình, gây ra những khó khăn trong việc sử dụng, đặc biệt là đối với những người lái xe hơi cần sự tập trung mà vẫn muốn sử dụng điện thoại thông minh để giải quyết công việc.
 
-Trên thế giới hiện nay, những ông lớn như Google hay Apple đã cho ra đời rất nhiều sản phẩm liên quan đến các trợ lý ảo để ra lệnh bằng giọng nói và điều khiển điện thoại như Google Now (Google Assistant) hay Siri. Những phần mềm này đều được tích hợp trong các hệ điều hành của các điện thoại thông minh thế hệ mới, tuy nhiên vẫn đang chỉ hỗ trợ Tiếng Anh và chưa hiểu được yêu cầu bằng Tiếng Việt. Vì vậy, trong đồ án tốt nghiệp này, em xin đề xuất giải pháp cho vấn đề xây dựng chatbot điều khiển điện thoại thông minh bằng giọng nói Tiếng Việt.
+Trên thế giới hiện nay, những ông lớn như Google hay Apple đã cho ra đời rất nhiều sản phẩm liên quan đến các trợ lý ảo để ra lệnh bằng giọng nói và điều khiển điện thoại như Google Now (Google Assistant) hay Siri. Những phần mềm này đều được tích hợp trong các hệ điều hành của các điện thoại thông minh thế hệ mới, tuy nhiên vẫn đang chỉ hỗ trợ Tiếng Anh và chưa hiểu được yêu cầu bằng Tiếng Việt. Vì vậy, trong đồ án tốt nghiệp này, em xin đề xuất giải pháp cho vấn đề xây dựng chatbot với mục tiêu nhận và xử lý yêu cầu.
 
 Đồ án tốt nghiệp được chia thành 2 phần chính. Phần một là đặt vấn đề của đồ án và định hướng giải pháp cho vấn đề và phần hai sẽ là những kết quả nghiên cứu đã đạt được trong quá trình giải quyết vấn đề của đồ án.
 
@@ -431,7 +432,7 @@ Trên thế giới hiện nay, những ông lớn như Google hay Apple đã cho
 \chapter{Đặt vấn đề}
 \section{Tổng quan về chatbot và các hệ thống trợ lí ảo}
 \subsection{Chatbot}
-Theo Wikipedia định nghĩa, ``một \textit{chatbot} (hay có thể gọi là talkbot, chatterbot hay chatterbox ...) là một chương trình máy tính mà tạo ra những cuộc hội thoại thông qua các phương thức nghe và nhập văn bản''\cite{chatbot-wiki}. Một chatbot thường được thiết kế và phát triển để có thể ứng xử và cảm giác như một người thật trong những tình huống cụ thể như tin nhắn trả lời tự động hay hệ thống cung cấp thông tin cần thiết cho người dùng. Những công việc này sẽ luôn cần một hoặc nhiều người trực tổng đài để có thể phục vụ, giải đáp các thắc mắc từ phía người dùng nếu như không có các hệ thống chatbot trả lời tự động. Hay đơn giản là khi một người muốn giải trí và cần một ai đó để trò chuyện, không những thế người đó còn cần phải hiểu mình, những hệ thống chatbot có thể giúp giải quyết những vấn đề như vậy.
+Một \textit{chatbot} (hay có thể gọi là talkbot, chatterbot hay chatterbox ...) là một chương trình máy tính mà tạo ra những cuộc hội thoại thông qua các phương thức nghe và nhập văn bản\cite{chatbot-wiki}. Một chatbot thường được thiết kế và phát triển để có thể ứng xử và cảm giác như một người thật trong những tình huống cụ thể như tin nhắn trả lời tự động hay hệ thống cung cấp thông tin cần thiết cho người dùng. Những công việc này sẽ luôn cần một hoặc nhiều người trực tổng đài để có thể phục vụ, giải đáp các thắc mắc từ phía người dùng nếu như không có các hệ thống chatbot trả lời tự động. Hay đơn giản là khi một người muốn giải trí và cần một ai đó để trò chuyện, không những thế người đó còn cần phải hiểu mình, những hệ thống chatbot có thể giúp giải quyết những vấn đề như vậy.
 
 Từ những năm 50 của thế kỉ trước, chatbot đã được nhen nhóm và có những bước đi đầu tiên. Vào năm 1950, Alan Turing đã xuất bản quyển sách \textit{Computing Machinery and Intelligence} mà sau này được gọi là ``bài kiểm tra Turing'' và được coi như là một tiêu chuẩn để đo sự thông minh của một chương trình máy tính. Tiêu chuẩn này phụ thuộc vào khả năng của chương trình máy tính đó khi đóng giả là một con người và tham gia vào một cuộc hội thoại thời gian thực sao cho đủ tốt để những giám khảo không thể phân biệt được đây là cuộc trò chuyện giữa người và máy tính. Bài kiểm tra Turing đã được ứng dụng rõ ràng ở trong \textit{ELIZA} - một chương trình của Joseph Weizenbaum được phát hành năm 1966. Ứng dụng có khả năng đánh lừa người dùng và làm cho họ không thể phân biệt được là đang nói chuyện với máy tính chứ không phải con người thật.
 
@@ -628,10 +629,11 @@ Với những yêu cầu trên, trong chương này sẽ nói rõ về mô hình
 \section{Mô hình hệ thống}
 Đồ án đề xuất mô hình hệ thống để giải quyết vấn đề đã được nêu ở phần trên:
 
-\begin{figure}[H] \label{fig:VVC}
+\begin{figure}[H]
 	\centering
 		\includegraphics[width=12cm]{Pics/Chap2/VVC.jpg}
 	\caption{Mô hình hệ thống.}
+	\label{fig:VVC}
 \end{figure}
 
 \noindent Trong đó có các thành phần chính sau:
@@ -887,7 +889,7 @@ Phương pháp này hoàn toàn có thể ứng dụng trong bài toán chọn k
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=6cm]{Pics/Chap5/ann1.png}
+	\includegraphics[width=9cm]{Pics/Chap5/ann1.png}
 	\caption{Kiến trúc tổng quát của một mạng nơ-ron nhân tạo.}
 	\label{fig:ann-model}
 \end{figure}
@@ -904,7 +906,7 @@ Như hình \ref{fig:ann-model} ta thấy giữa có sự liên kết giữa các
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=6cm]{Pics/Chap5/ann-infoprocess.png}
+	\includegraphics[width=9cm]{Pics/Chap5/ann-neural.png}
 	\caption{Quá trình xử lý thông tin của một mạng nơ-ron.}
 	\label{fig:ann-infoprocess}
 \end{figure}
@@ -950,7 +952,7 @@ Tuy nhiên nhược điểm của VAV là không thể nói liên tục mà ph�
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=4cm, height=6cm]{Pics/Chap5/vav.png}
+	\includegraphics[width=6cm]{Pics/Chap5/vav.png}
 	\caption{Màn hình chính của VAV.}
 \end{figure}
 
@@ -968,7 +970,7 @@ Tuy nhiên, một nhược điểm mà VietCommand gặp phải là người dù
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=4cm]{Pics/Chap5/vietcommand.jpg}
+	\includegraphics[width=6cm]{Pics/Chap5/vietcommand.jpg}
 	\caption{Màn hình chính của VietCommand.}
 \end{figure}
 % Chapter 6
@@ -1099,7 +1101,7 @@ Trong biểu đồ \ref{fig:library-model} đã chỉ ra rõ những thành ph�
 	\end{itemize}
 \end{itemize}
 
-Với mô hình trên, người dùng sẽ không cần quan tâm đến việc cài đặt của thư viện mà chỉ cần kế thừa và ghi đè lại các phương thức sẵn có để sử dụng dịch vụ. Phần tiếp theo sẽ nói rõ hơn về cách tích hợp thư viện trong ứng dụng ``Chatbot điều khiển điện thoại bằng Tiếng Việt''.
+Với mô hình trên, người dùng sẽ không cần quan tâm đến việc cài đặt của thư viện mà chỉ cần kế thừa và ghi đè lại các phương thức sẵn có để sử dụng dịch vụ. Phần tiếp theo sẽ nói rõ hơn về cách tích hợp thư viện trong ứng dụng ``Chatbot với mục tiêu nhận và xử lý yêu cầu''.
 
 \subsection{Tích hợp thư viện}
 
@@ -1231,10 +1233,23 @@ Các bước thực hiện như sau:
 
 \subsection{Vài nét về Wit.ai}
 
+\textbf{Wit.ai} đã được thành lập vào năm 2013 với mục đích hỗ trợ cho các lập trình viên trong việc xây dựng giao diện giọng nói cho các ứng dụng điện thoại, các thiết bị đeo tay và những thiết bị trong mạng lưới IoT (Internet of Things). Vào năm 2015, Facebook đã mua lại Wit.ai để phát triển cho các tính năng về giọng nói và giúp cho cộng đồng những lập trình viên của Facebook\cite{facebook-wit}.
+
+Wit.ai khiến cho bản thân khác biệt với các framework hỗ trợ xây dựng chatbot khác ở khả năng hỗ trợ rất nhiều ngôn ngữ khác nhau, bên cạnh đó là hệ thống những đối tượng được xây dựng sẵn (built-in) giúp cho việc nhận diện và phân tích câu nói của người dùng trở nên chính xác hơn rất nhiều. Tính đến tháng 4/2017, Wit.ai đã hỗ trợ cho hơn 100,000 lập trình viên trên toàn thế giới, một con số rất ấn tượng với một sản phẩm chỉ sau 3 năm kể từ thời điểm được chính thức đưa vào sử dụng thực tế.
+
+Mọi điều chỉnh và tương tác với Wit.ai đều được thông qua giao diện rất dễ sử dụng với các mục chính:
+
+\begin{itemize}
+	\item \textit{Understanding}: người dùng sẽ tự định nghĩa và phân tích những câu nói cần Wit học dựa vào các built-in entity của Wit.ai có sẵn hoặc tự tạo ra những Entity của riêng mình. Những Entity được dùng để Wit làm mục tiêu đánh giá và phân loại cho người dùng đối với những câu nói khác trong tương lai.
+	\item \textit{Inbox}: những câu nói được gửi lên Wit nhưng Wit chưa có khả năng phân tích hoặc mới chỉ đưa ra dự đoán mà chưa chắc chắn sẽ được hiển thị trong mục này. Người dùng sẽ tự mình phân loại những câu nói đó tương tự như trong phần Understanding.
+	\item \textit{Story}: những câu trả lời của chatbot tương ứng với những yêu cầu, câu nói của người dùng trong các trường hợp cụ thể sẽ được cài đặt tại mục này.
+	\item \textit{Settings}: những cài đặt liên quan đến ứng dụng của người dùng, trong đó người dùng có thể trích rút toàn bộ dữ liệu đã huấn luyện cho chatbot thành một file nén dạng \texttt{.rar} để có thể nạp vào cho các ứng dụng khác của Wit mà không cần phải làm bằng tay nữa.
+\end{itemize}
+
 \begin{figure}[H] \label{fig:mainboard-wit}
 	\centering
-	\includegraphics[width=10cm]{Pics/Chap6/wit-mainboard.JPG}
-	\caption{Màn hình chính của Wit.ai.}
+	\includegraphics[width=13cm]{Pics/Chap6/wit-mainboard.JPG}
+	\caption{Giao diện chính của Wit.ai.}
 \end{figure}
 
 \subsection{Sử dụng Wit.ai}
@@ -1323,11 +1338,19 @@ Trong đó \textit{words} là số các từ trong câu, \textit{OOVs} là số 
 	\end{tabular}
 \end{table}
 
-Qua đó ta thấy được việc ưu tiên và chuyển xác suất quá nhiều cho các cụm N-gram chưa từng xuất hiện làm giảm khả năng loại bỏ đi những cụm từ không cần thiết và không xuất hiện trong tập huấn luyện. Tuy nhiên việc áp dụng mô hình ngôn ngữ cũng đã đánh giá được phần nào những câu nói phù hợp trong tập dữ liệu trả về nhưng lại không được đánh giá cao do có sự nhập nhằng trong ngữ điệu và âm lượng của người dùng. 
+Qua đó ta thấy được việc ưu tiên và chuyển xác suất quá nhiều cho các cụm N-gram chưa từng xuất hiện làm giảm khả năng loại bỏ đi những cụm từ không cần thiết và không xuất hiện trong tập huấn luyện. Tuy nhiên việc áp dụng mô hình ngôn ngữ cũng đã đánh giá được phần nào những câu nói phù hợp trong tập dữ liệu trả về mà không bị phụ thuộc vào sự nhập nhằng do âm thanh gây ra. 
 
 \section{Đánh giá hệ thống}
 
-Hệ thống được chạy trên thiết bị Android 6.0 với tốc độ trả lời yêu cầu người dùng trung bình là 1268ms, là tốc độ có thể chấp nhận được với một hệ thống điều khiển bằng giọng nói.
+Hệ thống được cài đặt trên thiết bị Samsung hệ điều hành Android 6.0 với dung lượng chỉ 2.8 Mb, rất nhẹ đối với một ứng dụng thông thường do không tập trung nhiều vào hình ảnh mà chỉ tập trung vào chức năng chính của ứng dụng là nhận lệnh bằng giọng nói Tiếng Việt và phân tích. Sau khi tiến hành thực thi ứng dụng đã thu được một số kết quả rất khả quan:
+
+\begin{itemize}
+	\item Tiêu tốn RAM: 6.18 Mb khi khởi tạo và tăng lên khi ứng dụng hiển thị yêu cầu của người dùng và câu trả lời của chatbot với lượng tăng nhỏ, được đo bằng chức năng của hệ điều hành điện thoại.
+	\item Thời gian tải mô hình ngôn ngữ khi khởi tạo ứng dụng: trung bình 12ms, khoảng thời gian rất nhỏ và dường như không đáng kể đến hiệu năng của hệ thống.
+	\item Thời gian phản hồi yêu cầu người dùng: trung bình là 1268ms, được đo từ khi Google Speech Recognition API trả về kết quả cho đến khi yêu cầu được thực hiện xong.
+\end{itemize}
+
+Qua những thông số thu được từ việc thực thi hệ thống, có thể thấy ứng dụng đạt được hiệu năng cao và khả quan trong việc triển khai.
 
 \stopcontents[parts]
 
@@ -1335,25 +1358,26 @@ Hệ thống được chạy trên thiết bị Android 6.0 với tốc độ tr
 \addtocontents{toc}{\bigskip}
 \addcontentsline{toc}{chapter}{Kết luận}
 
-Qua quá trình nghiên cứu và xây dựng ứng dụng ``Chatbot điều khiển điện thoại bằng Tiếng Việt'', em đã rút ra được những bài học vô cùng quý giá, đặc biệt trong lĩnh vực xử lý ngôn ngữ tự nhiên nói riêng và lĩnh vực trí tuệ nhân tạo nói chung. Thông qua việc tìm hiểu những kỹ thuật xử lý cơ bản trong xử lý ngôn ngữ tự nhiên, em đã nắm bắt được một phần những kiến thức nền tảng trong việc xây dựng các ứng dụng có trí thông minh, khả năng thay thế con người để hoàn thành những nhiệm vụ cụ thể.
+Qua quá trình nghiên cứu và xây dựng ứng dụng ``\app{}'', em đã rút ra được những bài học vô cùng quý giá, đặc biệt trong lĩnh vực xử lý ngôn ngữ tự nhiên nói riêng và lĩnh vực trí tuệ nhân tạo nói chung. Thông qua việc tìm hiểu những kỹ thuật xử lý cơ bản trong xử lý ngôn ngữ tự nhiên, em đã nắm bắt được một phần những kiến thức nền tảng trong việc xây dựng các ứng dụng có trí thông minh, khả năng thay thế con người để hoàn thành những nhiệm vụ cụ thể.
 
-Ứng dụng ``Chatbot điều khiển điện thoại bằng Tiếng Việt'' mới chỉ được xây dựng một cách sơ khai với mô hình hệ thống còn nhiều thiếu sót, tuy nhiên kết quả thực tiễn đem lại vẫn rất khả quan, mở ra những hướng đi trong việc sử dụng giọng nói Tiếng Việt để điều khiển những vật dụng thông minh ngay tại Việt Nam.
+Ứng dụng ``\app{}'' mới chỉ được xây dựng một cách sơ khai với mô hình hệ thống còn nhiều thiếu sót, tuy nhiên kết quả thực tiễn đem lại vẫn rất khả quan, mở ra những hướng đi trong việc sử dụng giọng nói Tiếng Việt để điều khiển những vật dụng thông minh ngay tại Việt Nam.
 
 Trong quá trình nghiên cứu và phát triển ứng dụng không tránh khỏi những sai sót, em rất mong nhận được sự góp ý từ thầy cô và các bạn để có thể hoàn thiện được ứng dụng hơn nữa về mọi mặt, cả trong khả năng thông minh cũng như tối ưu hóa tốc độ của ứng dụng. \\[0.4cm]
 \noindent \textbf{\large Định hướng phát triển\\[0.4cm]}
-Ứng dụng ``Chatbot điều khiển điện thoại bằng Tiếng Việt'' còn cần thêm rất nhiều dữ liệu trả lời và phân tích yêu cầu từ phía người dùng, hơn nữa, mô hình hệ thống của ứng dụng chưa thực sự tốt, vì vậy em xin đề xuất một số định hướng phát triển trong tương lai để ứng dụng trở nên hoàn thiện hơn:
+Ứng dụng ``\app{}'' còn cần thêm rất nhiều dữ liệu trả lời và phân tích yêu cầu từ phía người dùng, hơn nữa, mô hình hệ thống của ứng dụng chưa thực sự tốt, vì vậy em xin đề xuất một số định hướng phát triển trong tương lai để ứng dụng trở nên hoàn thiện hơn:
 
 \begin{itemize}
 	\item Xây dựng khả năng tự học cho chatbot.
 	\item Chuyển toàn bộ nhiệm vụ xử lý giọng nói cũng như phân tích yêu cầu về cho server để thuận tiện cho việc cập nhật mô hình ngôn ngữ và phát triển thư viện tích hợp.
 \end{itemize}
 
+\begin{flushleft}
 \begin{thebibliography}{9}
 
 \bibitem{chatbot-wiki} 
-Wikipedia.
-\textit{Chatbot}.
-\url{https://en.wikipedia.org/wiki/Chatbot}.
+Michael L. Mauldin.
+\textit{ChatterBots, TinyMuds, and the Turing Test: Entering the Loebner Prize Competition}.
+AAAI Press, 1994.
 
 \bibitem{alice-chatbot} 
 Adaptive Learning in ELT. 
@@ -1445,7 +1469,15 @@ Fernando A. Mikic, Juan C. Burguillo, Martín Llamas, Daniel A. Rodríguez and E
 \textit{CHARLIE: An AIML-based Chatterbot which works as an Interface among INES and Humans}. 
 EAEEIE Annual Conference, 2009.
 
+\bibitem{facebook-wit} 
+Seth Fiegerman. 
+\textit{Facebook buys Wit.ai, a speech recognition startup}.
+\url{http://mashable.com/2015/01/05/facebook-buys-wit-ai/#Ig3Uf7t_yiqd},
+last visited May 2017.
+
 \end{thebibliography}
+
+\end{flushleft}
 
 \addcontentsline{toc}{chapter}{Tài liệu tham khảo}
 
