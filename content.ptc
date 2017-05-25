@@ -9,60 +9,59 @@
 \contentsline {chapter}{\numberline {1}\IeC {\DJ }\IeC {\d \abreve }t v\IeC {\'\acircumflex }n \IeC {\dj }\IeC {\`\ecircumflex }}{2}{chapter.1}
 \contentsline {section}{\numberline {1.1}T\IeC {\h \ocircumflex }ng quan v\IeC {\`\ecircumflex } chatbot v\IeC {\`a} c\IeC {\'a}c h\IeC {\d \ecircumflex } th\IeC {\'\ocircumflex }ng tr\IeC {\d \ohorn } l\IeC {\'\i } \IeC {\h a}o}{2}{section.1.1}
 \contentsline {subsection}{\numberline {1.1.1}Chatbot}{2}{subsection.1.1.1}
-\contentsline {subsection}{\numberline {1.1.2}H\IeC {\d \ecircumflex } th\IeC {\'\ocircumflex }ng tr\IeC {\d \ohorn } l\IeC {\'y} \IeC {\h a}o}{4}{subsection.1.1.2}
+\contentsline {subsection}{\numberline {1.1.2}H\IeC {\d \ecircumflex } th\IeC {\'\ocircumflex }ng tr\IeC {\d \ohorn } l\IeC {\'y} \IeC {\h a}o}{3}{subsection.1.1.2}
 \contentsline {section}{\numberline {1.2}M\IeC {\d u}c \IeC {\dj }\IeC {\'\i }ch c\IeC {\h u}a \IeC {\dj }\IeC {\`\ecircumflex } t\IeC {\`a}i}{5}{section.1.2}
 \contentsline {chapter}{\numberline {2}\IeC {\DJ }\IeC {\d i}nh h\IeC {\uhorn }\IeC {\'\ohorn }ng gi\IeC {\h a}i ph\IeC {\'a}p}{7}{chapter.2}
-\contentsline {section}{\numberline {2.1}Nh\IeC {\d \acircumflex }n di\IeC {\d \ecircumflex }n gi\IeC {\d o}ng n\IeC {\'o}i}{7}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Kh\IeC {\'a}i ni\IeC {\d \ecircumflex }m}{7}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Google Speech Recognition API}{8}{subsection.2.1.2}
-\contentsline {subsubsection}{\numberline {2.1.2.1}C\IeC {\^o}ng c\IeC {\d u} h\IeC {\~\ocircumflex } tr\IeC {\d \ohorn } nh\IeC {\d \acircumflex }n di\IeC {\d \ecircumflex }n gi\IeC {\d o}ng n\IeC {\'o}i}{8}{subsubsection.2.1.2.1}
-\contentsline {subsubsection}{\numberline {2.1.2.2}T\IeC {\h \ocircumflex }ng quan v\IeC {\`\ecircumflex } Google Speech Recognition API}{9}{subsubsection.2.1.2.2}
+\contentsline {section}{\numberline {2.1}Nh\IeC {\d \acircumflex }n di\IeC {\d \ecircumflex }n gi\IeC {\d o}ng n\IeC {\'o}i}{8}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Kh\IeC {\'a}i ni\IeC {\d \ecircumflex }m}{8}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Google Speech Recognition API}{9}{subsection.2.1.2}
+\contentsline {subsubsection}{\numberline {2.1.2.1}C\IeC {\^o}ng c\IeC {\d u} h\IeC {\~\ocircumflex } tr\IeC {\d \ohorn } nh\IeC {\d \acircumflex }n di\IeC {\d \ecircumflex }n gi\IeC {\d o}ng n\IeC {\'o}i}{9}{subsubsection.2.1.2.1}
+\contentsline {subsubsection}{\numberline {2.1.2.2}T\IeC {\h \ocircumflex }ng quan v\IeC {\`\ecircumflex } Google Speech Recognition API}{10}{subsubsection.2.1.2.2}
 \contentsline {section}{\numberline {2.2}X\IeC {\^a}y d\IeC {\d \uhorn }ng chatbot}{11}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}N\IeC {\`\ecircumflex }n t\IeC {\h a}ng chatbot}{11}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Framework ph\IeC {\'a}t tri\IeC {\h \ecircumflex }n bot}{13}{subsection.2.2.2}
-\contentsline {section}{\numberline {2.3}C\IeC {\^o}ng c\IeC {\d u} h\IeC {\~\ocircumflex } tr\IeC {\d \ohorn } qu\IeC {\'a} tr\IeC {\`\i }nh ph\IeC {\'a}t tri\IeC {\h \ecircumflex }n}{14}{section.2.3}
+\contentsline {subsection}{\numberline {2.2.1}N\IeC {\`\ecircumflex }n t\IeC {\h a}ng chatbot}{12}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Framework ph\IeC {\'a}t tri\IeC {\h \ecircumflex }n bot}{14}{subsection.2.2.2}
 \ttl@stoptoc {parts@1}
-\contentsline {part}{II\hspace {1em}C\IeC {\'a}c k\IeC {\'\ecircumflex }t qu\IeC {\h a} \IeC {\dj }\IeC {\d a}t \IeC {\dj }\IeC {\uhorn }\IeC {\d \ohorn }c}{15}{part.2}
+\contentsline {part}{II\hspace {1em}C\IeC {\'a}c k\IeC {\'\ecircumflex }t qu\IeC {\h a} \IeC {\dj }\IeC {\d a}t \IeC {\dj }\IeC {\uhorn }\IeC {\d \ohorn }c}{16}{part.2}
 \ttl@stoptoc {parts@1}
 \ttl@starttoc {parts@2}
-\contentsline {chapter}{\numberline {3}T\IeC {\h \ocircumflex }ng quan}{16}{chapter.3}
-\contentsline {section}{\numberline {3.1}M\IeC {\^o} h\IeC {\`\i }nh h\IeC {\d \ecircumflex } th\IeC {\'\ocircumflex }ng}{16}{section.3.1}
-\contentsline {section}{\numberline {3.2}C\IeC {\'a}c y\IeC {\^e}u c\IeC {\`\acircumflex }u v\IeC {\`\ecircumflex } ch\IeC {\'\uhorn }c n\IeC {\u a}ng}{17}{section.3.2}
-\contentsline {section}{\numberline {3.3}C\IeC {\'a}c y\IeC {\^e}u c\IeC {\`\acircumflex }u phi ch\IeC {\'\uhorn }c n\IeC {\u a}ng}{18}{section.3.3}
-\contentsline {chapter}{\numberline {4}C\IeC {\ohorn } s\IeC {\h \ohorn } l\IeC {\'y} thuy\IeC {\'\ecircumflex }t}{19}{chapter.4}
-\contentsline {section}{\numberline {4.1}M\IeC {\^o} h\IeC {\`\i }nh ng\IeC {\^o}n ng\IeC {\~\uhorn }}{19}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Kh\IeC {\'a}i ni\IeC {\d \ecircumflex }m}{19}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}C\IeC {\'a}c ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p l\IeC {\`a}m m\IeC {\d i}n}{22}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}X\IeC {\h \uhorn } l\IeC {\'y} ng\IeC {\^o}n ng\IeC {\~\uhorn } t\IeC {\d \uhorn } nhi\IeC {\^e}n}{22}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Kh\IeC {\'a}i ni\IeC {\d \ecircumflex }m}{22}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}X\IeC {\h \uhorn } l\IeC {\'y} ng\IeC {\^o}n ng\IeC {\~\uhorn } t\IeC {\d \uhorn } nhi\IeC {\^e}n trong chatbot}{24}{subsection.4.2.2}
-\contentsline {chapter}{\numberline {5}C\IeC {\'a}c nghi\IeC {\^e}n c\IeC {\'\uhorn }u li\IeC {\^e}n quan}{26}{chapter.5}
-\contentsline {section}{\numberline {5.1}X\IeC {\h \uhorn } l\IeC {\'y} gi\IeC {\d o}ng n\IeC {\'o}i}{26}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}X\IeC {\h \uhorn } l\IeC {\'y} gi\IeC {\d o}ng n\IeC {\'o}i c\IeC {\h u}a Google}{26}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}C\IeC {\'a}c ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p ch\IeC {\d o}n k\IeC {\'\ecircumflex }t qu\IeC {\h a}}{26}{subsection.5.1.2}
-\contentsline {subsubsection}{\numberline {5.1.2.1}TF-IDF}{26}{subsubsection.5.1.2.1}
-\contentsline {subsubsection}{\numberline {5.1.2.2}M\IeC {\d a}ng n\IeC {\ohorn }-ron nh\IeC {\^a}n t\IeC {\d a}o}{28}{subsubsection.5.1.2.2}
-\contentsline {section}{\numberline {5.2}Nh\IeC {\~\uhorn }ng \IeC {\'\uhorn }ng d\IeC {\d u}ng \IeC {\dj }i\IeC {\`\ecircumflex }u khi\IeC {\h \ecircumflex }n b\IeC {\`\abreve }ng gi\IeC {\d o}ng n\IeC {\'o}i Ti\IeC {\'\ecircumflex }ng Vi\IeC {\d \ecircumflex }t \IeC {\dj }\IeC {\~a} c\IeC {\'o}}{30}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}\IeC {\'\UHORN }ng d\IeC {\d u}ng VAV}{30}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}\IeC {\'\UHORN }ng d\IeC {\d u}ng VietCommand}{31}{subsection.5.2.2}
-\contentsline {chapter}{\numberline {6}K\IeC {\'\ecircumflex }t qu\IeC {\h a} \IeC {\dj }\IeC {\d a}t \IeC {\dj }\IeC {\uhorn }\IeC {\d \ohorn }c}{32}{chapter.6}
-\contentsline {section}{\numberline {6.1}X\IeC {\^a}y d\IeC {\d \uhorn }ng \IeC {\'\uhorn }ng d\IeC {\d u}ng}{32}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Server trung gian}{32}{subsection.6.1.1}
-\contentsline {subsubsection}{\numberline {6.1.1.1}V\IeC {\`a}i n\IeC {\'e}t v\IeC {\`\ecircumflex } NodeJS}{32}{subsubsection.6.1.1.1}
-\contentsline {subsubsection}{\numberline {6.1.1.2}C\IeC {\'\acircumflex }u tr\IeC {\'u}c server trung gian}{33}{subsubsection.6.1.1.2}
-\contentsline {subsection}{\numberline {6.1.2}X\IeC {\^a}y d\IeC {\d \uhorn }ng th\IeC {\uhorn } vi\IeC {\d \ecircumflex }n}{35}{subsection.6.1.2}
-\contentsline {subsection}{\numberline {6.1.3}T\IeC {\'\i }ch h\IeC {\d \ohorn }p th\IeC {\uhorn } vi\IeC {\d \ecircumflex }n}{35}{subsection.6.1.3}
-\contentsline {section}{\numberline {6.2}C\IeC {\`a}i \IeC {\dj }\IeC {\d \abreve }t thu\IeC {\d \acircumflex }t to\IeC {\'a}n ch\IeC {\d o}n l\IeC {\d o}c k\IeC {\'\ecircumflex }t qu\IeC {\h a}}{35}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}C\IeC {\^o}ng c\IeC {\d u} SRILM}{35}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}T\IeC {\'\i }nh x\IeC {\'a}c su\IeC {\'\acircumflex }t}{37}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}X\IeC {\^a}y d\IeC {\d \uhorn }ng ki\IeC {\'\ecircumflex }n th\IeC {\'\uhorn }c cho chatbot}{38}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}V\IeC {\`a}i n\IeC {\'e}t v\IeC {\`\ecircumflex } Wit.ai}{38}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}S\IeC {\h \uhorn } d\IeC {\d u}ng Wit.ai}{39}{subsection.6.3.2}
-\contentsline {chapter}{\numberline {7}C\IeC {\`a}i \IeC {\dj }\IeC {\d \abreve }t v\IeC {\`a} \IeC {\dj }\IeC {\'a}nh gi\IeC {\'a}}{41}{chapter.7}
-\contentsline {section}{\numberline {7.1}\IeC {\DJ }\IeC {\'a}nh gi\IeC {\'a} \IeC {\dj }\IeC {\d \ocircumflex } ch\IeC {\'\i }nh x\IeC {\'a}c c\IeC {\h u}a m\IeC {\^o} h\IeC {\`\i }nh ng\IeC {\^o}n ng\IeC {\~\uhorn }}{41}{section.7.1}
-\contentsline {section}{\numberline {7.2}\IeC {\DJ }\IeC {\'a}nh gi\IeC {\'a} h\IeC {\d \ecircumflex } th\IeC {\'\ocircumflex }ng}{42}{section.7.2}
+\contentsline {chapter}{\numberline {3}T\IeC {\h \ocircumflex }ng quan}{17}{chapter.3}
+\contentsline {section}{\numberline {3.1}M\IeC {\^o} h\IeC {\`\i }nh h\IeC {\d \ecircumflex } th\IeC {\'\ocircumflex }ng}{17}{section.3.1}
+\contentsline {section}{\numberline {3.2}C\IeC {\'a}c y\IeC {\^e}u c\IeC {\`\acircumflex }u v\IeC {\`\ecircumflex } ch\IeC {\'\uhorn }c n\IeC {\u a}ng}{19}{section.3.2}
+\contentsline {section}{\numberline {3.3}C\IeC {\'a}c y\IeC {\^e}u c\IeC {\`\acircumflex }u phi ch\IeC {\'\uhorn }c n\IeC {\u a}ng}{19}{section.3.3}
+\contentsline {chapter}{\numberline {4}C\IeC {\ohorn } s\IeC {\h \ohorn } l\IeC {\'y} thuy\IeC {\'\ecircumflex }t}{20}{chapter.4}
+\contentsline {section}{\numberline {4.1}M\IeC {\^o} h\IeC {\`\i }nh ng\IeC {\^o}n ng\IeC {\~\uhorn }}{20}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Kh\IeC {\'a}i ni\IeC {\d \ecircumflex }m}{20}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}C\IeC {\'a}c ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p l\IeC {\`a}m m\IeC {\d i}n}{23}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}X\IeC {\h \uhorn } l\IeC {\'y} ng\IeC {\^o}n ng\IeC {\~\uhorn } t\IeC {\d \uhorn } nhi\IeC {\^e}n}{23}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Kh\IeC {\'a}i ni\IeC {\d \ecircumflex }m}{23}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}X\IeC {\h \uhorn } l\IeC {\'y} ng\IeC {\^o}n ng\IeC {\~\uhorn } t\IeC {\d \uhorn } nhi\IeC {\^e}n trong chatbot}{25}{subsection.4.2.2}
+\contentsline {chapter}{\numberline {5}C\IeC {\'a}c nghi\IeC {\^e}n c\IeC {\'\uhorn }u li\IeC {\^e}n quan}{27}{chapter.5}
+\contentsline {section}{\numberline {5.1}X\IeC {\h \uhorn } l\IeC {\'y} gi\IeC {\d o}ng n\IeC {\'o}i}{27}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}X\IeC {\h \uhorn } l\IeC {\'y} gi\IeC {\d o}ng n\IeC {\'o}i c\IeC {\h u}a Google}{27}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}C\IeC {\'a}c ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p ch\IeC {\d o}n k\IeC {\'\ecircumflex }t qu\IeC {\h a}}{27}{subsection.5.1.2}
+\contentsline {subsubsection}{\numberline {5.1.2.1}TF-IDF}{27}{subsubsection.5.1.2.1}
+\contentsline {subsubsection}{\numberline {5.1.2.2}M\IeC {\d a}ng n\IeC {\ohorn }-ron nh\IeC {\^a}n t\IeC {\d a}o}{29}{subsubsection.5.1.2.2}
+\contentsline {section}{\numberline {5.2}Nh\IeC {\~\uhorn }ng \IeC {\'\uhorn }ng d\IeC {\d u}ng \IeC {\dj }i\IeC {\`\ecircumflex }u khi\IeC {\h \ecircumflex }n b\IeC {\`\abreve }ng gi\IeC {\d o}ng n\IeC {\'o}i Ti\IeC {\'\ecircumflex }ng Vi\IeC {\d \ecircumflex }t \IeC {\dj }\IeC {\~a} c\IeC {\'o}}{31}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}\IeC {\'\UHORN }ng d\IeC {\d u}ng VAV}{31}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}\IeC {\'\UHORN }ng d\IeC {\d u}ng VietCommand}{32}{subsection.5.2.2}
+\contentsline {chapter}{\numberline {6}K\IeC {\'\ecircumflex }t qu\IeC {\h a} \IeC {\dj }\IeC {\d a}t \IeC {\dj }\IeC {\uhorn }\IeC {\d \ohorn }c}{33}{chapter.6}
+\contentsline {section}{\numberline {6.1}X\IeC {\^a}y d\IeC {\d \uhorn }ng \IeC {\'\uhorn }ng d\IeC {\d u}ng}{33}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Server trung gian}{33}{subsection.6.1.1}
+\contentsline {subsubsection}{\numberline {6.1.1.1}V\IeC {\`a}i n\IeC {\'e}t v\IeC {\`\ecircumflex } NodeJS}{33}{subsubsection.6.1.1.1}
+\contentsline {subsubsection}{\numberline {6.1.1.2}C\IeC {\'\acircumflex }u tr\IeC {\'u}c server trung gian}{34}{subsubsection.6.1.1.2}
+\contentsline {subsection}{\numberline {6.1.2}X\IeC {\^a}y d\IeC {\d \uhorn }ng th\IeC {\uhorn } vi\IeC {\d \ecircumflex }n}{36}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}T\IeC {\'\i }ch h\IeC {\d \ohorn }p th\IeC {\uhorn } vi\IeC {\d \ecircumflex }n}{38}{subsection.6.1.3}
+\contentsline {section}{\numberline {6.2}C\IeC {\`a}i \IeC {\dj }\IeC {\d \abreve }t thu\IeC {\d \acircumflex }t to\IeC {\'a}n ch\IeC {\d o}n l\IeC {\d o}c k\IeC {\'\ecircumflex }t qu\IeC {\h a}}{39}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}C\IeC {\^o}ng c\IeC {\d u} SRILM}{39}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}T\IeC {\'\i }nh x\IeC {\'a}c su\IeC {\'\acircumflex }t}{40}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}X\IeC {\^a}y d\IeC {\d \uhorn }ng ki\IeC {\'\ecircumflex }n th\IeC {\'\uhorn }c cho chatbot}{42}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}V\IeC {\`a}i n\IeC {\'e}t v\IeC {\`\ecircumflex } Wit.ai}{42}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}S\IeC {\h \uhorn } d\IeC {\d u}ng Wit.ai}{42}{subsection.6.3.2}
+\contentsline {chapter}{\numberline {7}C\IeC {\`a}i \IeC {\dj }\IeC {\d \abreve }t v\IeC {\`a} \IeC {\dj }\IeC {\'a}nh gi\IeC {\'a}}{45}{chapter.7}
+\contentsline {section}{\numberline {7.1}\IeC {\DJ }\IeC {\'a}nh gi\IeC {\'a} \IeC {\dj }\IeC {\d \ocircumflex } ch\IeC {\'\i }nh x\IeC {\'a}c c\IeC {\h u}a m\IeC {\^o} h\IeC {\`\i }nh ng\IeC {\^o}n ng\IeC {\~\uhorn }}{45}{section.7.1}
+\contentsline {section}{\numberline {7.2}\IeC {\DJ }\IeC {\'a}nh gi\IeC {\'a} h\IeC {\d \ecircumflex } th\IeC {\'\ocircumflex }ng}{46}{section.7.2}
 \ttl@stoptoc {parts@2}
 \vspace \bigskipamount 
-\contentsline {chapter}{K\IeC {\'\ecircumflex }t lu\IeC {\d \acircumflex }n}{43}{chapter*.2}
-\contentsline {chapter}{T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{44}{chapter*.3}
+\contentsline {chapter}{K\IeC {\'\ecircumflex }t lu\IeC {\d \acircumflex }n}{47}{chapter*.23}
+\contentsline {chapter}{T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{49}{chapter*.24}
 \contentsfinish 
