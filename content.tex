@@ -396,14 +396,6 @@ Supervisor: Trịnh Thành Trung, MSc.
 \lstlistoflistings
 \addcontentsline{toc}{chapter}{Danh sách mã nguồn}
 
-% \noindent \textbf{AIML} Artificial Intelligence Markup Language - là một ngôn ngữ có dạng XML, sử dụng các thẻ để quy định các cặp ``câu hỏi - câu trả lời'', kèm theo một số điều kiện hay các lựa chọn khác.
-
-% \noindent \textbf{API} Application program interface - là một tập các thủ tục, giao thức và công cụ cho việc xây dựng ứng dụng phần mềm.
-
-% \noindent \textbf{NLP} Natural Language Processing - Xử lý ngôn ngữ tự nhiên.
-
-% \noindent \textbf{SDK} Software development kit - là một từ dùng để chỉ một tập những công cụ phát triển phần mềm mà cho phép việc tạo ra những ứng dụng bằng những gói phần mềm, nền tảng phần mềm, nền tảng phần cứng, hệ thống máy tính, hệ điều hành hay những nền tảng phát triển tương tự.
-
 
 % FOREWORD
 \newpage
@@ -958,7 +950,7 @@ Tuy nhiên nhược điểm của VAV là không thể nói liên tục mà ph�
 
 \subsection{Ứng dụng VietCommand}
 
-VietCommand đã được ra mắt vào tháng 8/2014 tại hội thảo về ứng dụng cho di động do Viettel tổ chức. VietCommand là sản phẩm do Ngô Thiều Quang - sinh viên tốt nghiệp Đại học Bách Khoa Hà Nội. VietCommand được ra đời dựa trên những thành tựu do Google Now, Siri và Cortana đã đạt được trong việc điều khiển các thiết bị di động, tuy nhiên lại chưa hỗ trợ tốt cho Tiếng Việt. VietCommand tập trung đến những tính năng mà người dùng hay muốn thực hiện nhất trên thiết bị di động của mình như đặt báo thức, tra bản đồ hay mở trình duyệt \ldots Một số tính năng nổi bật của VietCommand có thể kể đến như:
+\textbf{VietCommand} đã được ra mắt vào tháng 8/2014 tại hội thảo về ứng dụng cho di động do Viettel tổ chức. VietCommand là sản phẩm do Ngô Thiều Quang - sinh viên tốt nghiệp Đại học Bách Khoa Hà Nội. VietCommand được ra đời dựa trên những thành tựu do Google Now, Siri và Cortana đã đạt được trong việc điều khiển các thiết bị di động, tuy nhiên lại chưa hỗ trợ tốt cho Tiếng Việt. VietCommand tập trung đến những tính năng mà người dùng hay muốn thực hiện nhất trên thiết bị di động của mình như đặt báo thức, tra bản đồ hay mở trình duyệt \ldots Một số tính năng nổi bật của VietCommand có thể kể đến như:
 
 \begin{itemize}
 	\item Mở ứng dụng
@@ -1011,7 +1003,7 @@ Hiện tại đã có rất nhiều các công ty lớn sử dụng NodeJS để
   	\caption{Mô hình Server trung gian.}
 \end{figure}
 
-Server trung gian được xây dựng theo mô hình MVC cơ bản bao gồm một ChatController để xử lý tương tác với Wit.ai, một UserModel để lưu lại những câu nói của người dùng và một ChatView sử dụng cho việc hiển thị giao diện web của ứng dụng test API trên browser. Bên cạnh đó là một ChatRoute nhằm thực hiện nhiệm vụ điều hướng những request URL được gửi đến bằng phương thức \textit{POST}. Sở dĩ hệ thống sử dụng phương thức này là do chỉ có một loại yêu cầu từ phía người dùng có thể gửi đến nên không cần có sự phân biệt bằng các tham số đầu vào (parameters) được đính kém trên URL, hơn nữa, mọi thông tin trong hệ thống là bảo mật nên không thể sử dụng phương thức GET.
+Server trung gian được xây dựng theo mô hình MVC cơ bản bao gồm một ChatController để xử lý tương tác với Wit.ai và một ChatView sử dụng cho việc hiển thị giao diện web của ứng dụng test API trên browser để kiểm tra xem kết quả nhận dạng và câu trả lời của chatbot có chính xác hay không. Do chưa có sự tương tác hay lưu dữ liệu nên server trung gian chưa có ChatModel. Bên cạnh đó là một ChatRoute nhằm thực hiện nhiệm vụ điều hướng những request URL được gửi đến bằng phương thức \texttt{POST}. Sở dĩ hệ thống sử dụng phương thức này là do chỉ có một loại yêu cầu từ phía người dùng có thể gửi đến nên không cần có sự phân biệt bằng các tham số đầu vào (parameters) được đính kém trên URL, hơn nữa, mọi thông tin trong hệ thống là bảo mật nên không thể sử dụng phương thức \texttt{GET}.
 
 \begin{figure}[H]
 	\centering
@@ -1173,16 +1165,17 @@ public int chooseTheBestOne(Map<String, Float> lm, List<String> results) {
     double min = 0;
 
     for (int i = 0; i < results.size(); i++) {
-        String result = "<s> " + results.get(i) + " </s>";
+        String result = "<s> " + results.get(i).toLowerCase() + " </s>";
         String[] tokens = result.split(" ");
         float logarit = 0;
         double perplexity = 0;
         int OOV = 0;
 
-        for (int j = 0; j + N < tokens.length; j++) {
-            int n = N;
+        for (int j = 1; j < tokens.length; j++) {
+            int selectedIndex = j < (N - 1) ? 0 : j - (N - 1);
+            int n = j - selectedIndex;
             while (n > 0) {
-                String gram = TextUtils.join(" ", Arrays.copyOfRange(tokens, j, j + n));
+                String gram = TextUtils.join(" ", Arrays.copyOfRange(tokens, selectedIndex, selectedIndex + n));
                 if (lm.containsKey(gram)) {
                     logarit += lm.get(gram);
                     break;
@@ -1198,7 +1191,7 @@ public int chooseTheBestOne(Map<String, Float> lm, List<String> results) {
         if (min == 0) {
             min = perplexity;
             index = i;
-        } 
+        }
         else {
             if (perplexity < min) {
                 min = perplexity;
@@ -1216,7 +1209,7 @@ Trong đó ta có:
 \begin{itemize}
 	\item \texttt{N}: giá trị mặc định là 3 tức là tri-gram
 	\item \texttt{index}: chỉ số của câu được chọn trong tập dữ liệu trả về
-	\item \texttt{min}: giá trị perplexity nhỏ nhất
+	\item \texttt{min}: giá trị perplexity (sẽ được giải thích ở chương \ref{chap:setup}) nhỏ nhất
 \end{itemize}
 
 Các bước thực hiện như sau:
@@ -1294,7 +1287,7 @@ Với những câu chưa từng xuất hiện hoặc còn nhập nhằng trong v
 
 \section{Đánh giá độ chính xác của mô hình ngôn ngữ}
 
-Trong phần thực nghiệm, chúng tôi lấy mẫu từ hơn 1000 câu bao gồm các trường hợp đã huấn luyện cho chatbot để làm đầu vào cho việc huấn luyện mô hình ngôn ngữ. Cụ thể số lượng các cụm n-gram như sau:
+Trong phần thực nghiệm, ứng dụng lấy mẫu từ hơn 1000 câu bao gồm các trường hợp đã huấn luyện cho chatbot để làm đầu vào cho việc huấn luyện mô hình ngôn ngữ. Cụ thể số lượng các cụm n-gram như sau:
 \begin{table}[h]
 	\caption{Số lượng các cụm n-gram trong tập huấn luyện}
 	\centering
@@ -1380,32 +1373,32 @@ Michael L. Mauldin.
 AAAI Press, 1994.
 
 \bibitem{alice-chatbot} 
-Adaptive Learning in ELT. 
+Philip Kerr. 
 \textit{Chatbots}.
 \url{https://adaptivelearninginelt.wordpress.com/2016/12/01/chatbots/}.
 
 \bibitem{va-compare} 
-Business Insider. 
+Jeff Dunn. 
 \textit{We put Siri, Alexa, Google Assistant, and Cortana through a marathon of tests to see who's winning the virtual assistant race — here's what we found}.
 \url{http://www.businessinsider.com/siri-vs-google-assistant-cortana-alexa-2016-11}.
 
 \bibitem{tech-trending} 
-Báo Quốc tế. 
+Lan Anh. 
 \textit{10 xu hướng tiêu dùng công nghệ năm 2017}.
 \url{http://baoquocte.vn/10-xu-huong-tieu-dung-cong-nghe-nam-2017-42757.html}.
 
 \bibitem{tech-report} 
-APPOTA - Technology for Change. 
+Appota Team. 
 \textit{Báo cáo thị trường mobile Việt Nam Q3-2016}.
 \url{https://news.appota.com/bao-cao-thi-truong-mobile-viet-nam-q3-2016/}.
 
 \bibitem{google-vietnamese} 
-VnExpress Online Newspaper. 
+Châu An. 
 \textit{Google hỗ trợ tìm kiếm bằng giọng nói tiếng Việt}. 
 \url{http://sohoa.vnexpress.net/tin-tuc/doi-song-so/google-ho-tro-tim-kiem-bang-giong-noi-tieng-viet-2842679.html}.
 
 \bibitem{guiding-tech} 
-Guiding Tech. 
+Khamosh Pathak. 
 \textit{8 Cool (and Useful) Ways to Use Google Now Voice Search}.
 \url{http://www.guidingtech.com/42648/cool-google-now-voice-search/}.
 
@@ -1472,8 +1465,7 @@ EAEEIE Annual Conference, 2009.
 \bibitem{facebook-wit} 
 Seth Fiegerman. 
 \textit{Facebook buys Wit.ai, a speech recognition startup}.
-\url{http://mashable.com/2015/01/05/facebook-buys-wit-ai/#Ig3Uf7t_yiqd},
-last visited May 2017.
+\url{http://mashable.com/2015/01/05/facebook-buys-wit-ai/#Ig3Uf7t_yiqd}.
 
 \end{thebibliography}
 
